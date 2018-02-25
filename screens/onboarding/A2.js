@@ -5,15 +5,22 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
   TextInput,
 } from 'react-native';
 
-import { NextButton, BackButton } from '../../components/OnboardNavButtons';
+import { MonoText } from '../../components/StyledText';
+import { NextButton } from '../../components/OnboardNavButtons';
+import { BackButton } from '../../components/OnboardNavButtons';
 
-export default class A1 extends React.Component {
+export default class A2 extends React.Component {
   state = {
-    userFirstName: '',
+    momFirstName: '',
+  };
+
+  static navigationOptions = {
+    header: null,
   };
 
   render() {
@@ -29,18 +36,15 @@ export default class A1 extends React.Component {
             />
           </View>
 
-          <View style={styles.getStartedContainer}>
-            <Text style={styles.getStartedText}>{"First, let's make things personal."}</Text>
-          </View>
-
           <View style={styles.helpContainer}>
-            <Text style={styles.getStartedText}>{"What's your first name (or nickname)?"}</Text>
+            <Text style={styles.getStartedText}>{"What's the mother of the child's first name (or nickname)?"}</Text>
             <TextInput
               style={{width: 250, height: 40, borderColor: 'gray', borderWidth: 1}}
-              onChangeText={(userFirstName) => this.setState({userFirstName})}
-              value={this.state.userFirstName} />
-            <NextButton navigation={this.props.navigation}
-                        to={'A2'}/>
+              onChangeText={(momFirstName) => this.setState({momFirstName})}
+              value={this.state.momFirstName} />
+            <NextButton
+              navigation={this.props.navigation}
+              to={'A3'} />
             <BackButton navigation={this.props.navigation}/>
           </View>
         </ScrollView>

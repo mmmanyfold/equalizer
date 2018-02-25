@@ -5,15 +5,23 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
+  Button,
   TextInput,
 } from 'react-native';
 
-import { NextButton, BackButton } from '../../components/OnboardNavButtons';
+import { MonoText } from '../../components/StyledText';
+import { NextButton } from '../../components/OnboardNavButtons';
+import { BackButton } from '../../components/OnboardNavButtons';
 
-export default class A1 extends React.Component {
+export default class A4 extends React.Component {
   state = {
-    userFirstName: '',
+    userWorksFromHome: true,
+  };
+
+  static navigationOptions = {
+    header: null,
   };
 
   render() {
@@ -29,18 +37,14 @@ export default class A1 extends React.Component {
             />
           </View>
 
-          <View style={styles.getStartedContainer}>
-            <Text style={styles.getStartedText}>{"First, let's make things personal."}</Text>
-          </View>
-
           <View style={styles.helpContainer}>
-            <Text style={styles.getStartedText}>{"What's your first name (or nickname)?"}</Text>
-            <TextInput
-              style={{width: 250, height: 40, borderColor: 'gray', borderWidth: 1}}
-              onChangeText={(userFirstName) => this.setState({userFirstName})}
-              value={this.state.userFirstName} />
-            <NextButton navigation={this.props.navigation}
-                        to={'A2'}/>
+            <Text style={styles.getStartedText}>{"Do you work from home?"}</Text>
+            <Button onPress={() => this.props.navigation.navigate('A5')}
+                    title="Yes"
+                    color="#6FCF97"/>
+            <Button onPress={() => this.props.navigation.navigate('A5')}
+                    title="No"
+                    color="#56CCF2"/>
             <BackButton navigation={this.props.navigation}/>
           </View>
         </ScrollView>

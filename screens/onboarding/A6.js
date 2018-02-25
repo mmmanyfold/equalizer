@@ -39,14 +39,14 @@ export default class A1 extends React.Component {
 
                     <View style={styles.helpContainer}>
 
-                        <Text style={styles.getStartedText}>{"Child's name or nickname ?"}</Text>
+                        <Text style={styles.getStartedText}>{"Child's name or nickname:"}</Text>
 
                         <TextInput
                             style={{width: 250, height: 40, borderColor: 'gray', borderWidth: 1}}
                             onChangeText={(nickname) => this.setState({nickname})}
                             value={this.state.userFirstName} />
 
-                        <Text style={styles.getStartedText}>{"Child's Date of Birth ?"}</Text>
+                        <Text style={styles.getStartedText}>{"Child's Date of Birth:"}</Text>
 
                         <DatePicker
                             style={{width: 200}}
@@ -70,7 +70,7 @@ export default class A1 extends React.Component {
                             onDateChange={(date) => this.setState({date: date})}
                         />
 
-                        <Button onPress={() => this.props.navigation.navigate('A1')}
+                        <Button onPress={() => this.props.navigation.navigate('A7')}
                                 title="Next"
                                 theme='dark'
                                 color="#6FCF97"/>
