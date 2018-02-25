@@ -1,13 +1,27 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View, AsyncStorage } from 'react-native';
 import { AppLoading, Asset, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from './screens/HomeScreen';
+import OnboardNavigation from './navigation/OnboardNavigation';
+import RootNavigation from './navigation/RootNavigation';
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
+    showOnboard: false,
   };
+
+  async componentWillMount() {
+    try {
+      const value = await AsyncStorage.getItem('@onboardComplete:key');
+      if (value === null){
+        this.setState({ showOnboard: true });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
@@ -23,7 +37,7 @@ export default class App extends React.Component {
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
-          <HomeScreen/>
+          {this.state.showOnboard ? <OnboardNavigation/> : <RootNavigation/>}
         </View>
       );
     }
