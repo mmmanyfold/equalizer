@@ -7,6 +7,7 @@ import A3 from '../screens/onboarding/A3';
 import A4 from '../screens/onboarding/A4';
 import A5 from '../screens/onboarding/A5';
 import A6 from '../screens/onboarding/A6';
+import A7 from '../screens/onboarding/A7';
 
 const OnboardStackNavigator = StackNavigator(
   {
@@ -30,6 +31,9 @@ const OnboardStackNavigator = StackNavigator(
     },
     A6: {
       screen: A6,
+    },
+    A7: {
+      screen: A7,
     },
   },
   {

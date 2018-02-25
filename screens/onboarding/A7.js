@@ -10,15 +10,13 @@ import {
     TextInput,
 } from 'react-native';
 
-import DatePicker from 'react-native-datepicker'
+import CheckBox from 'react-native-check-box';
+import { BackButton, NextButton } from "../../components/OnboardNavButtons";
 
-import { MonoText } from '../../components/StyledText';
-
-export default class A6 extends React.Component {
+export default class A7 extends React.Component {
 
     state = {
         nickname: '',
-        date: '2017-02-25',
     };
 
     render() {
@@ -34,47 +32,34 @@ export default class A6 extends React.Component {
                         />
                     </View>
 
-                    <View style={styles.getStartedContainer}>
-                        <MonoText>Please enter the following information about your child</MonoText>
-                    </View>
-
                     <View style={styles.helpContainer}>
 
-                        <Text style={styles.getStartedText}>{"Child's name or nickname:"}</Text>
+                        <Text style={styles.getStartedText}>{"Check all that apply: "}</Text>
 
-                        <TextInput
-                            style={{width: 250, height: 40, borderColor: 'gray', borderWidth: 1}}
-                            onChangeText={(nickname) => this.setState({nickname})}
-                            value={this.state.userFirstName} />
-
-                        <Text style={styles.getStartedText}>{"Child's Date of Birth:"}</Text>
-
-                        <DatePicker
-                            style={{width: 200}}
-                            date={this.state.date}
-                            mode="date"
-                            placeholder="select date"
-                            format="YYYY-MM-DD"
-                            confirmBtnText="Confirm"
-                            cancelBtnText="Cancel"
-                            customStyles={{
-                                dateIcon: {
-                                    position: 'absolute',
-                                    left: 0,
-                                    top: 4,
-                                    marginLeft: 0
-                                },
-                                dateInput: {
-                                    marginLeft: 36
-                                },
-                            }}
-                            onDateChange={(date) => this.setState({date: date})}
+                        <CheckBox
+                            style={{flex: 1, padding: 10}}
+                            isChecked={false}
+                            rightText={"Nanny"}
                         />
 
-                        <Button onPress={() => this.props.navigation.navigate('A7')}
-                                title="Next"
-                                theme='dark'
-                                color="#6FCF97"/>
+                        <CheckBox
+                            style={{flex: 1, padding: 10}}
+                            isChecked={false}
+                            rightText={"Family member(s)"}
+                        />
+
+                        <CheckBox
+                            style={{flex: 1, padding: 10}}
+                            isChecked={false}
+                            rightText={"Friend(s)"}
+                        />
+
+                        <NextButton
+                            navigation={this.props.navigation}
+                            to={"A8"}
+                        />
+
+                        <BackButton navigation={this.props.navigation}/>
                     </View>
                 </ScrollView>
             </View>
@@ -161,7 +146,7 @@ const styles = StyleSheet.create({
     },
     helpContainer: {
         marginTop: 15,
-        alignItems: 'center',
+        // alignItems: 'center',
     },
     helpLink: {
         paddingVertical: 15,

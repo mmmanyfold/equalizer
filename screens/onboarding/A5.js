@@ -5,17 +5,14 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   Button,
-  TextInput,
 } from 'react-native';
 
-import { MonoText } from '../../components/StyledText';
-import { NextButton } from '../../components/OnboardNavButtons';
 import { BackButton } from '../../components/OnboardNavButtons';
 
 export default class A5 extends React.Component {
+
   state = {
     userWorksFromHome: true,
   };

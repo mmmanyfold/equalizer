@@ -5,12 +5,10 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   TextInput,
 } from 'react-native';
 
-import { MonoText } from '../../components/StyledText';
 import { NextButton } from '../../components/OnboardNavButtons';
 import { BackButton } from '../../components/OnboardNavButtons';
 
