@@ -2,6 +2,7 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import OnboardScreen from '../screens/OnboardScreen';
 import A1 from '../screens/onboarding/A1';
+import A6 from '../screens/onboarding/A6';
 
 const OnboardStackNavigator = StackNavigator(
   {
@@ -11,9 +12,12 @@ const OnboardStackNavigator = StackNavigator(
     A1: {
       screen: A1,
     },
+    A6: {
+      screen: A6,
+    },
   },
   {
-    initialRouteName: 'Main',
+    initialRouteName: 'A6', // TODO: change this back to main
     navigationOptions: () => ({
       headerTitleStyle: {
         fontWeight: 'normal',
