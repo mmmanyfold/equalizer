@@ -5,21 +5,14 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   Button,
   TextInput,
 } from 'react-native';
 
-import { MonoText } from '../../components/StyledText';
-
 export default class A1 extends React.Component {
   state = {
     userFirstName: '',
-  };
-
-  static navigationOptions = {
-    header: null,
   };
 
   render() {
