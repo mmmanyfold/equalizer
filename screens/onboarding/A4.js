@@ -13,7 +13,7 @@ import { BackButton } from '../../components/OnboardNavButtons';
 
 export default class A4 extends React.Component {
   state = {
-    userWorksFromHome: true,
+    userWorksFromHome: false,
   };
 
   static navigationOptions = {

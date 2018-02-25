@@ -11,14 +11,15 @@ import {
 } from 'react-native';
 
 import DatePicker from 'react-native-datepicker'
-
+import { NextButton } from '../../components/OnboardNavButtons';
+import { BackButton } from '../../components/OnboardNavButtons';
 import { MonoText } from '../../components/StyledText';
 
 export default class A6 extends React.Component {
 
     state = {
-        nickname: '',
-        date: '2017-02-25',
+        childNickname: '',
+        childDOB: '2017-02-25',
     };
 
     render() {
@@ -71,10 +72,10 @@ export default class A6 extends React.Component {
                             onDateChange={(date) => this.setState({date: date})}
                         />
 
-                        <Button onPress={() => this.props.navigation.navigate('A7')}
-                                title="Next"
-                                theme='dark'
-                                color="#6FCF97"/>
+                        <NextButton
+                          navigation={this.props.navigation}
+                          to={'A7'} />
+                        <BackButton navigation={this.props.navigation}/>
                     </View>
                 </ScrollView>
             </View>

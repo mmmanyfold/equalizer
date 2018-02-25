@@ -14,7 +14,7 @@ import { BackButton } from '../../components/OnboardNavButtons';
 
 export default class A2 extends React.Component {
   state = {
-    momFirstName: '',
+    momNickname: '',
   };
 
   static navigationOptions = {

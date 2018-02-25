@@ -13,7 +13,7 @@ import { NextButton, BackButton } from '../../components/OnboardNavButtons';
 
 export default class A1 extends React.Component {
   state = {
-    userFirstName: '',
+    userNickname: '',
   };
 
   render() {

@@ -16,7 +16,7 @@ import { BackButton, NextButton } from "../../components/OnboardNavButtons";
 export default class A7 extends React.Component {
 
     state = {
-        nickname: '',
+        otherCaregivers: '',
     };
 
     render() {
@@ -33,8 +33,8 @@ export default class A7 extends React.Component {
                     </View>
 
                     <View style={styles.helpContainer}>
-
-                        <Text style={styles.getStartedText}>{"Check all that apply: "}</Text>
+                        <Text style={styles.getStartedText}>{"Does anyone help you and your partner with the care of your child?"}</Text>
+                        <Text style={styles.getStartedText}>{"Check all that apply:"}</Text>
 
                         <CheckBox
                             style={{flex: 1, padding: 10}}
