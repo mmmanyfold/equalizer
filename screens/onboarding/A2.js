@@ -9,17 +9,28 @@ import {
   TextInput,
 } from 'react-native';
 
-import { NextButton } from '../../components/OnboardNavButtons';
-import { BackButton } from '../../components/OnboardNavButtons';
+import { NextButton, BackButton } from '../../components/OnboardNavButtons';
 
 export default class A2 extends React.Component {
   state = {
     momNickname: '',
   };
 
-  static navigationOptions = {
-    header: null,
-  };
+  handleTextInput(momNickname){
+      this.setState({ momNickname });
+  }
+
+  async saveAction() {
+    const { navigation : { state : { params: { store } } } } = this.props;
+    try {
+        const newRecord = store.set('momNickname', this.state.momNickname);
+        const update = store.merge(newRecord);
+        await store.asyncSave(update);
+        return update;
+    } catch (e) {
+        console.log(e);
+    }
+  }
 
   render() {
     return (
@@ -38,9 +49,11 @@ export default class A2 extends React.Component {
             <Text style={styles.getStartedText}>{"What's the mother of the child's first name (or nickname)?"}</Text>
             <TextInput
               style={{width: 250, height: 40, borderColor: 'gray', borderWidth: 1}}
-              onChangeText={(momFirstName) => this.setState({momFirstName})}
-              value={this.state.momFirstName} />
+              onChangeText={this.handleTextInput.bind(this)}
+              value={this.state.momNickname} />
             <NextButton
+              saveAction={this.saveAction.bind(this)}
+              disabled={this.state.momNickname === ''}
               navigation={this.props.navigation}
               to={'A3'} />
             <BackButton navigation={this.props.navigation}/>

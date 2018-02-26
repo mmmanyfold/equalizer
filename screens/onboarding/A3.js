@@ -16,11 +16,8 @@ export default class A3 extends React.Component {
     liveTogether: true,
   };
 
-  static navigationOptions = {
-    header: null,
-  };
-
   render() {
+    const { navigation : { state : { params: { store } } } } = this.props;
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -34,7 +31,7 @@ export default class A3 extends React.Component {
           </View>
 
           <View style={styles.helpContainer}>
-            <Text style={styles.getStartedText}>{"Do you and [name] live together?"}</Text>
+            <Text style={styles.getStartedText}>{`Do you and ${store.momNickname} live together?`}</Text>
             <Button onPress={() => this.props.navigation.navigate('A4')}
                     title="Yes"
                     color="#6FCF97"/>

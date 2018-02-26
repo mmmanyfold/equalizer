@@ -11,10 +11,28 @@ import {
 
 import { NextButton, BackButton } from '../../components/OnboardNavButtons';
 
+import UserRecord from '../../stores/UserStore';
+
+const userRecord = new UserRecord();
+
 export default class A1 extends React.Component {
   state = {
     userNickname: '',
   };
+
+  handleTextInput(userNickname){
+    this.setState({ userNickname });
+  }
+
+  async saveAction() {
+    try {
+      const updateRecord = userRecord.set('userNickname', this.state.userNickname);
+      await userRecord.asyncSave(updateRecord);
+      return updateRecord;
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   render() {
     return (
@@ -37,9 +55,11 @@ export default class A1 extends React.Component {
             <Text style={styles.getStartedText}>{"What's your first name (or nickname)?"}</Text>
             <TextInput
               style={{width: 250, height: 40, borderColor: 'gray', borderWidth: 1}}
-              onChangeText={(userFirstName) => this.setState({userFirstName})}
+              onChangeText={this.handleTextInput.bind(this)}
               value={this.state.userFirstName} />
-            <NextButton navigation={this.props.navigation}
+            <NextButton disabled={this.state.userNickname === ''}
+                        navigation={this.props.navigation}
+                        saveAction={this.saveAction.bind(this)}
                         to={'A2'}/>
             <BackButton navigation={this.props.navigation}/>
           </View>
