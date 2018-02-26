@@ -8,6 +8,9 @@ export default class UserRecord extends Record(
         liveTogether: false,
         userWorksFromHome: false,
         momWorksFromHome: false,
+        childNickname: null,
+        childDOB: null,
+        otherCaregivers: [],
     }
 ) {
     async asyncSave(record) {

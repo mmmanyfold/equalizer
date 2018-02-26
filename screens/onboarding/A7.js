@@ -16,7 +16,7 @@ import { BackButton, NextButton } from "../../components/OnboardNavButtons";
 export default class A7 extends React.Component {
 
     state = {
-        otherCaregivers: '',
+        otherCaregivers: [],
     };
 
     render() {

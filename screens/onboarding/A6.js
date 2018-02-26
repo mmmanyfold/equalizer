@@ -22,6 +22,17 @@ export default class A6 extends React.Component {
         childDOB: '2017-02-25',
     };
 
+    handleNicknameInput(childNickname) {
+       this.setState({ childNickname });
+    }
+
+    saveAction() {
+        const { navigation : { state : { params: { store } } } } = this.props;
+        const update = store.set('childNickname', this.state.childNickname);
+        const update2 = update.set('childDOB', this.state.childDOB);
+        return Promise.resolve(update2);
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -45,14 +56,14 @@ export default class A6 extends React.Component {
 
                         <TextInput
                             style={{width: 250, height: 40, borderColor: 'gray', borderWidth: 1}}
-                            onChangeText={(nickname) => this.setState({nickname})}
+                            onChangeText={this.handleNicknameInput.bind(this)}
                             value={this.state.userFirstName} />
 
                         <Text style={styles.getStartedText}>{"Child's Date of Birth:"}</Text>
 
                         <DatePicker
                             style={{width: 200}}
-                            date={this.state.date}
+                            date={this.state.childDOB}
                             mode="date"
                             placeholder="select date"
                             format="YYYY-MM-DD"
@@ -69,10 +80,12 @@ export default class A6 extends React.Component {
                                     marginLeft: 36
                                 },
                             }}
-                            onDateChange={(date) => this.setState({date: date})}
+                            onDateChange={(childDOB) => this.setState({ childDOB })}
                         />
 
                         <NextButton
+                          saveAction={this.saveAction.bind(this)}
+                          disabled={ this.state.childNickname === ''}
                           navigation={this.props.navigation}
                           to={'A7'} />
                         <BackButton navigation={this.props.navigation}/>
