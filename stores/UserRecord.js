@@ -6,6 +6,8 @@ export default class UserRecord extends Record(
         userNickname: null,
         momNickname: null,
         liveTogether: false,
+        userWorksFromHome: false,
+        momWorksFromHome: false,
     }
 ) {
     async asyncSave(record) {

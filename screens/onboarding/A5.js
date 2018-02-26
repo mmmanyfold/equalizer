@@ -13,15 +13,17 @@ import { BackButton } from '../../components/OnboardNavButtons';
 
 export default class A5 extends React.Component {
 
-  state = {
-    momWorksFromHome: true,
-  };
+  handleSelection(bool) {
+    const { navigation } = this.props;
+    const store = navigation.state.params.store.set('momWorksFromHome', bool);
+    navigation.navigate('A6', {
+        store,
+    });
+  }
 
-  static navigationOptions = {
-    header: null,
-  };
 
-  render() {
+    render() {
+    const { navigation : { state : { params: { store } } } } = this.props;
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -35,11 +37,11 @@ export default class A5 extends React.Component {
           </View>
 
           <View style={styles.helpContainer}>
-            <Text style={styles.getStartedText}>{"Does [name] work from home?"}</Text>
-            <Button onPress={() => this.props.navigation.navigate('A6')}
+            <Text style={styles.getStartedText}>{`Does ${store.momNickname} work from home?`}</Text>
+            <Button onPress={() => this.handleSelection(true)}
                     title="Yes"
                     color="#6FCF97"/>
-            <Button onPress={() => this.props.navigation.navigate('A6')}
+            <Button onPress={() => this.handleSelection(false)}
                     title="No"
                     color="#56CCF2"/>
             <BackButton navigation={this.props.navigation}/>

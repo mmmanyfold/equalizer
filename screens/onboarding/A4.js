@@ -12,13 +12,14 @@ import {
 import { BackButton } from '../../components/OnboardNavButtons';
 
 export default class A4 extends React.Component {
-  state = {
-    userWorksFromHome: false,
-  };
 
-  static navigationOptions = {
-    header: null,
-  };
+  handleSelection(bool) {
+      const { navigation } = this.props;
+      const store = navigation.state.params.store.set('userWorksFromHome', bool);
+      navigation.navigate('A5', {
+          store,
+      });
+  }
 
   render() {
     return (
@@ -35,10 +36,10 @@ export default class A4 extends React.Component {
 
           <View style={styles.helpContainer}>
             <Text style={styles.getStartedText}>{"Do you work from home?"}</Text>
-            <Button onPress={() => this.props.navigation.navigate('A5')}
+            <Button onPress={() => this.handleSelection(true)}
                     title="Yes"
                     color="#6FCF97"/>
-            <Button onPress={() => this.props.navigation.navigate('A5')}
+            <Button onPress={() => this.handleSelection(false)}
                     title="No"
                     color="#56CCF2"/>
             <BackButton navigation={this.props.navigation}/>

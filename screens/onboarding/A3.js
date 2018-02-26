@@ -12,9 +12,14 @@ import {
 import { BackButton } from '../../components/OnboardNavButtons';
 
 export default class A3 extends React.Component {
-  state = {
-    liveTogether: true,
-  };
+
+  handleSelection(bool) {
+    const { navigation } = this.props;
+    const store = navigation.state.params.store.set('liveTogether', bool);
+    navigation.navigate('A4', {
+      store,
+    });
+  }
 
   render() {
     const { navigation : { state : { params: { store } } } } = this.props;
@@ -32,10 +37,10 @@ export default class A3 extends React.Component {
 
           <View style={styles.helpContainer}>
             <Text style={styles.getStartedText}>{`Do you and ${store.momNickname} live together?`}</Text>
-            <Button onPress={() => this.props.navigation.navigate('A4')}
+            <Button onPress={() => this.handleSelection(true)}
                     title="Yes"
                     color="#6FCF97"/>
-            <Button onPress={() => this.props.navigation.navigate('A4')}
+            <Button onPress={() => this.handleSelection(false)}
                     title="No"
                     color="#56CCF2"/>
             <BackButton navigation={this.props.navigation}/>

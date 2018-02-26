@@ -11,9 +11,9 @@ import {
 
 import { NextButton, BackButton } from '../../components/OnboardNavButtons';
 
-import UserRecord from '../../stores/UserStore';
+import UserRecord from '../../stores/UserRecord';
 
-const userRecord = new UserRecord();
+const userRecord = new UserRecord(); // instantiate main user record
 
 export default class A1 extends React.Component {
   state = {
