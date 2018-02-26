@@ -1,4 +1,4 @@
-EmotionalSupport = {
+export default const EmotionalSupport = {
   meta: {
     color: "#F2994A",
     description: "",

@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "share-the-care",
-    "description": "A very interesting project.",
+    "description": "An app that helps new fathers understand and achieve equally shared parenting.",
     "slug": "share-the-care",
     "privacy": "public",
     "sdkVersion": "25.0.0",

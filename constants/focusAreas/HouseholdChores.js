@@ -1,4 +1,4 @@
-HouseholdChores = {
+export default const HouseholdChores = {
   meta: {
     color: "#27AE60",
     description: "",

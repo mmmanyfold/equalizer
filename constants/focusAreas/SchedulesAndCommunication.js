@@ -1,4 +1,4 @@
-SchedulesAndCommunication = {
+export default const SchedulesAndCommunication = {
   meta: {
     color: "#BB6BD9",
     description: "",
