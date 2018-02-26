@@ -50,8 +50,8 @@ export default class A7 extends React.Component {
                         <Text style={styles.getStartedText}>{"Does anyone help you and your partner with the care of your child?"}</Text>
                         <Text style={styles.getStartedText}>{"Check all that apply:"}</Text>
 
-                        <Text style={styles.getStartedText}>
-                        { Platform.OS === 'ios' ?
+                        <View>
+                           { Platform.OS === 'ios' ?
                             <Switch
                                 value={this.state.nanny}
                                 onValueChange={this.handleValueChange.bind(this, 'nanny')}
@@ -61,11 +61,11 @@ export default class A7 extends React.Component {
                               value={this.state.nanny}
                               onValueChange={this.handleValueChange.bind(this, 'nanny')}
                             />
-                        }
-                            Nanny
-                        </Text>
+                           }
+                           <Text>Nanny</Text>
+                        </View>
 
-                        <Text style={styles.getStartedText}>
+                        <View>
                             { Platform.OS === 'ios' ?
                                 <Switch
                                     value={this.state.familyMember}
@@ -77,10 +77,10 @@ export default class A7 extends React.Component {
                                     onValueChange={this.handleValueChange.bind(this, 'familyMember')}
                                 />
                             }
-                            Family member(s)
-                        </Text>
+                            <Text>Family member(s)</Text>
+                        </View>
 
-                        <Text style={styles.getStartedText}>
+                        <View>
                             { Platform.OS === 'ios' ?
                                 <Switch
                                     value={this.state.friend}
@@ -92,8 +92,8 @@ export default class A7 extends React.Component {
                                     onValueChange={this.handleValueChange.bind(this, 'friend')}
                                 />
                             }
-                            Friend(s)
-                        </Text>
+                            <Text>Friend(s)</Text>
+                        </View>
 
                         <NextButton
                             navigation={this.props.navigation}
