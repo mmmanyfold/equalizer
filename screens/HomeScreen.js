@@ -5,7 +5,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
@@ -40,8 +39,8 @@ export default class HomeScreen extends React.Component {
           <View style={styles.cardContainer}>
             <Text style={styles.cardLabel}>{"TODAY'S ACTION"}</Text>
             <View style={styles.cardContent}>
-              <View><Text style={styles.cardTitle}>{"Schedule yourself to pick up & drop off baby at the nanny's"}</Text></View>
-              <View><Text style={styles.cardSubtitle}>{"(or with other caregiver)"}</Text></View>
+              <View><Text style={styles.cardTitle}>{"Schedule yourself to pick up & drop off baby with the nanny"}</Text></View>
+              <View><Text style={styles.cardSubtitle}>{"(or other caregiver)"}</Text></View>
             </View>
           </View>
         </View>
@@ -56,18 +55,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   contentContainer: {
-    paddingTop: 30,
+    ...Platform.select({
+      ios: {
+        paddingTop: 30,
+      },
+    }),
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     height: 55,
-    marginTop: 10,
+    ...Platform.select({
+      ios: {
+        marginTop: 10,
+      },
+    }),
     marginBottom: 20,
     backgroundColor: '#BB6BD9'
   },
@@ -77,7 +82,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   headerTitle: {
-    fontSize: 23,
+    fontSize: 20,
     color: '#fff',
     marginHorizontal: 10,
   },
@@ -94,7 +99,7 @@ const styles = StyleSheet.create({
     borderColor: '#BB6BD9',
     borderWidth: 3,
     borderRadius: 10,
-    height: 400,
+    height: 300,
   },
   cardLabel: {
     color: '#BB6BD9',
@@ -107,7 +112,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   cardTitle: {
-    fontSize: 43,
+    fontSize: 38,
     textAlign: 'center',
     marginHorizontal: 10,
   },
