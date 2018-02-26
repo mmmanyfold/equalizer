@@ -1,10 +1,12 @@
-export default const SchedulesAndCommunication = {
+export const SchedulesAndCommunication = {
   meta: {
+    id: "SchedulesAndCommunication",
+    name: "Schedules & Communication",
     color: "#BB6BD9",
     description: "",
   },
   actionCards: [{
-    title: `Schedule an appointment for ${babyName}`,
+    title: "Schedule an appointment for ${babyName}",
     subtitle: "(find out when the next pediatrician or dentist visit should be)",
     helpLink: "https://www.thebump.com/a/new-baby-doctor-visit-checklist",
     helpText: "If your pediatrician / dentist office has an online portal, log in and check for appointment scheduling reminders.",
@@ -20,7 +22,7 @@ export default const SchedulesAndCommunication = {
     maxAge: null,
     nanny: true,
   }, {
-    title: `Schedule a playdate for ${babyName}`,
+    title: "Schedule a playdate for ${babyName}",
     subtitle: "and plan to be there yourself",
     helpLink: null,
     helpText: null,
@@ -36,7 +38,7 @@ export default const SchedulesAndCommunication = {
     maxAge: null,
     nanny: false,
   }, {
-    title: `Schedule yourself to pick-up/drop-off ${babyName} at the nanny's`,
+    title: "Schedule yourself to pick-up/drop-off ${babyName} at the nanny's",
     subtitle: "(or other caregiver's)",
     helpLink: null,
     helpText: null,
@@ -61,4 +63,4 @@ export default const SchedulesAndCommunication = {
     nanny: false,
   },
   ]
-}
+};

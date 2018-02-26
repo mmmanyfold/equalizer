@@ -1,17 +1,19 @@
-export default const EmotionalSupport = {
+export const EmotionalSupport = {
   meta: {
+    id: "EmotionalSupport",
+    name: "Emotional Support",
     color: "#F2994A",
     description: "",
   },
   actionCards: [{
-    title: `Check in with ${momName} to see how she is doing emotionally`,
+    title: "Check in with ${momName} to see how she is doing emotionally",
     subtitle: "(give your whole attention)",
     helpLink: null,
     helpText: null,
     minAge: null,
     maxAge: null,
   }, {
-    title: `Listen to ${momName} talk about something she cares about`,
+    title: "Listen to ${momName} talk about something she cares about",
     subtitle: "(give your whole attention)",
     helpLink: null,
     helpText: null,

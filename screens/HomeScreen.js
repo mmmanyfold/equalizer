@@ -1,35 +1,120 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   Image,
   Platform,
-  ScrollView,
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
 } from 'react-native';
 
-import { MonoText } from '../components/StyledText';
+import SwipeCards from 'react-native-swipe-cards';
+import UserRecord from '../stores/UserRecord';
+import { has } from 'lodash';
 
-export default class HomeScreen extends React.Component {
+import { BabyDevelopment } from '../constants/focusAreas/BabyDevelopment';
+import { BabyHealthAndHygiene } from '../constants/focusAreas/BabyHealthAndHygiene';
+import { EmotionalSupport } from '../constants/focusAreas/EmotionalSupport';
+import { HouseholdChores } from '../constants/focusAreas/HouseholdChores';
+import { SchedulesAndCommunication } from '../constants/focusAreas/SchedulesAndCommunication';
+
+const store = new UserRecord();
+const focusAreas = [ BabyDevelopment, BabyHealthAndHygiene, EmotionalSupport, HouseholdChores, SchedulesAndCommunication ]
+
+class Card extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <View style={[styles.cardContainer, { borderColor: this.props.color }]}>
+        <Text style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</Text>
+        <View style={styles.cardContent}>
+          <View><Text style={styles.cardTitle}>{this.props.title}</Text></View>
+          <View><Text style={styles.cardSubtitle}>{this.props.subtitle}</Text></View>
+        </View>
+      </View>
+    )
+  }
+}
+
+class NoMoreCards extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <View>
+        <Text style={styles.noMoreCardsText}>No more cards</Text>
+      </View>
+    )
+  }
+}
+
+export default class HomeScreen extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   static navigationOptions = {
     header: null,
   };
 
+  handleYup(card) {
+    console.log(`Yup for ${card.text}`)
+  }
+
+  handleNope(card) {
+    console.log(`Nope for ${card.text}`)
+  }
+
+  handleMaybe(card) {
+    console.log(`Maybe for ${card.text}`)
+  }
+
   render() {
+    let focusArea;
+    if (has(this.props, 'navigation.state.params.store')) {
+      focusArea = this.props.navigation.state.params.store.focusArea;
+    } else {
+      focusArea = store.focusArea;
+    }
+    const { meta: { color, name, id }, actionCards } = focusAreas.find(area => area.meta.id === focusArea);
+    let icon;
+    switch (id) {
+      case 'BabyHealthAndHygiene':
+        icon = require("../assets/images/fa-icon-yellow.png")
+        break;
+      case 'BabyDevelopment':
+        icon = require("../assets/images/fa-icon-blue.png")
+        break;
+      case 'HouseholdChores':
+        icon = require("../assets/images/fa-icon-green.png")
+        break;
+      case 'SchedulesAndCommunication':
+        icon = require("../assets/images/fa-icon-purple.png")
+        break;
+      case 'EmotionalSupport':
+        icon = require("../assets/images/fa-icon-orange.png")
+        break;
+    }
     return (
       <View style={styles.container}>
         <View style={styles.contentContainer}>
-          <View style={styles.header}>
+          <View style={[ styles.header, { backgroundColor: color } ]}>
             <View>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('FocusAreas')}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('FocusAreas', {
+                store
+              })}>
                 <Image
-                  source={require('../assets/images/fa-icon-purple.png')}
+                  source={icon}
                   style={styles.headerIcon}/>
               </TouchableOpacity>
             </View>
             <View>
-              <Text style={styles.headerTitle}>Schedules & Communication</Text>
+              <Text style={styles.headerTitle}>{name}</Text>
             </View>
           </View>
           <View style={styles.welcomeContainer}>
@@ -38,13 +123,15 @@ export default class HomeScreen extends React.Component {
               style={styles.welcomeImage}
             />
           </View>
-          <View style={styles.cardContainer}>
-            <Text style={styles.cardLabel}>{"TODAY'S ACTION"}</Text>
-            <View style={styles.cardContent}>
-              <View><Text style={styles.cardTitle}>{"Schedule yourself to pick up & drop off baby with the nanny"}</Text></View>
-              <View><Text style={styles.cardSubtitle}>{"(or other caregiver)"}</Text></View>
-            </View>
-          </View>
+          <SwipeCards
+            cards={actionCards}
+            renderCard={(cardData) => <Card {...cardData} color={color} />}
+            renderNoMoreCards={() => <NoMoreCards/>}
+            handleYup={this.handleYup}
+            handleNope={this.handleNope}
+            handleMaybe={this.handleMaybe}
+            hasMaybeAction
+          />
         </View>
       </View>
     );
@@ -52,6 +139,17 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  //____begins card styles
+  card: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 300,
+    height: 300,
+  },
+  noMoreCardsText: {
+    fontSize: 22,
+  },
+  //____end of card styles
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -76,7 +174,6 @@ const styles = StyleSheet.create({
       },
     }),
     marginBottom: 20,
-    backgroundColor: '#BB6BD9',
   },
   headerIcon: {
     height: 35,
@@ -98,13 +195,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     marginHorizontal: 25,
-    borderColor: '#BB6BD9',
     borderWidth: 3,
     borderRadius: 10,
     height: 300,
   },
   cardLabel: {
-    color: '#BB6BD9',
     fontWeight: 'bold',
     marginTop: 10,
   },

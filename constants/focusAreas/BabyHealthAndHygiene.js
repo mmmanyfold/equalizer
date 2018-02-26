@@ -1,24 +1,26 @@
-BabyHealthAndHygiene = {
+export const BabyHealthAndHygiene = {
   meta: {
+    id: "BabyHealthAndHygiene",
+    name: "Baby Health & Hygiene",
     color: "#F2C94C",
     description: "",
   },
   actionCards: [{
-    title: `Feed ${babyName}`,
+    title: "Feed ${babyName}",
     subtitle: null,
     helpLink: "https://www.babycenter.com/0_age-by-age-guide-to-feeding-your-baby_1400680.bc",
     helpText: null,
     minAge: 15552000,
     maxAge: null,
   }, {
-    title: `Burp ${babyName}`,
+    title: "Burp ${babyName}",
     subtitle: null,
     helpLink: null,
     helpText: null,
     minAge: null,
     maxAge: 15552000,
   }, {
-    title: `Give ${babyName} a bath`,
+    title: "Give ${babyName} a bath",
     subtitle: null,
     helpLink: null,
     helpText: null,
@@ -32,7 +34,7 @@ BabyHealthAndHygiene = {
     minAge: null,
     maxAge: null,
   }, {
-    title: `Change ${babyName}’s diaper`,
+    title: "Change ${babyName}’s diaper",
     subtitle: "If it's not dirty, be the one to do it next",
     helpLink: null,
     helpText: null,

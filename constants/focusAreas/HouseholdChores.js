@@ -1,5 +1,7 @@
-export default const HouseholdChores = {
+export const HouseholdChores = {
   meta: {
+    id: "HouseholdChores",
+    name: "Household Chores",
     color: "#27AE60",
     description: "",
   },
@@ -60,7 +62,7 @@ export default const HouseholdChores = {
     minAge: null,
     maxAge: null,
   }, {
-    title: `Clean floors for ${babyName}’s crawling`,
+    title: "Clean floors for ${babyName}’s crawling",
     subtitle: "(floors need to be extra clean)",
     helpLink: null,
     helpText: null,

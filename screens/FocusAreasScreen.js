@@ -33,26 +33,36 @@ export default class FocusAreasScreen extends React.Component {
             <View style={styles.focusAreaSelection}>
               <View style={styles.focusAreaButton}>
                 <FocusAreaButton
+                  navigation={this.props.navigation}
+                  id={"BabyHealthAndHygiene"}
                   title={"Baby Health & Hygiene"}
                   color={"#F2C94C"}/>
               </View>
               <View style={styles.focusAreaButton}>
                 <FocusAreaButton
+                  navigation={this.props.navigation}
+                  id={"BabyDevelopment"}
                   title={"Baby Development"}
                   color={"#2D9CDB"}/>
               </View>
               <View style={styles.focusAreaButton}>
                 <FocusAreaButton
+                  navigation={this.props.navigation}
+                  id={"HouseholdChores"}
                   title={"Household Chores"}
                   color={"#27AE60"}/>
               </View>
               <View style={styles.focusAreaButton}>
                 <FocusAreaButton
+                  navigation={this.props.navigation}
+                  id={"SchedulesAndCommunication"}
                   title={"Schedules & Communication"}
                   color={"#BB6BD9"}/>
               </View>
               <View style={styles.focusAreaButton}>
                 <FocusAreaButton
+                  navigation={this.props.navigation}
+                  id={"EmotionalSupport"}
                   title={"Emotional Support"}
                   color={"#F2994A"}/>
               </View>

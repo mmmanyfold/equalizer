@@ -24,6 +24,10 @@ export default class A1 extends React.Component {
     this.setState({ userNickname });
   }
 
+  static navigationOptions = {
+      header: null,
+  };
+
   async saveAction() {
     try {
       const updateRecord = userRecord.set('userNickname', this.state.userNickname);
