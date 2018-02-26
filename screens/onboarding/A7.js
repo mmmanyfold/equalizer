@@ -6,19 +6,33 @@ import {
     StyleSheet,
     Text,
     View,
-    Button,
-    TextInput,
+    CheckBox,
+    Switch,
 } from 'react-native';
 
-import CheckBox from 'react-native-check-box';
 import { BackButton, NextButton } from "../../components/OnboardNavButtons";
 
 export default class A7 extends React.Component {
-
-    state = {
-        otherCaregivers: [],
+    state = { // otherCaregivers
+        nanny: false,
+        familyMember: false,
+        friend: false,
     };
 
+    handleValueChange(key, value) {
+        this.setState((state) => {
+            return {
+                ...state,
+                [key]: value,
+            };
+        })
+    }
+
+    saveAction() {
+        const { navigation : { state : { params: { store } } } } = this.props;
+        const update = store.set('otherCaregivers', this.state);
+        return Promise.resolve(update);
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -36,26 +50,54 @@ export default class A7 extends React.Component {
                         <Text style={styles.getStartedText}>{"Does anyone help you and your partner with the care of your child?"}</Text>
                         <Text style={styles.getStartedText}>{"Check all that apply:"}</Text>
 
-                        <CheckBox
-                            style={{flex: 1, padding: 10}}
-                            isChecked={false}
-                            rightText={"Nanny"}
-                        />
+                        <Text style={styles.getStartedText}>
+                        { Platform.OS === 'ios' ?
+                            <Switch
+                                value={this.state.nanny}
+                                onValueChange={this.handleValueChange.bind(this, 'nanny')}
+                            />
+                            :
+                            <CheckBox
+                              value={this.state.nanny}
+                              onValueChange={this.handleValueChange.bind(this, 'nanny')}
+                            />
+                        }
+                            Nanny
+                        </Text>
 
-                        <CheckBox
-                            style={{flex: 1, padding: 10}}
-                            isChecked={false}
-                            rightText={"Family member(s)"}
-                        />
+                        <Text style={styles.getStartedText}>
+                            { Platform.OS === 'ios' ?
+                                <Switch
+                                    value={this.state.familyMember}
+                                    onValueChange={this.handleValueChange.bind(this, 'familyMember')}
+                                />
+                                :
+                                <CheckBox
+                                    value={this.state.familyMember}
+                                    onValueChange={this.handleValueChange.bind(this, 'familyMember')}
+                                />
+                            }
+                            Family member(s)
+                        </Text>
 
-                        <CheckBox
-                            style={{flex: 1, padding: 10}}
-                            isChecked={false}
-                            rightText={"Friend(s)"}
-                        />
+                        <Text style={styles.getStartedText}>
+                            { Platform.OS === 'ios' ?
+                                <Switch
+                                    value={this.state.friend}
+                                    onValueChange={this.handleValueChange.bind(this, 'friend')}
+                                />
+                                :
+                                <CheckBox
+                                    value={this.state.friend}
+                                    onValueChange={this.handleValueChange.bind(this, 'friend')}
+                                />
+                            }
+                            Friend(s)
+                        </Text>
 
                         <NextButton
                             navigation={this.props.navigation}
+                            saveAction={this.saveAction.bind(this)}
                             to={"A8"}
                         />
 

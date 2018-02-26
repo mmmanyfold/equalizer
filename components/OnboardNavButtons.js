@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button } from 'react-native';
+// import UserRecord from '../stores/UserRecord';
 
 export const NextButton = (props) => (
     <Button
         {...props}
         onPress={ async () => {
+            // TODO: handle store creation when no store available
             if (props.saveAction) {
                 try {
                     const store = await props.saveAction();

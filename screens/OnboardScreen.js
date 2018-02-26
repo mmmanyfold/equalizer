@@ -40,6 +40,7 @@ export default class OnboardScreen extends React.Component {
                     title="Learn how to help my partner"
                     color="#6FCF97"/>
             <Button title="Help my partner help me"
+                    onPress={() => this.props.navigation.navigate('A1')}
                     color="#56CCF2">
             </Button>
           </View>

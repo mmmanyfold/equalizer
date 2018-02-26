@@ -11,8 +11,7 @@ import {
 } from 'react-native';
 
 import DatePicker from 'react-native-datepicker'
-import { NextButton } from '../../components/OnboardNavButtons';
-import { BackButton } from '../../components/OnboardNavButtons';
+import { NextButton, BackButton } from '../../components/OnboardNavButtons';
 import { MonoText } from '../../components/StyledText';
 
 export default class A6 extends React.Component {

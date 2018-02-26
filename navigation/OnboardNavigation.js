@@ -37,7 +37,7 @@ const OnboardStackNavigator = StackNavigator(
     },
   },
   {
-    initialRouteName: 'A1', // TODO: change this back to main
+    initialRouteName: 'Main', // TODO: change this back to main
     navigationOptions: () => ({
       headerTitleStyle: {
         fontWeight: 'normal',
