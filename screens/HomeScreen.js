@@ -6,8 +6,8 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableOpacity,
 } from 'react-native';
-import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
@@ -22,9 +22,11 @@ export default class HomeScreen extends React.Component {
         <View style={styles.contentContainer}>
           <View style={styles.header}>
             <View>
-              <Image
-                source={require('../assets/images/fa-icon-purple.png')}
-                style={styles.headerIcon}/>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('FocusAreas')}>
+                <Image
+                  source={require('../assets/images/fa-icon-purple.png')}
+                  style={styles.headerIcon}/>
+              </TouchableOpacity>
             </View>
             <View>
               <Text style={styles.headerTitle}>Schedules & Communication</Text>
@@ -74,7 +76,7 @@ const styles = StyleSheet.create({
       },
     }),
     marginBottom: 20,
-    backgroundColor: '#BB6BD9'
+    backgroundColor: '#BB6BD9',
   },
   headerIcon: {
     height: 35,
