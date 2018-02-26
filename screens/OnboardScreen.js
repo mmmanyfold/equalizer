@@ -43,8 +43,13 @@ export default class OnboardScreen extends React.Component {
                     onPress={() => this.props.navigation.navigate('A1')}
                     color="#56CCF2">
             </Button>
+            <Text>(coming soon)</Text>
           </View>
         </ScrollView>
+        <View style={styles.tabBarInfoContainer}>
+          <Text style={styles.getStartedText}>{"* Próximamente en español."}</Text>
+          <Text style={styles.getStartedText}>{"(Coming soon in Spanish)"}</Text>
+        </View>
       </View>
     );
   }

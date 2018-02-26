@@ -15,7 +15,7 @@ export default class App extends React.Component {
     try {
       const value = await AsyncStorage.getItem('@onboardComplete:key');
       if (value === null){
-        this.setState({ showOnboard: true });
+        this.setState({ showOnboard: false });
       }
     } catch (error) {
       console.log(error);

@@ -20,95 +20,40 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <View style={styles.contentContainer}>
+          <View style={styles.header}>
+            <View>
+              <Image
+                source={require('../assets/images/fa-icon-purple.png')}
+                style={styles.headerIcon}/>
+            </View>
+            <View>
+              <Text style={styles.headerTitle}>Schedules & Communication</Text>
+            </View>
+          </View>
           <View style={styles.welcomeContainer}>
             <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
+              source={require('../assets/images/robot-prod.png')}
               style={styles.welcomeImage}
             />
           </View>
-
-          <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
-
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
+          <View style={styles.cardContainer}>
+            <Text style={styles.cardLabel}>{"TODAY'S ACTION"}</Text>
+            <View style={styles.cardContent}>
+              <View><Text style={styles.cardTitle}>{"Schedule yourself to pick up & drop off baby at the nanny's"}</Text></View>
+              <View><Text style={styles.cardSubtitle}>{"(or with other caregiver)"}</Text></View>
             </View>
-
-            <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
-            </Text>
-          </View>
-
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
           </View>
         </View>
       </View>
     );
   }
-
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
-      return (
-        <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
-          tools!!! {learnMoreButton}
-        </Text>
-      );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
-    }
-  }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
   },
   contentContainer: {
     paddingTop: 30,
@@ -118,19 +63,58 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 20,
   },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 55,
+    marginTop: 10,
+    marginBottom: 20,
+    backgroundColor: '#BB6BD9'
+  },
+  headerIcon: {
+    height: 35,
+    width: 35,
+    margin: 10,
+  },
+  headerTitle: {
+    fontSize: 23,
+    color: '#fff',
+    marginHorizontal: 10,
+  },
   welcomeImage: {
     width: 100,
     height: 80,
     resizeMode: 'contain',
-    marginTop: 3,
     marginLeft: -10,
   },
-  getStartedContainer: {
+  cardContainer: {
+    flexDirection: 'column',
     alignItems: 'center',
-    marginHorizontal: 50,
+    marginHorizontal: 25,
+    borderColor: '#BB6BD9',
+    borderWidth: 3,
+    borderRadius: 10,
+    height: 400,
   },
-  homeScreenFilename: {
-    marginVertical: 7,
+  cardLabel: {
+    color: '#BB6BD9',
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  cardContent: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  cardTitle: {
+    fontSize: 43,
+    textAlign: 'center',
+    marginHorizontal: 10,
+  },
+  cardSubtitle: {
+    fontSize: 25,
+    textAlign: 'center',
+    margin: 10,
   },
   codeHighlightText: {
     color: 'rgba(96,100,109, 0.8)',

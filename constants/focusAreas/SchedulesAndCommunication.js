@@ -1,4 +1,4 @@
-SchedulingAndCommunication = {
+SchedulesAndCommunication = {
   meta: {
     color: "#BB6BD9",
     description: "",
