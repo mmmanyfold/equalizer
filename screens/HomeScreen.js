@@ -35,12 +35,15 @@ class Card extends Component {
     }
     console.log(this.props);
     return (
-      <View style={[ styles.cardContainer, { borderColor: this.props.color } ]}>
-        <Text style={[ styles.cardLabel, { color: this.props.color } ]}>{"TODAY'S ACTION"}</Text>
-        <View style={styles.cardContent}>
-          <View><Text style={styles.cardTitle}>{title}</Text></View>
-          <View><Text style={styles.cardSubtitle}>{this.props.subtitle}</Text></View>
+      <View style={{ flex: 1 }}>
+        <View style={[styles.cardContainer, { borderColor: this.props.color }]}>
+          <Text style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</Text>
+          <View style={styles.cardContent}>
+            <View><Text style={styles.cardTitle}>{title}</Text></View>
+            <View><Text style={styles.cardSubtitle}>{this.props.subtitle}</Text></View>
+          </View>
         </View>
+        <View style={{ flex: 1 }}></View>
       </View>
     )
   }
@@ -165,6 +168,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   contentContainer: {
+    flex: 1,
     ...Platform.select({
       ios: {
         paddingTop: 30,
@@ -202,6 +206,7 @@ const styles = StyleSheet.create({
     marginLeft: -10,
   },
   cardContainer: {
+    flex: 3,
     flexDirection: 'column',
     alignItems: 'center',
     marginHorizontal: 25,
@@ -219,66 +224,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   cardTitle: {
-    fontSize: 38,
-    textAlign: 'center',
-    marginHorizontal: 10,
-  },
-  cardSubtitle: {
-    fontSize: 25,
-    textAlign: 'center',
-    margin: 10,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
     ...Platform.select({
       ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
+        fontSize: 40,
       },
       android: {
-        elevation: 20,
+        fontSize: 30,
       },
     }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
     textAlign: 'center',
+    marginHorizontal: 13,
   },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
+  cardSubtitle: {
+    ...Platform.select({
+      ios: {
+        fontSize: 25,
+      },
+      android: {
+        fontSize: 20,
+      },
+    }),
+    textAlign: 'center',
+    margin: 13,
   },
 });
