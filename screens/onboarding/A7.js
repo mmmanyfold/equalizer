@@ -16,7 +16,7 @@ export default class A7 extends React.Component {
     static navigationOptions = {
       header: null,
     };
-    
+
     state = { // otherCaregivers
         nanny: false,
         familyMember: false,
@@ -38,9 +38,10 @@ export default class A7 extends React.Component {
         return Promise.resolve(update);
     }
     render() {
+        const { navigation : { state : { params: { store } } } } = this.props;
         return (
             <View style={styles.container}>
-                <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+                <View style={styles.contentContainer}>
                     <View style={styles.welcomeContainer}>
                         <Image
                             source={
@@ -51,63 +52,65 @@ export default class A7 extends React.Component {
                     </View>
 
                     <View style={styles.helpContainer}>
-                        <Text style={styles.getStartedText}>{"Does anyone help you and your partner with the care of your child?"}</Text>
-                        <Text style={styles.getStartedText}>{"Check all that apply:"}</Text>
-
-                        <View>
-                           { Platform.OS === 'ios' ?
-                            <Switch
+                        <Text style={styles.getStartedText}>{`Does anyone help you and ${store.momNickname} with ${store.childNickname}'s care?`}</Text>
+                        <Text style={{marginVertical: 20}}>{"Select all that apply:"}</Text>
+                        <View style={{flexDirection: 'column'}}>
+                          <View style={styles.selectionWrapper}>
+                             { Platform.OS === 'ios' ?
+                              <Switch
+                                  value={this.state.nanny}
+                                  onValueChange={this.handleValueChange.bind(this, 'nanny')}
+                              />
+                              :
+                              <CheckBox
                                 value={this.state.nanny}
                                 onValueChange={this.handleValueChange.bind(this, 'nanny')}
-                            />
-                            :
-                            <CheckBox
-                              value={this.state.nanny}
-                              onValueChange={this.handleValueChange.bind(this, 'nanny')}
-                            />
-                           }
-                           <Text>Nanny</Text>
+                              />
+                             }
+                             <Text style={styles.selectionText}>Nanny</Text>
+                          </View>
+
+                          <View style={styles.selectionWrapper}>
+                              { Platform.OS === 'ios' ?
+                                  <Switch
+                                      value={this.state.familyMember}
+                                      onValueChange={this.handleValueChange.bind(this, 'familyMember')}
+                                  />
+                                  :
+                                  <CheckBox
+                                      value={this.state.familyMember}
+                                      onValueChange={this.handleValueChange.bind(this, 'familyMember')}
+                                  />
+                              }
+                              <Text style={styles.selectionText}>Family member(s)</Text>
+                          </View>
+
+                          <View style={styles.selectionWrapper}>
+                              { Platform.OS === 'ios' ?
+                                  <Switch
+                                      value={this.state.friend}
+                                      onValueChange={this.handleValueChange.bind(this, 'friend')}
+                                  />
+                                  :
+                                  <CheckBox
+                                      value={this.state.friend}
+                                      onValueChange={this.handleValueChange.bind(this, 'friend')}
+                                  />
+                              }
+                              <Text style={styles.selectionText}>Friend(s)</Text>
+                          </View>
                         </View>
 
-                        <View>
-                            { Platform.OS === 'ios' ?
-                                <Switch
-                                    value={this.state.familyMember}
-                                    onValueChange={this.handleValueChange.bind(this, 'familyMember')}
-                                />
-                                :
-                                <CheckBox
-                                    value={this.state.familyMember}
-                                    onValueChange={this.handleValueChange.bind(this, 'familyMember')}
-                                />
-                            }
-                            <Text>Family member(s)</Text>
+                        <View style={{flexDirection: 'row', width: 250, justifyContent: 'space-between', marginTop: 30}}>
+                          <BackButton navigation={this.props.navigation}/>
+                          <NextButton
+                              navigation={this.props.navigation}
+                              saveAction={this.saveAction.bind(this)}
+                              to={"A8"}
+                          />
                         </View>
-
-                        <View>
-                            { Platform.OS === 'ios' ?
-                                <Switch
-                                    value={this.state.friend}
-                                    onValueChange={this.handleValueChange.bind(this, 'friend')}
-                                />
-                                :
-                                <CheckBox
-                                    value={this.state.friend}
-                                    onValueChange={this.handleValueChange.bind(this, 'friend')}
-                                />
-                            }
-                            <Text>Friend(s)</Text>
-                        </View>
-
-                        <NextButton
-                            navigation={this.props.navigation}
-                            saveAction={this.saveAction.bind(this)}
-                            to={"A8"}
-                        />
-
-                        <BackButton navigation={this.props.navigation}/>
                     </View>
-                </ScrollView>
+                </View>
             </View>
         );
     }
@@ -118,19 +121,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
     },
-    developmentModeText: {
-        marginBottom: 20,
-        color: 'rgba(0,0,0,0.4)',
-        fontSize: 14,
-        lineHeight: 19,
-        textAlign: 'center',
-    },
     contentContainer: {
-        paddingTop: 30,
+        flex: 1,
+        justifyContent: 'center',
+        marginHorizontal: 30,
     },
     welcomeContainer: {
         alignItems: 'center',
-        marginTop: 10,
         marginBottom: 20,
     },
     welcomeImage: {
@@ -144,17 +141,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginHorizontal: 50,
     },
-    homeScreenFilename: {
-        marginVertical: 7,
-    },
-    codeHighlightText: {
-        color: 'rgba(96,100,109, 0.8)',
-    },
-    codeHighlightContainer: {
-        backgroundColor: 'rgba(0,0,0,0.05)',
-        borderRadius: 3,
-        paddingHorizontal: 4,
-    },
     getStartedText: {
         fontSize: 17,
         color: 'rgba(96,100,109, 1)',
@@ -162,43 +148,19 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight:'bold',
     },
-    tabBarInfoContainer: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'black',
-                shadowOffset: { height: -3 },
-                shadowOpacity: 0.1,
-                shadowRadius: 3,
-            },
-            android: {
-                elevation: 20,
-            },
-        }),
-        alignItems: 'center',
-        backgroundColor: '#fbfbfb',
-        paddingVertical: 20,
+    selectionWrapper: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 10,
     },
-    tabBarInfoText: {
+    selectionText: {
         fontSize: 17,
         color: 'rgba(96,100,109, 1)',
-        textAlign: 'center',
-    },
-    navigationFilename: {
-        marginTop: 5,
+        lineHeight: 24,
+        marginLeft: 10,
     },
     helpContainer: {
         marginTop: 15,
-        // alignItems: 'center',
-    },
-    helpLink: {
-        paddingVertical: 15,
-    },
-    helpLinkText: {
-        fontSize: 14,
-        color: '#2e78b7',
+        alignItems: 'center',
     },
 });

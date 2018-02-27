@@ -8,6 +8,7 @@ import {
     View,
     Button,
     TextInput,
+    TouchableOpacity,
 } from 'react-native';
 
 import DatePicker from 'react-native-datepicker';
@@ -39,22 +40,21 @@ export default class A8 extends React.Component {
                   </View>
 
                   <View style={styles.getStartedContainer}>
-                      <Text style={styles.getStartedText}>At the same time each day, we’ll send a notification reminding you to choose an Action.</Text>
-                      <Text style={styles.tabBarInfoText}>Pick a time after work when you are likely to be at home. (You can always change this later in your Settings.)</Text>
+                      <Text style={styles.getStartedText}>At the same time each day, we’ll send a notification reminding you to take Action.</Text>
+                      <Text style={styles.tabBarInfoText}>Choose a time after work when you are most likely to be at home. You can change this later or turn notifications off/on in Settings.</Text>
                   </View>
 
-                  <View style={styles.helpContainer}>
+                  <View style={{marginTop: 10}}>
                       <TimePicker
                         selectedHours={selectedHours}
                         selectedMinutes={selectedMinutes}
                         onChange={(hours, minutes) => this.setState({ selectedHours: hours, selectedMinutes: minutes })}
                       />
-
-                      <Button
-                        onPress={() => this.props.navigation.navigate('Main App Demo')}
-                        title="Finish Setup!"
-                        color="#6FCF97"
-                      />
+                      <View>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Main App Demo')}>
+                          <Text style={styles.finishButton}>{"Finish Setup!"}</Text>
+                        </TouchableOpacity>
+                      </View>
                       <BackButton navigation={this.props.navigation}/>
                   </View>
               </ScrollView>
@@ -69,11 +69,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     contentContainer: {
-        paddingTop: 30,
+        flex: 1,
+        justifyContent: 'center',
     },
     welcomeContainer: {
         alignItems: 'center',
-        marginTop: 10,
         marginBottom: 20,
     },
     welcomeImage: {
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     },
     getStartedContainer: {
         alignItems: 'center',
-        marginHorizontal: 50,
+        marginHorizontal: 30,
     },
     getStartedText: {
         fontSize: 17,
@@ -94,9 +94,16 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight:'bold',
     },
+    finishButton: {
+        color: '#6FCF97',
+        fontSize: 25,
+        textAlign: 'center',
+        marginVertical: 25,
+    },
     tabBarInfoText: {
-        fontSize: 17,
+        fontSize: 15,
         color: 'rgba(96,100,109, 1)',
         textAlign: 'center',
+        marginVertical: 10,
     },
 });
