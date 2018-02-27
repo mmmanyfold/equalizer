@@ -20,6 +20,7 @@ import { EmotionalSupport } from '../constants/focusAreas/EmotionalSupport';
 import { HouseholdChores } from '../constants/focusAreas/HouseholdChores';
 import { SchedulesAndCommunication } from '../constants/focusAreas/SchedulesAndCommunication';
 
+const store = new UserRecord();
 const focusAreas = [ BabyDevelopment, BabyHealthAndHygiene, EmotionalSupport, HouseholdChores, SchedulesAndCommunication ]
 
 class Card extends Component {
@@ -53,24 +54,9 @@ class Card extends Component {
   }
 }
 
-class NoMoreCards extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <View>
-        <Text style={styles.noMoreCardsText}>No more cards</Text>
-      </View>
-    )
-  }
-}
-
 export default class HomeScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = { store: null }
   }
 
   static navigationOptions = {
@@ -85,31 +71,12 @@ export default class HomeScreen extends Component {
     console.log(`Nope for ${card.text}`)
   }
 
-  handleMaybe(card) {
-    console.log(`Maybe for ${card.text}`)
-  }
-
-  async componentWillMount() {
-    try {
-      const record = await AsyncStorage.getItem('@UserRecord');
-      if (!record) {
-        const store = new UserRecord();
-      } else {
-        const store = new UserRecord(JSON.parse(record));
-        console.log(store);
-      }
-      this.setState({store})
-    } catch(e) {
-      console.log(e)
-    }
-  }
-
   render() {
     let focusArea;
     if (has(this.props, 'navigation.state.params.store')) {
       focusArea = this.props.navigation.state.params.store.focusArea;
     } else {
-      focusArea = this.state.store.focusArea;
+      focusArea = store.focusArea;
     }
     const { meta: { color, name, id }, actionCards } = focusAreas.find(area => area.meta.id === focusArea);
     let icon;
@@ -136,7 +103,7 @@ export default class HomeScreen extends Component {
           <View style={[ styles.header, { backgroundColor: color } ]}>
             <View>
               <TouchableOpacity onPress={() => this.props.navigation.navigate('Change Focus Area', {
-                store:  this.state.store
+                store
               })}>
                 <Image
                   source={icon}
@@ -158,8 +125,8 @@ export default class HomeScreen extends Component {
             cards={actionCards}
             renderCard={(cardData) => <Card {...cardData}
                                             color={color}
-                                            momName={this.state.store.momNickname}
-                                            babyName={this.state.store.childNickname}/>}
+                                            momName={store.momNickname}
+                                            babyName={store.childNickname}/>}
             renderNoMoreCards={() => <NoMoreCards/>}
             nopeStyle={{ borderWidth: 0, flex: 1 }}
             yupStyle={{ borderWidth: 0, flex: 1 }}

@@ -25,7 +25,7 @@ export const SchedulesAndCommunication = {
   }, {
     title: (babyName) => `Schedule a playdate for ${babyName}`,
     who: 'baby',
-    subtitle: "(and plan to go with)",
+    subtitle: "(and plan to attend!)",
     helpLink: null,
     helpText: null,
     minAge: 15552000,
