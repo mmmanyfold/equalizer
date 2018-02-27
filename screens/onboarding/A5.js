@@ -12,7 +12,10 @@ import {
 import { BackButton } from '../../components/OnboardNavButtons';
 
 export default class A5 extends React.Component {
-
+  static navigationOptions = {
+    header: null,
+  };
+  
   handleSelection(bool) {
     const { navigation } = this.props;
     const store = navigation.state.params.store.set('momWorksFromHome', bool);

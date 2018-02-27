@@ -14,7 +14,7 @@ import DatePicker from 'react-native-datepicker'
 import { NextButton, BackButton } from '../../components/OnboardNavButtons';
 import { MonoText } from '../../components/StyledText';
 
-export default class A6 extends React.Component {
+export default class A8 extends React.Component {
   static navigationOptions = {
     header: null,
   };
@@ -47,14 +47,14 @@ export default class A6 extends React.Component {
                           style={styles.welcomeImage}
                       />
                   </View>
-
+                  /* TODO: Add clock */
                   <View style={styles.getStartedContainer}>
                       <MonoText>Please enter the following information about your child</MonoText>
                   </View>
 
                   <View style={styles.helpContainer}>
 
-                      <Text style={styles.getStartedText}>{"Child's name or nickname:"}</Text>
+                      <Text style={styles.getStartedText}>{"Child's name (or nickname):"}</Text>
 
                       <TextInput
                           style={{width: 250, height: 40, borderColor: 'gray', borderWidth: 1}}
@@ -85,11 +85,11 @@ export default class A6 extends React.Component {
                           onDateChange={(childDOB) => this.setState({ childDOB })}
                       />
 
-                      <NextButton
-                        saveAction={this.saveAction.bind(this)}
-                        disabled={ this.state.childNickname === ''}
-                        navigation={this.props.navigation}
-                        to={'A7'} />
+                      <Button
+                        onPress={() => this.props.navigation.navigate('A9')}
+                        title="Take me to the app!"
+                        color="#6FCF97"
+                      />
                       <BackButton navigation={this.props.navigation}/>
                   </View>
               </ScrollView>

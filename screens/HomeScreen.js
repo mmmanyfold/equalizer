@@ -119,7 +119,7 @@ export default class HomeScreen extends Component {
         <View style={styles.contentContainer}>
           <View style={[ styles.header, { backgroundColor: color } ]}>
             <View>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('FocusAreas', {
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Change Focus Area', {
                 store
               })}>
                 <Image
@@ -138,6 +138,7 @@ export default class HomeScreen extends Component {
             />
           </View>
           <SwipeCards style={{ flex: 1 }}
+            loop={true}
             cards={actionCards}
             renderCard={(cardData) => <Card {...cardData}
                                             color={color}
@@ -146,10 +147,10 @@ export default class HomeScreen extends Component {
             renderNoMoreCards={() => <NoMoreCards/>}
             nopeStyle={{ borderWidth: 0, flex: 1 }}
             yupStyle={{ borderWidth: 0, flex: 1 }}
-            handleYup={this.handleYup}
-            handleNope={this.handleNope}
             noView={<View><Text style={{ fontSize: 25, color: 'red' }}><MonoText>{"Leave this for the \"elves\""}</MonoText></Text></View>}
             yupView={<View><Text style={{ fontSize: 30, color: 'green' }}><MonoText>{"I got this!"}</MonoText></Text></View>}
+            handleYup={this.handleYup}
+            handleNope={this.handleNope}
           />
         </View>
       </View>

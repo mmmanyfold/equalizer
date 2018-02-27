@@ -9,19 +9,17 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import FocusAreasScreen from '../screens/FocusAreasScreen';
+import OnboardNavigation from '../navigation/OnboardNavigation';
 
 export default TabNavigator(
   {
-    Home: {
+    "Onboarding Demo": {
+      screen: OnboardNavigation,
+    },
+    "Main App Demo": {
       screen: HomeScreen,
     },
-    Links: {
-      screen: LinksScreen,
-    },
-    Settings: {
-      screen: SettingsScreen,
-    },
-    FocusAreas: {
+    "Change Focus Area": {
       screen: FocusAreasScreen,
     },
   },

@@ -16,6 +16,10 @@ export default class A2 extends React.Component {
     momNickname: '',
   };
 
+  static navigationOptions = {
+    header: null,
+  };
+
   handleTextInput(momNickname){
       this.setState({ momNickname });
   }
@@ -46,7 +50,7 @@ export default class A2 extends React.Component {
           </View>
 
           <View style={styles.helpContainer}>
-            <Text style={styles.getStartedText}>{"What's the mother of the child's first name (or nickname)?"}</Text>
+            <Text style={styles.getStartedText}>{"What's the mom's first name (or nickname)?"}</Text>
             <TextInput
               style={{width: 250, height: 40, borderColor: 'gray', borderWidth: 1}}
               onChangeText={this.handleTextInput.bind(this)}

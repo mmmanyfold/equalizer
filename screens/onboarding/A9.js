@@ -14,7 +14,7 @@ import DatePicker from 'react-native-datepicker'
 import { NextButton, BackButton } from '../../components/OnboardNavButtons';
 import { MonoText } from '../../components/StyledText';
 
-export default class A6 extends React.Component {
+export default class A8 extends React.Component {
   static navigationOptions = {
     header: null,
   };
@@ -47,50 +47,9 @@ export default class A6 extends React.Component {
                           style={styles.welcomeImage}
                       />
                   </View>
-
+                  /* TODO: Add arrow */
                   <View style={styles.getStartedContainer}>
-                      <MonoText>Please enter the following information about your child</MonoText>
-                  </View>
-
-                  <View style={styles.helpContainer}>
-
-                      <Text style={styles.getStartedText}>{"Child's name or nickname:"}</Text>
-
-                      <TextInput
-                          style={{width: 250, height: 40, borderColor: 'gray', borderWidth: 1}}
-                          onChangeText={this.handleNicknameInput.bind(this)}
-                          value={this.state.userFirstName} />
-
-                      <Text style={styles.getStartedText}>{"Child's Date of Birth:"}</Text>
-
-                      <DatePicker
-                          style={{width: 200}}
-                          date={this.state.childDOB}
-                          mode="date"
-                          placeholder="select date"
-                          format="YYYY-MM-DD"
-                          confirmBtnText="Confirm"
-                          cancelBtnText="Cancel"
-                          customStyles={{
-                              dateIcon: {
-                                  position: 'absolute',
-                                  left: 0,
-                                  top: 4,
-                                  marginLeft: 0
-                              },
-                              dateInput: {
-                                  marginLeft: 36
-                              },
-                          }}
-                          onDateChange={(childDOB) => this.setState({ childDOB })}
-                      />
-
-                      <NextButton
-                        saveAction={this.saveAction.bind(this)}
-                        disabled={ this.state.childNickname === ''}
-                        navigation={this.props.navigation}
-                        to={'A7'} />
-                      <BackButton navigation={this.props.navigation}/>
+                      <MonoText>{"Sorry for this roadbump! Please tap \"Main App Demo\" in the Tabs Bar below (while we work out the navigation)"}</MonoText>
                   </View>
               </ScrollView>
           </View>

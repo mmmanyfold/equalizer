@@ -12,6 +12,9 @@ import {
 import { BackButton } from '../../components/OnboardNavButtons';
 
 export default class A3 extends React.Component {
+  static navigationOptions = {
+    header: null,
+  };
 
   handleSelection(bool) {
     const { navigation } = this.props;
