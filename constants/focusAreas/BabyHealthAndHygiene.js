@@ -7,7 +7,7 @@ export const BabyHealthAndHygiene = {
   },
   actionCards: [{
     title: (babyName) => `Feed ${babyName}`,
-    ref: 'baby',
+    who: 'baby',
     subtitle: null,
     helpLink: "https://www.babycenter.com/0_age-by-age-guide-to-feeding-your-baby_1400680.bc",
     helpText: null,
@@ -15,7 +15,7 @@ export const BabyHealthAndHygiene = {
     maxAge: null,
   }, {
     title: (babyName) => `Burp ${babyName}`,
-    ref: 'baby',
+    who: 'baby',
     subtitle: null,
     helpLink: null,
     helpText: null,
@@ -23,7 +23,7 @@ export const BabyHealthAndHygiene = {
     maxAge: 15552000,
   }, {
     title: (babyName) => `Give ${babyName} a bath`,
-    ref: 'baby',
+    who: 'baby',
     subtitle: null,
     helpLink: null,
     helpText: null,
@@ -38,7 +38,7 @@ export const BabyHealthAndHygiene = {
     maxAge: null,
   }, {
     title: (babyName) => `Change ${babyName}’s diaper`,
-    ref: 'baby',
+    who: 'baby',
     subtitle: "If it's not dirty, be the one to do it next",
     helpLink: null,
     helpText: null,

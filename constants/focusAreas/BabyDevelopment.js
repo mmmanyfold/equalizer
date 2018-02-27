@@ -7,7 +7,7 @@ export const BabyDevelopment = {
   },
   actionCards: [{
     title: (babyName) => `Read to ${babyName}`,
-    ref: 'baby',
+    who: 'baby',
     subtitle: "(give your whole attention)",
     helpLink: null,
     helpText: null,
@@ -22,7 +22,7 @@ export const BabyDevelopment = {
     maxAge: null,
   }, {
     title: (babyName) => `Take ${babyName} to a playdate`,
-    ref: 'baby',
+    who: 'baby',
     subtitle: null,
     helpLink: null,
     helpText: null,
@@ -30,7 +30,7 @@ export const BabyDevelopment = {
     maxAge: null,
   }, {
     title: (babyName) => `Rotate ${babyName}'s toys`,
-    ref: 'baby',
+    who: 'baby',
     subtitle: null,
     helpLink: null,
     helpText: null,

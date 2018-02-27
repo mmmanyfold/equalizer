@@ -7,7 +7,7 @@ export const SchedulesAndCommunication = {
   },
   actionCards: [{
     title: (babyName) => `Schedule an appointment for ${babyName}`,
-    ref: 'baby',
+    who: 'baby',
     subtitle: "(find out when the next pediatrician or dentist visit should be)",
     helpLink: "https://www.thebump.com/a/new-baby-doctor-visit-checklist",
     helpText: "If your pediatrician / dentist office has an online portal, log in and check for appointment scheduling reminders.",
@@ -24,7 +24,7 @@ export const SchedulesAndCommunication = {
     nanny: true,
   }, {
     title: (babyName) => `Schedule a playdate for ${babyName}`,
-    ref: 'baby',
+    who: 'baby',
     subtitle: "and plan to be there yourself",
     helpLink: null,
     helpText: null,
@@ -41,7 +41,7 @@ export const SchedulesAndCommunication = {
     nanny: false,
   }, {
     title: (babyName) => `Schedule yourself to pick-up/drop-off ${babyName} at the nanny's`,
-    ref: 'baby',
+    who: 'baby',
     subtitle: "(or other caregiver's)",
     helpLink: null,
     helpText: null,

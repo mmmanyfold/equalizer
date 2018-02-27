@@ -63,7 +63,7 @@ export const HouseholdChores = {
     maxAge: null,
   }, {
     title: (babyName) => `Clean floors for ${babyName}’s crawling`,
-    ref: 'baby',
+    who: 'baby',
     subtitle: "(floors need to be extra clean)",
     helpLink: null,
     helpText: null,

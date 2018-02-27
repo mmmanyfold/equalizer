@@ -7,7 +7,7 @@ export const EmotionalSupport = {
   },
   actionCards: [{
     title: (momName) => `Check in with ${momName} to see how she is doing emotionally`,
-    ref: 'mom',
+    who: 'mom',
     subtitle: "(give your whole attention)",
     helpLink: null,
     helpText: null,
@@ -15,7 +15,7 @@ export const EmotionalSupport = {
     maxAge: null,
   }, {
     title: (momName) => `Listen to ${momName} talk about something she cares about`,
-    ref: 'mom',
+    who: 'mom',
     subtitle: "(give your whole attention)",
     helpLink: null,
     helpText: null,
@@ -39,7 +39,7 @@ export const EmotionalSupport = {
     nanny: false,
   }, {
     title: (babyName) => `Schedule yourself to pick-up/drop-off ${babyName} at the nanny's`,
-    ref: 'baby',
+    who: 'baby',
     subtitle: "(or other caregiver's)",
     helpLink: null,
     helpText: null,

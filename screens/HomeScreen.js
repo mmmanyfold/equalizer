@@ -29,11 +29,14 @@ class Card extends Component {
   render() {
     let title;
     if (isFunction(this.props.title)) {
-      title = this.props.title();
+      if(this.props.who === 'baby') {
+        title = this.props.title(this.props.babyName);
+      } else {
+        title = this.props.title(this.props.momName);
+      }
     } else {
       title = this.props.title;
     }
-    console.log(this.props);
     return (
       <View style={{ flex: 1 }}>
         <View style={[styles.cardContainer, { borderColor: this.props.color }]}>
