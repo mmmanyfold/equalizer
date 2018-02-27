@@ -10,6 +10,7 @@ import A6 from '../screens/onboarding/A6';
 import A7 from '../screens/onboarding/A7';
 import A8 from '../screens/onboarding/A8';
 import A9 from '../screens/onboarding/A9';
+import MainNavigation from './MainNavigation';
 
 const OnboardStackNavigator = StackNavigator(
   {
@@ -43,13 +44,14 @@ const OnboardStackNavigator = StackNavigator(
     A9: {
       screen: A9,
     },
+    'Main App Demo': {
+      screen: MainNavigation,
+    },
   },
   {
-    initialRouteName: 'Main',
+    initialRouteName: 'A8',
     navigationOptions: () => ({
-      headerTitleStyle: {
-        fontWeight: 'normal',
-      },
+      header: null,
     }),
   }
 );

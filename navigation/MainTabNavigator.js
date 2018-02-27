@@ -5,10 +5,7 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 
 import Colors from '../constants/Colors';
 
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import FocusAreasScreen from '../screens/FocusAreasScreen';
+import MainNavigation from '../navigation/MainNavigation';
 import OnboardNavigation from '../navigation/OnboardNavigation';
 
 export default TabNavigator(
@@ -17,25 +14,23 @@ export default TabNavigator(
       screen: OnboardNavigation,
     },
     "Main App Demo": {
-      screen: HomeScreen,
-    },
-    "Change Focus Area": {
-      screen: FocusAreasScreen,
+      screen: MainNavigation,
     },
   },
   {
     navigationOptions: ({ navigation }) => ({
+      header: null,
       tabBarIcon: ({ focused }) => {
         const { routeName } = navigation.state;
         let iconName;
         switch (routeName) {
-          case 'Home':
+          case 'Main App Demo':
             iconName =
               Platform.OS === 'ios'
                 ? `ios-information-circle${focused ? '' : '-outline'}`
                 : 'md-information-circle';
             break;
-          case 'Links':
+          case 'Onboarding Demo':
             iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
             break;
           case 'Settings':

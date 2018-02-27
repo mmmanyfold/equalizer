@@ -14,7 +14,6 @@ export default class ActionScreen extends React.Component {
 
   render() {
     return (
-      {/* TODO: Add Action Screen */}
       <View style={styles.container}>
         <View style={styles.contentContainer}>
           <View style={[ styles.header, { backgroundColor: color } ]}>

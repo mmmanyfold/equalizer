@@ -86,7 +86,7 @@ export default class A8 extends React.Component {
                       />
 
                       <Button
-                        onPress={() => this.props.navigation.navigate('A9')}
+                        onPress={() => this.props.navigation.navigate('Main App Demo')}
                         title="Take me to the app!"
                         color="#6FCF97"
                       />

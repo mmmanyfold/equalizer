@@ -102,7 +102,7 @@ export default class HomeScreen extends Component {
         <View style={styles.contentContainer}>
           <View style={[ styles.header, { backgroundColor: color } ]}>
             <View>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('Change Focus Area', {
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('FocusAreas', {
                 store
               })}>
                 <Image
@@ -127,7 +127,6 @@ export default class HomeScreen extends Component {
                                             color={color}
                                             momName={store.momNickname}
                                             babyName={store.childNickname}/>}
-            renderNoMoreCards={() => <NoMoreCards/>}
             nopeStyle={{ borderWidth: 0, flex: 1 }}
             yupStyle={{ borderWidth: 0, flex: 1 }}
             noView={<View><Text style={{ fontSize: 25, color: 'red' }}><MonoText>{"Leave this for the \"elves\""}</MonoText></Text></View>}
@@ -142,17 +141,6 @@ export default class HomeScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  //____begins card styles
-  card: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 300,
-    height: 300,
-  },
-  noMoreCardsText: {
-    fontSize: 22,
-  },
-  //____end of card styles
   container: {
     flex: 1,
     backgroundColor: '#fff',
