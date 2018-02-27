@@ -10,10 +10,11 @@ export const NextButton = (props) => (
             if (props.saveAction) {
                 try {
                     const store = await props.saveAction();
+                    const save = await store.asyncSave(store);
                     props.navigation.navigate(props.to, {
                         store,
                     });
-                    console.log(store); // debugging
+                    // console.log(store); // debugging
                 } catch (e) {
                     console.log(e);
                 }

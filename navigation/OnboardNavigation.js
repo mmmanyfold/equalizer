@@ -45,7 +45,7 @@ const OnboardStackNavigator = StackNavigator(
     },
   },
   {
-    initialRouteName: 'A8',
+    initialRouteName: 'Main',
     navigationOptions: () => ({
       headerTitleStyle: {
         fontWeight: 'normal',

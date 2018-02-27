@@ -22,7 +22,7 @@ export default class UserRecord extends Record(
     try {
       const json = JSON.stringify(record);
       await AsyncStorage.setItem('@UserRecord', json);
-      return this;
+      return true;
     } catch (e) {
       console.log(e);
     }
