@@ -10,8 +10,6 @@ import {
   Button,
 } from 'react-native';
 
-import { MonoText } from '../components/StyledText';
-
 export default class OnboardScreen extends React.Component {
   static navigationOptions = {
     header: null,

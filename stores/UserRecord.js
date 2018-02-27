@@ -15,7 +15,7 @@ export default class UserRecord extends Record(
       familyMember: false,
       friend: false,
     },
-    focusArea: 'HouseholdChores',
+    focusArea: 'SchedulesAndCommunication',
   }
 ) {
   async asyncSave(record) {

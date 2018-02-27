@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import { MonoText } from '../components/StyledText';
 import SwipeCards from 'react-native-swipe-cards';
 import UserRecord from '../stores/UserRecord';
 import { has, isFunction } from 'lodash';
@@ -136,17 +137,19 @@ export default class HomeScreen extends Component {
               style={styles.welcomeImage}
             />
           </View>
-          <SwipeCards
+          <SwipeCards style={{ flex: 1 }}
             cards={actionCards}
             renderCard={(cardData) => <Card {...cardData}
                                             color={color}
                                             momName={store.momNickname}
                                             babyName={store.childNickname}/>}
             renderNoMoreCards={() => <NoMoreCards/>}
+            nopeStyle={{ borderWidth: 0, flex: 1 }}
+            yupStyle={{ borderWidth: 0, flex: 1 }}
             handleYup={this.handleYup}
             handleNope={this.handleNope}
-            handleMaybe={this.handleMaybe}
-            hasMaybeAction
+            noView={<View><Text style={{ fontSize: 25, color: 'red' }}><MonoText>{"Leave this for the \"elves\""}</MonoText></Text></View>}
+            yupView={<View><Text style={{ fontSize: 30, color: 'green' }}><MonoText>{"I got this!"}</MonoText></Text></View>}
           />
         </View>
       </View>
