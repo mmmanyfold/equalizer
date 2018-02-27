@@ -6,14 +6,16 @@ export const EmotionalSupport = {
     description: "",
   },
   actionCards: [{
-    title: "Check in with ${momName} to see how she is doing emotionally",
+    title: (momName) => `Check in with ${momName} to see how she is doing emotionally`,
+    ref: 'mom',
     subtitle: "(give your whole attention)",
     helpLink: null,
     helpText: null,
     minAge: null,
     maxAge: null,
   }, {
-    title: "Listen to ${momName} talk about something she cares about",
+    title: (momName) => `Listen to ${momName} talk about something she cares about`,
+    ref: 'mom',
     subtitle: "(give your whole attention)",
     helpLink: null,
     helpText: null,
@@ -36,7 +38,8 @@ export const EmotionalSupport = {
     maxAge: null,
     nanny: false,
   }, {
-    title: "Schedule yourself to pick-up/drop-off ${babyName} at the nanny's",
+    title: (babyName) => `Schedule yourself to pick-up/drop-off ${babyName} at the nanny's`,
+    ref: 'baby',
     subtitle: "(or other caregiver's)",
     helpLink: null,
     helpText: null,

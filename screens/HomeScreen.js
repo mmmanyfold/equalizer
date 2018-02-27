@@ -10,7 +10,7 @@ import {
 
 import SwipeCards from 'react-native-swipe-cards';
 import UserRecord from '../stores/UserRecord';
-import { has } from 'lodash';
+import { has, isFunction } from 'lodash';
 
 import { BabyDevelopment } from '../constants/focusAreas/BabyDevelopment';
 import { BabyHealthAndHygiene } from '../constants/focusAreas/BabyHealthAndHygiene';
@@ -27,11 +27,18 @@ class Card extends Component {
   }
 
   render() {
+    let title;
+    if (isFunction(this.props.title)) {
+      title = this.props.title();
+    } else {
+      title = this.props.title;
+    }
+    console.log(this.props);
     return (
-      <View style={[styles.cardContainer, { borderColor: this.props.color }]}>
-        <Text style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</Text>
+      <View style={[ styles.cardContainer, { borderColor: this.props.color } ]}>
+        <Text style={[ styles.cardLabel, { color: this.props.color } ]}>{"TODAY'S ACTION"}</Text>
         <View style={styles.cardContent}>
-          <View><Text style={styles.cardTitle}>{this.props.title}</Text></View>
+          <View><Text style={styles.cardTitle}>{title}</Text></View>
           <View><Text style={styles.cardSubtitle}>{this.props.subtitle}</Text></View>
         </View>
       </View>
@@ -125,7 +132,10 @@ export default class HomeScreen extends Component {
           </View>
           <SwipeCards
             cards={actionCards}
-            renderCard={(cardData) => <Card {...cardData} color={color} />}
+            renderCard={(cardData) => <Card {...cardData}
+                                            color={color}
+                                            momName={store.momNickname}
+                                            babyName={store.childNickname}/>}
             renderNoMoreCards={() => <NoMoreCards/>}
             handleYup={this.handleYup}
             handleNope={this.handleNope}
