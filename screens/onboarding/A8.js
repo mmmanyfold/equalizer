@@ -47,7 +47,7 @@ export default class A8 extends React.Component {
                           style={styles.welcomeImage}
                       />
                   </View>
-                  /* TODO: Add clock */
+                  {/* TODO: Add clock */}
                   <View style={styles.getStartedContainer}>
                       <MonoText>Please enter the following information about your child</MonoText>
                   </View>

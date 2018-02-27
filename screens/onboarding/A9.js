@@ -47,7 +47,7 @@ export default class A8 extends React.Component {
                           style={styles.welcomeImage}
                       />
                   </View>
-                  /* TODO: Add arrow */
+                  {/* TODO: Add arrow */}
                   <View style={styles.getStartedContainer}>
                       <MonoText>{"Sorry for this roadbump! Please tap \"Main App Demo\" in the Tabs Bar below (while we work out the navigation)"}</MonoText>
                   </View>
