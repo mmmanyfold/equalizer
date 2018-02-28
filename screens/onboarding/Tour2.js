@@ -39,25 +39,13 @@ class Card extends Component {
             <View><Text style={styles.cardSubtitle}>{this.props.subtitle}</Text></View>
           </View>
         </View>
-        <View style={{ flexDirection: 'row', flex: 1, marginTop: -50 }}>
-          <View style={{ flexDirection: 'column', flex: 1 }}>
-            <Image
-              style={{ height: 100, width: 90 }}
-              source={require('../../assets/images/arrow-left.png')} />
-            <Text style={{ flex: 1, paddingLeft: 20, fontWeight: 'bold' }}>
-              <MonoText>
-                Swipe LEFT to SKIP the Action & leave it for “the elves”
-              </MonoText>
-            </Text>
-          </View>
-          <View style={{ flexDirection: 'column', flex: 1 }}></View>
-        </View>
+        <View style={{ flex: 1 }}></View>
       </View>
     )
   }
 }
 
-export default class Tour1 extends Component {
+export default class Tour2 extends Component {
   static navigationOptions = {
     header: null,
   };
@@ -78,7 +66,9 @@ export default class Tour1 extends Component {
         <View style={styles.contentContainer}>
           <View style={[ styles.header, { backgroundColor: color } ]}>
             <View>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('Tour2')}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Tour3', {
+                store
+              })}>
                 <Image
                   source={require('../../assets/images/fa-icon-green.png')}
                   style={styles.headerIcon}/>
@@ -88,23 +78,15 @@ export default class Tour1 extends Component {
               <Text style={styles.headerTitle}>{name}</Text>
             </View>
           </View>
-          <View style={{ position: 'absolute', top: 50, flexDirection: 'row', flex: 1, marginTop: -50 }}>
-            <View style={{ flexDirection: 'column', flex: 1 }}>
-              <Image
-                style={{ height: 100, width: 90 }}
-                source={require('../../assets/images/arrow-up.png')} />
-              <Text style={{ flex: 1, paddingLeft: 20, fontWeight: 'bold' }}>
-                <MonoText>Tap to change Focus Area</MonoText>
-              </Text>
-            </View>
-            <View style={{ flexDirection: 'column', flex: 1 }}>
-            </View>
+          <View style={{ position: 'absolute', top: 130, left: 5, flexDirection: 'row', alignItems: 'flex-end', flex: 1, marginTop: -50 }}>
+            <Image
+              style={{ height: 80, width: 79 }}
+              source={require('../../assets/images/arrow-up.png')} />
+            <Text style={{ flex: 1, paddingBottom: 15, fontWeight: 'bold' }}>
+              <MonoText>Tap to change Focus Area</MonoText>
+            </Text>
           </View>
           <View style={styles.welcomeContainer}>
-            <Image
-              source={require('../../assets/images/robot-prod.png')}
-              style={styles.welcomeImage}
-            />
           </View>
           <SwipeCards style={{ flex: 1 }}
             loop={true}
@@ -140,7 +122,7 @@ const styles = StyleSheet.create({
     }),
   },
   welcomeContainer: {
-    alignItems: 'center',
+    height: 80,
   },
   header: {
     flexDirection: 'row',
@@ -170,7 +152,7 @@ const styles = StyleSheet.create({
     marginLeft: -10,
   },
   cardContainer: {
-    flex: 2,
+    flex: 3,
     flexDirection: 'column',
     alignItems: 'center',
     marginHorizontal: 25,

@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 
-export default class Tour2 extends React.Component {
+export default class Tour3 extends React.Component {
   static navigationOptions = {
     header: null,
   };

@@ -42,7 +42,7 @@ class Card extends Component {
         <View style={{ flexDirection: 'row', flex: 1, marginTop: -50 }}>
           <View style={{ flexDirection: 'column', flex: 1 }}>
             <Image
-              style={{ height: 100, width: 90 }}
+              style={{ height: 100, width: 90, marginLeft: 10, }}
               source={require('../../assets/images/arrow-left.png')} />
             <Text style={{ flex: 1, paddingLeft: 20, fontWeight: 'bold' }}>
               <MonoText>
