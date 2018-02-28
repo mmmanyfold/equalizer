@@ -60,6 +60,8 @@ export default class Tour2 extends Component {
   render() {
     const { navigation : { state : { params: { store } } } } = this.props;
     const { meta: { color, name }, actionCards } = HouseholdChores;
+    // NOTE: for demo purposes we display cards at index 1 on first render
+    const cards = actionCards.slice(1, actionCards.length);
     return (
       <View style={styles.container}>
         <View style={styles.contentContainer}>
@@ -89,7 +91,7 @@ export default class Tour2 extends Component {
           </View>
           <SwipeCards style={{ flex: 1 }}
             loop={true}
-            cards={actionCards}
+            cards={cards}
             renderCard={(cardData) => <Card {...cardData}
                                             color={color}
                                             momName={store.momNickname}
