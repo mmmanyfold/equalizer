@@ -7,9 +7,9 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Button,
 } from 'react-native';
-import { CeraText } from '../components/StyledText';
+import { Button } from 'react-native-elements';
+import { CeraText, CeraTextBold, CeraTextItalic } from '../components/StyledText';
 
 export default class OnboardScreen extends React.Component {
   static navigationOptions = {
@@ -23,36 +23,44 @@ export default class OnboardScreen extends React.Component {
           <View style={styles.welcomeContainer}>
             <Image
               source={
-                require('../assets/images/robot-prod.png')
+                require('../assets/images/logo-circle-blue-white.png')
               }
               style={styles.welcomeImage}
             />
           </View>
 
           <View style={styles.getStartedContainer}>
-            <CeraText style={styles.titleText}>Equalizer</CeraText>
+            <CeraTextBold style={styles.titleText}>Equalizer</CeraTextBold>
           </View>
 
           <View style={styles.helpContainer}>
             <CeraText style={styles.getStartedText}>I want to...</CeraText>
             <View style={styles.buttonWrapper}>
+
               <Button onPress={() => this.props.navigation.navigate('A1')}
-                      title="Learn how to help my partner"
-                      color="#6FCF97"/>
+                      fontFamily={'cera'}
+                      title="Help my partner"
+                      color="#fff"
+                      buttonStyle={{ paddingBottom: 4, paddingTop: 9 }}
+                      backgroundColor="#ff3752"/>
             </View>
             <View style={styles.buttonWrapper}>
               <Button onPress={() => this.props.navigation.navigate('A1')}
+                      fontFamily={'cera'}
                       title="Help my partner help me"
                       disabled={true}
-                      color="lightgray">
+                      buttonStyle={{ paddingBottom: 4, paddingTop: 9 }}
+                      color="#fff">
               </Button>
-              <CeraText style={{color:"lightgray",textAlign: 'center'}}>(coming soon)</CeraText>
+              <CeraText style={{ color:"lightgray", textAlign: 'center', marginTop: 10 }}>
+                (coming soon)
+              </CeraText>
             </View>
           </View>
         </View>
         <View style={styles.tabBarInfoContainer}>
-          <CeraText style={styles.getStartedText}>{"* Próximamente en español."}</CeraText>
-          <CeraText style={styles.getStartedText}>{"(Coming soon in Spanish)"}</CeraText>
+          <CeraText style={styles.getStartedText}>{"*Próximamente en español."}</CeraText>
+          <CeraTextItalic style={styles.getStartedText}>{"Coming soon in Spanish"}</CeraTextItalic>
         </View>
       </View>
     );
@@ -83,25 +91,22 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   welcomeImage: {
-    width: 100,
-    height: 80,
+    width: 180,
+    height: 180,
     resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
   },
   getStartedContainer: {
     alignItems: 'center',
     marginHorizontal: 50,
   },
   titleText: {
-    fontSize: 55,
-    fontWeight: 'bold',
-    color: '#56CCF2',
+    fontSize: 38,
+    color: '#ff3752',
+    letterSpacing: 1.2,
   },
   getStartedText: {
     fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
+    color: '#000',
     textAlign: 'center',
   },
   buttonWrapper: {
@@ -129,7 +134,7 @@ const styles = StyleSheet.create({
   },
   tabBarInfoText: {
     fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
+    color: '#000',
     textAlign: 'center',
   },
   helpContainer: {

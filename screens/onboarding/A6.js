@@ -49,7 +49,7 @@ export default class A6 extends React.Component {
                   </View>
                   <View style={styles.helpContainer}>
                       <CeraText style={styles.getStartedText}>{"What's your child's name (or nickname)?"}</CeraText>
-                      <CeraTextInput
+                      <TextInput
                           style={styles.inputText}
                           onChangeText={this.handleNicknameInput.bind(this)}
                           value={this.state.userFirstName} />

@@ -57,7 +57,7 @@ export default class A1 extends React.Component {
 
           <View style={styles.helpContainer}>
             <CeraText style={styles.getStartedText}>{"What's your first name (or nickname)?"}</CeraText>
-            <CeraTextInput
+            <TextInput
               style={styles.inputText}
               onChangeText={this.handleTextInput.bind(this)}
               value={this.state.userFirstName} />

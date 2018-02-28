@@ -52,6 +52,8 @@ export default class App extends React.Component {
         require('./assets/images/fa-icon-blue.png'),
         require('./assets/images/fa-icon-purple.png'),
         require('./assets/images/fa-icon-green.png'),
+        require('./assets/images/logo-circle-blue-white.png'),
+        require('./assets/images/logo-circle-red.png'),
       ]),
       Font.loadAsync({
         // This is the font that we are using for our tab bar
@@ -59,7 +61,9 @@ export default class App extends React.Component {
         // We include SpaceMono because we use it in HomeScreen.js. Feel free
         // to remove this if you are not using it in your app
         'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
-        'cera': require('./assets/fonts/CeraGR.otf'),
+        'cera': require('./assets/fonts/CeraMedium.otf'),
+        'cera-bold': require('./assets/fonts/CeraBold.otf'),
+        'cera-italic': require('./assets/fonts/CeraMediumItalic.otf'),
       }),
     ]);
   };

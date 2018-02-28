@@ -51,7 +51,7 @@ export default class A2 extends React.Component {
 
           <View style={styles.helpContainer}>
             <CeraText style={styles.getStartedText}>{"What's the child's mom's first name (or nickname)?"}</CeraText>
-            <CeraTextInput
+            <TextInput
               style={styles.inputText}
               onChangeText={this.handleTextInput.bind(this)}
               value={this.state.momNickname} />
