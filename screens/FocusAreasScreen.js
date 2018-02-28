@@ -107,13 +107,12 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginBottom: 25,
+    marginBottom: 20,
   },
   welcomeImage: {
     width: 80,
     height: 80,
     resizeMode: 'contain',
-    marginLeft: -10,
   },
   focusAreasContainer: {
     flexDirection: 'column',
@@ -126,7 +125,7 @@ const styles = StyleSheet.create({
   focusAreaSelection: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: 25,
+    marginTop: 30,
     justifyContent: 'space-between',
   },
   focusAreaButton: {

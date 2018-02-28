@@ -47,7 +47,7 @@ export default class App extends React.Component {
       Asset.loadAsync([
         require('./assets/images/robot-dev.png'),
         require('./assets/images/robot-prod.png'),
-        require('./assets/images/fa-icon-yellow.png'),
+        require('./assets/images/fa-icon-red.png'),
         require('./assets/images/fa-icon-orange.png'),
         require('./assets/images/fa-icon-blue.png'),
         require('./assets/images/fa-icon-purple.png'),

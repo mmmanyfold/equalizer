@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { CeraText } from '../components/StyledText';
+import { CeraText, CeraTextBold } from '../components/StyledText';
 import SwipeCards from 'react-native-swipe-cards';
 import UserRecord from '../stores/UserRecord';
 import { has, isFunction } from 'lodash';
@@ -34,7 +34,7 @@ class Card extends Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={[styles.cardContainer, { borderColor: this.props.color }]}>
-          <CeraText style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</CeraText>
+          <CeraTextBold style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</CeraTextBold>
           <View style={styles.cardContent}>
             <View><CeraText style={styles.cardTitle}>{title}</CeraText></View>
             <View><CeraText style={styles.cardSubtitle}>{this.props.subtitle}</CeraText></View>
@@ -77,19 +77,19 @@ export default class HomeScreen extends Component {
     let icon;
     switch (id) {
       case 'BabyHealthAndHygiene':
-        icon = require("../assets/images/fa-icon-yellow.png")
+        icon = require("../assets/images/fa-icon-red.png")
         break;
       case 'BabyDevelopment':
         icon = require("../assets/images/fa-icon-blue.png")
         break;
       case 'HouseholdChores':
-        icon = require("../assets/images/fa-icon-green.png")
+        icon = require("../assets/images/fa-icon-orange.png")
         break;
       case 'SchedulesAndCommunication':
-        icon = require("../assets/images/fa-icon-purple.png")
+        icon = require("../assets/images/fa-icon-green.png")
         break;
       case 'EmotionalSupport':
-        icon = require("../assets/images/fa-icon-orange.png")
+        icon = require("../assets/images/fa-icon-purple.png")
         break;
     }
     return (
@@ -187,10 +187,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 300,
     backgroundColor: '#fff',
+    width: 325,
   },
   cardLabel: {
-    fontWeight: 'bold',
-    marginTop: 10,
+    marginTop: 35,
+    fontSize: 15,
   },
   cardContent: {
     flex: 1,
@@ -219,6 +220,7 @@ const styles = StyleSheet.create({
       },
     }),
     textAlign: 'center',
-    margin: 13,
+    marginTop: 13,
+    marginHorizontal: 13,
   },
 });

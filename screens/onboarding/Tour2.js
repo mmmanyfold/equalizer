@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { CeraText } from '../../components/StyledText';
+import { CeraText, CeraTextBold } from '../../components/StyledText';
 import SwipeCards from 'react-native-swipe-cards';
 import { isFunction } from 'lodash';
 import { HouseholdChores } from '../../constants/focusAreas/HouseholdChores';
@@ -31,7 +31,7 @@ class Card extends Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={[styles.cardContainer, { borderColor: this.props.color }]}>
-          <CeraText style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</CeraText>
+          <CeraTextBold style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</CeraTextBold>
           <View style={styles.cardContent}>
             <View><CeraText style={styles.cardTitle}>{title}</CeraText></View>
             <View><CeraText style={styles.cardSubtitle}>{this.props.subtitle}</CeraText></View>
@@ -82,14 +82,21 @@ export default class Tour2 extends Component {
             </View>
           </View>
           <View style={styles.instructions}>
-            <Image
-              style={{ height: 80, width: 79 }}
-              source={require('../../assets/images/arrow-up.png')} />
-            <CeraText style={{ flex: 1, paddingBottom: 15, fontWeight: 'bold' }}>
-              <CeraText>Tap to change the Focus Area</CeraText>
-            </CeraText>
+            <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center' }}>
+              <Image
+                style={{ height: 80, width: 79 }}
+                source={require('../../assets/images/arrow-up.png')} />
+              <CeraTextBold style={{ fontSize: 20 }}>
+                Tap to change the Focus Area
+              </CeraTextBold>
+            </View>
+            <View style={{ flex: 1 }}></View>
           </View>
           <View style={styles.welcomeContainer}>
+            <Image
+              source={require('../../assets/images/elf.png')}
+              style={styles.welcomeImage}
+            />
           </View>
           <SwipeCards style={{ flex: 1 }}
             loop={true}
@@ -125,7 +132,7 @@ const styles = StyleSheet.create({
     }),
   },
   welcomeContainer: {
-    height: 80,
+    alignItems: 'flex-end',
   },
   header: {
     flexDirection: 'row',
@@ -149,10 +156,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   welcomeImage: {
-    width: 100,
+    width: 57,
     height: 80,
     resizeMode: 'contain',
-    marginLeft: -10,
+    marginRight: 65,
   },
   instructions: {
     position: 'absolute',
@@ -178,10 +185,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 300,
     backgroundColor: '#fff',
+    width: 325,
   },
   cardLabel: {
-    fontWeight: 'bold',
-    marginTop: 10,
+    marginTop: 35,
+    fontSize: 15,
   },
   cardContent: {
     flex: 1,
@@ -210,6 +218,7 @@ const styles = StyleSheet.create({
       },
     }),
     textAlign: 'center',
-    margin: 13,
+    marginTop: 13,
+    marginHorizontal: 13,
   },
 });

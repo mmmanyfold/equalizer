@@ -24,7 +24,7 @@ export default class Tour3 extends React.Component {
           </View>
           <View style={styles.welcomeContainer}>
             <Image
-              source={require('../../assets/images/robot-prod.png')}
+              source={require('../../assets/images/logo-circle-black.png')}
               style={styles.welcomeImage}
             />
           </View>
@@ -37,7 +37,7 @@ export default class Tour3 extends React.Component {
                   navigation={this.props.navigation}
                   id={"BabyHealthAndHygiene"}
                   title={"Baby Health & Hygiene"}
-                  color={"#F2C94C"}/>
+                  backgroundColor={"#ff3752"}/>
               </View>
               <View style={styles.focusAreaButton}>
                 <FocusAreaButton
@@ -45,7 +45,7 @@ export default class Tour3 extends React.Component {
                   navigation={this.props.navigation}
                   id={"BabyDevelopment"}
                   title={"Baby Development"}
-                  color={"#2D9CDB"}/>
+                  backgroundColor={"#204392"}/>
               </View>
               <View style={styles.focusAreaButton}>
                 <FocusAreaButton
@@ -53,7 +53,7 @@ export default class Tour3 extends React.Component {
                   navigation={this.props.navigation}
                   id={"HouseholdChores"}
                   title={"Household Chores"}
-                  color={"#27AE60"}/>
+                  backgroundColor={"#f68a4f"}/>
               </View>
               <View style={styles.focusAreaButton}>
                 <FocusAreaButton
@@ -61,7 +61,7 @@ export default class Tour3 extends React.Component {
                   navigation={this.props.navigation}
                   id={"SchedulesAndCommunication"}
                   title={"Schedules & Communication"}
-                  color={"#BB6BD9"}/>
+                  backgroundColor={"#3cbb8b"}/>
               </View>
               <View style={styles.focusAreaButton}>
                 <FocusAreaButton
@@ -69,7 +69,7 @@ export default class Tour3 extends React.Component {
                   navigation={this.props.navigation}
                   id={"EmotionalSupport"}
                   title={"Emotional Support"}
-                  color={"#F2994A"}/>
+                  backgroundColor={"#bc9fca"}/>
               </View>
             </View>
           </View>
@@ -91,9 +91,6 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  welcomeContainer: {
-    alignItems: 'center',
-  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -104,7 +101,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
       },
     }),
-    marginBottom: 20,
+    marginBottom: 30,
     backgroundColor: '#000',
   },
   headerTitle: {
@@ -112,16 +109,19 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginHorizontal: 10,
   },
+  welcomeContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
   welcomeImage: {
-    width: 100,
+    width: 80,
     height: 80,
     resizeMode: 'contain',
-    marginLeft: -10,
   },
   focusAreasContainer: {
     flexDirection: 'column',
     alignItems: 'center',
-    marginHorizontal: 25,
+    marginHorizontal: 15,
   },
   focusAreasText: {
     textAlign: 'center',
@@ -129,11 +129,11 @@ const styles = StyleSheet.create({
   focusAreaSelection: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: 25,
+    marginTop: 30,
     justifyContent: 'space-between',
   },
   focusAreaButton: {
-    width: '47%',
-    marginBottom: 20,
+    width: '50%',
+    marginBottom: 27,
   },
 });

@@ -6,7 +6,7 @@ export const HouseholdChores = {
     description: "",
   },
   actionCards: [{
-    title: "Pick any shared room in the house and clean it thoroughly",
+    title: "Pick any shared room in the house and clean it",
     subtitle: null,
     helpLink: null,
     helpText: null,

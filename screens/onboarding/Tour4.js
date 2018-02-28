@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { CeraText } from '../../components/StyledText';
+import { CeraText, CeraTextBold } from '../../components/StyledText';
 import SwipeCards from 'react-native-swipe-cards';
 import UserRecord from '../../stores/UserRecord';
 import { has, isFunction } from 'lodash';
@@ -34,24 +34,21 @@ class Card extends Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={[styles.cardContainer, { borderColor: this.props.color }]}>
-          <CeraText style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</CeraText>
+          <CeraTextBold style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</CeraTextBold>
           <View style={styles.cardContent}>
             <View><CeraText style={styles.cardTitle}>{title}</CeraText></View>
             <View><CeraText style={styles.cardSubtitle}>{this.props.subtitle}</CeraText></View>
           </View>
         </View>
         <View style={{ flexDirection: 'row', flex: 1, marginTop: -50 }}>
-          <View style={{ flexDirection: 'column', flex: 1 }}>
-          </View>
-          <View style={{ flexDirection: 'column', flex: 1, alignItems: 'flex-end' }}>
+          <View style={{ flex: 1 }}></View>
+          <View style={{ flexDirection: 'column', flex: 2, alignItems: 'flex-end' }}>
             <Image
               style={{ height: 100, width: 90, marginRight: 10, }}
               source={require('../../assets/images/arrow-right.png')} />
-            <CeraText style={{ flex: 1, paddingRight: 20, fontWeight: 'bold' }}>
-              <CeraText>
+            <CeraTextBold style={{ paddingRight: 20, fontSize: 20, textAlign: 'right' }}>
                 Swipe RIGHT to ACCEPT the Action
-              </CeraText>
-            </CeraText>
+            </CeraTextBold>
           </View>
         </View>
       </View>
@@ -90,19 +87,19 @@ export default class Tour4 extends Component {
     let icon;
     switch (id) {
       case 'BabyHealthAndHygiene':
-        icon = require("../../assets/images/fa-icon-yellow.png")
+        icon = require("../../assets/images/fa-icon-red.png")
         break;
       case 'BabyDevelopment':
         icon = require("../../assets/images/fa-icon-blue.png")
         break;
       case 'HouseholdChores':
-        icon = require("../../assets/images/fa-icon-green.png")
+        icon = require("../../assets/images/fa-icon-orange.png")
         break;
       case 'SchedulesAndCommunication':
-        icon = require("../../assets/images/fa-icon-purple.png")
+        icon = require("../../assets/images/fa-icon-green.png")
         break;
       case 'EmotionalSupport':
-        icon = require("../../assets/images/fa-icon-orange.png")
+        icon = require("../../assets/images/fa-icon-purple.png")
         break;
     }
     return (
@@ -124,7 +121,7 @@ export default class Tour4 extends Component {
           </View>
           <View style={styles.welcomeContainer}>
             <Image
-              source={require('../../assets/images/robot-prod.png')}
+              source={require('../../assets/images/elf.png')}
               style={styles.welcomeImage}
             />
           </View>
@@ -137,8 +134,8 @@ export default class Tour4 extends Component {
                                             babyName={store.childNickname}/>}
             nopeStyle={{ borderWidth: 0, flex: 1 }}
             yupStyle={{ borderWidth: 0, flex: 1 }}
-            noView={<View><CeraText style={{ fontSize: 25, color: 'red' }}><CeraText>{"Leave this for the \"elves\""}</CeraText></CeraText></View>}
-            yupView={<View><CeraText style={{ fontSize: 30, color: 'green' }}><CeraText>{"I got this!"}</CeraText></CeraText></View>}
+            noView={<View><CeraText style={{ fontSize: 40, color: '#54489d' }}><CeraText>{"Leave this for \"the elves\""}</CeraText></CeraText></View>}
+            yupView={<View><CeraText style={{ fontSize: 45, color: '#54489d' }}><CeraText>{"I got this!"}</CeraText></CeraText></View>}
             handleYup={this.handleYup.bind(this, store)}
             handleNope={this.handleNope.bind(this, store)}
           />
@@ -161,9 +158,6 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  welcomeContainer: {
-    alignItems: 'center',
-  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -185,11 +179,14 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginHorizontal: 10,
   },
+  welcomeContainer: {
+    alignItems: 'flex-end',
+  },
   welcomeImage: {
-    width: 100,
+    width: 57,
     height: 80,
     resizeMode: 'contain',
-    marginLeft: -10,
+    marginRight: 65,
   },
   cardContainer: {
     flex: 2,
@@ -200,10 +197,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 300,
     backgroundColor: '#fff',
+    width: 325,
   },
   cardLabel: {
-    fontWeight: 'bold',
-    marginTop: 10,
+    marginTop: 35,
+    fontSize: 15,
   },
   cardContent: {
     flex: 1,
@@ -232,6 +230,7 @@ const styles = StyleSheet.create({
       },
     }),
     textAlign: 'center',
-    margin: 13,
+    marginTop: 13,
+    marginHorizontal: 13,
   },
 });

@@ -33,19 +33,19 @@ export default class ActionScreen extends React.Component {
     let icon;
     switch (id) {
       case 'BabyHealthAndHygiene':
-        icon = require("../assets/images/fa-icon-yellow.png")
+        icon = require("../assets/images/fa-icon-red.png")
         break;
       case 'BabyDevelopment':
         icon = require("../assets/images/fa-icon-blue.png")
         break;
       case 'HouseholdChores':
-        icon = require("../assets/images/fa-icon-green.png")
+        icon = require("../assets/images/fa-icon-orange.png")
         break;
       case 'SchedulesAndCommunication':
-        icon = require("../assets/images/fa-icon-purple.png")
+        icon = require("../assets/images/fa-icon-green.png")
         break;
       case 'EmotionalSupport':
-        icon = require("../assets/images/fa-icon-orange.png")
+        icon = require("../assets/images/fa-icon-purple.png")
         break;
     }
     return (

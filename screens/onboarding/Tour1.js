@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { CeraText } from '../../components/StyledText';
+import { CeraText, CeraTextBold } from '../../components/StyledText';
 import SwipeCards from 'react-native-swipe-cards';
 import { isFunction } from 'lodash';
 import { HouseholdChores } from '../../constants/focusAreas/HouseholdChores';
@@ -31,22 +31,20 @@ class Card extends Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={[styles.cardContainer, { borderColor: this.props.color }]}>
-          <CeraText style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</CeraText>
+          <CeraTextBold style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</CeraTextBold>
           <View style={styles.cardContent}>
             <View><CeraText style={styles.cardTitle}>{title}</CeraText></View>
             <View><CeraText style={styles.cardSubtitle}>{this.props.subtitle}</CeraText></View>
           </View>
         </View>
         <View style={{ flexDirection: 'row', flex: 1, marginTop: -50 }}>
-          <View style={{ flexDirection: 'column', flex: 1 }}>
+          <View style={{ flexDirection: 'column', flex: 2 }}>
             <Image
               style={{ height: 100, width: 90, marginLeft: 10, }}
               source={require('../../assets/images/arrow-left.png')} />
-            <CeraText style={{ flex: 1, paddingLeft: 20, fontWeight: 'bold' }}>
-              <CeraText>
-                Swipe LEFT to SKIP the Action & leave it for “the elves”
-              </CeraText>
-            </CeraText>
+            <CeraTextBold style={{ paddingLeft: 20, fontSize: 20 }}>
+              Swipe LEFT to SKIP the Action & leave it for “the elves”
+            </CeraTextBold>
           </View>
           <View style={{ flexDirection: 'column', flex: 1 }}>
           </View>
@@ -133,9 +131,6 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  welcomeContainer: {
-    alignItems: 'center',
-  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -157,10 +152,14 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginHorizontal: 10,
   },
+  welcomeContainer: {
+    alignItems: 'flex-end',
+  },
   welcomeImage: {
     width: 57,
     height: 80,
     resizeMode: 'contain',
+    marginRight: 65,
   },
   cardContainer: {
     flex: 2,
@@ -171,10 +170,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 300,
     backgroundColor: '#fff',
+    width: 325,
   },
   cardLabel: {
-    fontWeight: 'bold',
-    marginTop: 10,
+    marginTop: 35,
+    fontSize: 15,
   },
   cardContent: {
     flex: 1,
@@ -203,6 +203,7 @@ const styles = StyleSheet.create({
       },
     }),
     textAlign: 'center',
-    margin: 13,
+    marginTop: 13,
+    marginHorizontal: 13,
   },
 });
