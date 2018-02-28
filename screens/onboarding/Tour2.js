@@ -82,7 +82,7 @@ export default class Tour2 extends Component {
             </View>
           </View>
           <View style={styles.instructions}>
-            <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', flex: 1, alignItems: 'flex-end' }}>
               <Image
                 style={{ height: 80, width: 79 }}
                 source={require('../../assets/images/arrow-up.png')} />

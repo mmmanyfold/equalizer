@@ -9,11 +9,8 @@ import {
 
 import { CeraText, CeraTextBold } from '../../components/StyledText';
 import SwipeCards from 'react-native-swipe-cards';
-import UserRecord from '../../stores/UserRecord';
 import { has, isFunction } from 'lodash';
 import { default as focusAreas } from '../../constants/focusAreas';
-
-const store = new UserRecord();
 
 class Card extends Component {
   constructor(props) {
@@ -77,6 +74,7 @@ export default class Tour4 extends Component {
   }
 
   render() {
+    const { navigation : { state : { params: { store } } } } = this.props;
     let focusArea;
     if (has(this.props, 'navigation.state.params.store')) {
       focusArea = this.props.navigation.state.params.store.focusArea;
