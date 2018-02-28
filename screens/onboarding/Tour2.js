@@ -3,7 +3,6 @@ import {
   Image,
   Platform,
   StyleSheet,
-  Text,
   View,
   TouchableOpacity,
 } from 'react-native';
@@ -49,8 +48,11 @@ export default class Tour2 extends Component {
     header: null,
   };
 
-  handleYup(card) {
-    console.log(`Yup for ${card.title}`)
+  handleYup(store, card) {
+    const update = store.set('cardSelected', card);
+    this.props.navigation.navigate('Action', {
+      store: update,
+    });
   }
 
   handleNope(card) {
@@ -100,8 +102,8 @@ export default class Tour2 extends Component {
             yupStyle={{ borderWidth: 0, flex: 1 }}
             noView={<View></View>}
             yupView={<View></View>}
-            handleYup={this.handleYup}
-            handleNope={this.handleNope}
+            handleYup={this.handleYup.bind(this, store)}
+            handleNope={this.handleNope.bind(this, store)}
           />
         </View>
       </View>

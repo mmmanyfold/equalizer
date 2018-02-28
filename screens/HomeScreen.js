@@ -3,25 +3,17 @@ import {
   Image,
   Platform,
   StyleSheet,
-  Text,
   View,
   TouchableOpacity,
-  AsyncStorage,
 } from 'react-native';
 
 import { CeraText } from '../components/StyledText';
 import SwipeCards from 'react-native-swipe-cards';
 import UserRecord from '../stores/UserRecord';
 import { has, isFunction } from 'lodash';
-
-import { BabyDevelopment } from '../constants/focusAreas/BabyDevelopment';
-import { BabyHealthAndHygiene } from '../constants/focusAreas/BabyHealthAndHygiene';
-import { EmotionalSupport } from '../constants/focusAreas/EmotionalSupport';
-import { HouseholdChores } from '../constants/focusAreas/HouseholdChores';
-import { SchedulesAndCommunication } from '../constants/focusAreas/SchedulesAndCommunication';
+import { default as focusAreas } from '../constants/focusAreas';
 
 const store = new UserRecord();
-const focusAreas = [ BabyDevelopment, BabyHealthAndHygiene, EmotionalSupport, HouseholdChores, SchedulesAndCommunication ]
 
 class Card extends Component {
   constructor(props) {
@@ -63,12 +55,15 @@ export default class HomeScreen extends Component {
     header: null,
   };
 
-  handleYup(card) {
-    console.log(`Yup for ${card.text}`)
+  handleYup(store, card) {
+    const update = store.set('cardSelected', card);
+    this.props.navigation.navigate('Action', {
+      store: update,
+    });
   }
 
-  handleNope(card) {
-    console.log(`Nope for ${card.text}`)
+  handleNope(store, card) {
+    console.log(`Nope for ${card.text}`);
   }
 
   render() {
@@ -131,8 +126,8 @@ export default class HomeScreen extends Component {
             yupStyle={{ borderWidth: 0, flex: 1 }}
             noView={<View><CeraText style={{ fontSize: 25, color: 'red' }}><CeraText>{"Leave this for the \"elves\""}</CeraText></CeraText></View>}
             yupView={<View><CeraText style={{ fontSize: 30, color: 'green' }}><CeraText>{"I got this!"}</CeraText></CeraText></View>}
-            handleYup={this.handleYup}
-            handleNope={this.handleNope}
+            handleYup={this.handleYup.bind(this, store)}
+            handleNope={this.handleNope.bind(this, store)}
           />
         </View>
       </View>

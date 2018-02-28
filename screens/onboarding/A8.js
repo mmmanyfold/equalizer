@@ -1,19 +1,15 @@
 import React from 'react';
 import {
     Image,
-    Platform,
     ScrollView,
     StyleSheet,
-    Text,
     View,
-    Button,
-    TextInput,
     TouchableOpacity,
 } from 'react-native';
-import DatePicker from 'react-native-datepicker';
+
 import TimePicker from 'react-native-simple-time-picker';
-import { NextButton, BackButton } from '../../components/OnboardNavButtons';
 import { CeraText } from '../../components/StyledText';
+import { BackButton } from '../../components/OnboardNavButtons';
 
 export default class A8 extends React.Component {
   state = {

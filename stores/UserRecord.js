@@ -16,6 +16,7 @@ export default class UserRecord extends Record(
       friend: false,
     },
     focusArea: 'SchedulesAndCommunication',
+    cardSelected: null,
   }
 ) {
   async asyncSave(record) {

@@ -3,10 +3,12 @@ import {
   Image,
   Platform,
   StyleSheet,
-  Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { CeraText } from '../components/StyledText';
+import { default as focusAreas } from "../constants/focusAreas";
+import { isFunction } from 'lodash';
 
 export default class ActionScreen extends React.Component {
   static navigationOptions = {
@@ -14,6 +16,38 @@ export default class ActionScreen extends React.Component {
   };
 
   render() {
+    const store = this.props.navigation.state.params.store;
+    const { focusArea, childNickname, momNickname } = this.props.navigation.state.params.store;
+    const { title, who, subtitle } = this.props.navigation.state.params.store.cardSelected;
+    const { meta: { color, name, id } } = focusAreas.find(area => area.meta.id === focusArea);
+    let cardTitle;
+    if (isFunction(title)) {
+      if(who === 'baby') {
+        cardTitle = title(childNickname);
+      } else {
+        cardTitle = title(momNickname);
+      }
+    } else {
+      cardTitle = title;
+    }
+    let icon;
+    switch (id) {
+      case 'BabyHealthAndHygiene':
+        icon = require("../assets/images/fa-icon-yellow.png")
+        break;
+      case 'BabyDevelopment':
+        icon = require("../assets/images/fa-icon-blue.png")
+        break;
+      case 'HouseholdChores':
+        icon = require("../assets/images/fa-icon-green.png")
+        break;
+      case 'SchedulesAndCommunication':
+        icon = require("../assets/images/fa-icon-purple.png")
+        break;
+      case 'EmotionalSupport':
+        icon = require("../assets/images/fa-icon-orange.png")
+        break;
+    }
     return (
       <View style={styles.container}>
         <View style={styles.contentContainer}>
@@ -39,10 +73,10 @@ export default class ActionScreen extends React.Component {
           </View>
           <View style={{ flex: 1 }}>
             <View style={[styles.cardContainer, { borderColor: this.props.color }]}>
-              <CeraText style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</CeraText>
+              <CeraText style={[styles.cardLabel, { color: this.props.color }]}>{"IN PROGRESS"}</CeraText>
               <View style={styles.cardContent}>
-                <View><CeraText style={styles.cardTitle}>{title}</CeraText></View>
-                <View><CeraText style={styles.cardSubtitle}>{this.props.subtitle}</CeraText></View>
+                <View><CeraText style={styles.cardTitle}>{ cardTitle }</CeraText></View>
+                <View><CeraText style={styles.cardSubtitle}>{subtitle}</CeraText></View>
               </View>
             </View>
             <View style={{ flex: 1 }}></View>

@@ -3,10 +3,8 @@ import {
   Image,
   Platform,
   StyleSheet,
-  Text,
   View,
   TouchableOpacity,
-  AsyncStorage,
 } from 'react-native';
 
 import { CeraText } from '../../components/StyledText';
@@ -63,11 +61,14 @@ export default class Tour1 extends Component {
     header: null,
   };
 
-  handleYup(card) {
-    console.log(`Yup for ${card.title}`);
+  handleYup(store, card) {
+    const update = store.set('cardSelected', card);
+    this.props.navigation.navigate('Action', {
+      store: update,
+    });
   }
+
   handleNope(store, card) {
-    console.log(`Nope for ${card.title}`);
     this.props.navigation.navigate('Tour2', {
       store,
     });
@@ -75,7 +76,7 @@ export default class Tour1 extends Component {
 
   render() {
     const { navigation : { state : { params: { store } } } } = this.props;
-    const { meta: { color, name, id }, actionCards } = HouseholdChores;
+    const { meta: { color, name }, actionCards } = HouseholdChores;
     return (
       <View style={styles.container}>
         <View style={styles.contentContainer}>
@@ -110,7 +111,7 @@ export default class Tour1 extends Component {
             yupStyle={{ borderWidth: 0, flex: 1 }}
             noView={<View></View>}
             yupView={<View></View>}
-            handleYup={this.handleYup.bind(this)}
+            handleYup={this.handleYup.bind(this, store)}
             handleNope={this.handleNope.bind(this, store)}
           />
         </View>
