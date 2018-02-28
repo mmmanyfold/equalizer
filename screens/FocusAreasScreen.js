@@ -19,7 +19,7 @@ export default class FocusAreasScreen extends React.Component {
         <View style={styles.contentContainer}>
           <View style={styles.header}>
             <View>
-              <Text style={styles.headerTitle}>Change Focus Area</Text>
+              <Text style={styles.headerTitle}>Choose a Focus Area</Text>
             </View>
           </View>
           <View style={styles.welcomeContainer}>

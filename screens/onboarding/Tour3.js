@@ -5,8 +5,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
 } from 'react-native';
+import { FocusAreaButton } from '../../components/FocusAreaButton';
 
 export default class Tour3 extends React.Component {
   static navigationOptions = {
@@ -32,35 +32,40 @@ export default class Tour3 extends React.Component {
             <Text style={styles.focusAreasText}>{"Each week, you'll be prompted to select a new Focus Area, or continue with the same one - it's completely up to you."}</Text>
             <View style={styles.focusAreaSelection}>
               <View style={styles.focusAreaButton}>
-                <Button
+                <FocusAreaButton
+                  to={'Tour4'}
                   navigation={this.props.navigation}
                   id={"BabyHealthAndHygiene"}
                   title={"Baby Health & Hygiene"}
                   color={"#F2C94C"}/>
               </View>
               <View style={styles.focusAreaButton}>
-                <Button
+                <FocusAreaButton
+                  to={'Tour4'}
                   navigation={this.props.navigation}
                   id={"BabyDevelopment"}
                   title={"Baby Development"}
                   color={"#2D9CDB"}/>
               </View>
               <View style={styles.focusAreaButton}>
-                <Button
+                <FocusAreaButton
+                  to={'Tour4'}
                   navigation={this.props.navigation}
                   id={"HouseholdChores"}
                   title={"Household Chores"}
                   color={"#27AE60"}/>
               </View>
               <View style={styles.focusAreaButton}>
-                <Button
+                <FocusAreaButton
+                  to={'Tour4'}
                   navigation={this.props.navigation}
                   id={"SchedulesAndCommunication"}
                   title={"Schedules & Communication"}
                   color={"#BB6BD9"}/>
               </View>
               <View style={styles.focusAreaButton}>
-                <Button
+                <FocusAreaButton
+                  to={'Tour4'}
                   navigation={this.props.navigation}
                   id={"EmotionalSupport"}
                   title={"Emotional Support"}

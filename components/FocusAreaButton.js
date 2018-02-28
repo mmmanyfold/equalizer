@@ -6,7 +6,8 @@ export const FocusAreaButton = (props) => (
     onPress={() => {
       const { state: { params: { store }}} = props.navigation;
       const update = store.set('focusArea', props.id);
-      props.navigation.navigate('Main', {
+      const to = props.to || 'Main';
+      props.navigation.navigate(to, {
         store: update
       });
     }}

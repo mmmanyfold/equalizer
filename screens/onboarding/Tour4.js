@@ -11,7 +11,17 @@ import {
 
 import { MonoText } from '../../components/StyledText';
 import SwipeCards from 'react-native-swipe-cards';
+import UserRecord from '../../stores/UserRecord';
+import { has, isFunction } from 'lodash';
+
+import { BabyDevelopment } from '../../constants/focusAreas/BabyDevelopment';
+import { BabyHealthAndHygiene } from '../../constants/focusAreas/BabyHealthAndHygiene';
+import { EmotionalSupport } from '../../constants/focusAreas/EmotionalSupport';
 import { HouseholdChores } from '../../constants/focusAreas/HouseholdChores';
+import { SchedulesAndCommunication } from '../../constants/focusAreas/SchedulesAndCommunication';
+
+const store = new UserRecord();
+const focusAreas = [ BabyDevelopment, BabyHealthAndHygiene, EmotionalSupport, HouseholdChores, SchedulesAndCommunication ]
 
 class Card extends Component {
   constructor(props) {
@@ -19,7 +29,6 @@ class Card extends Component {
   }
 
   render() {
-    const { navigation : { state : { params: { store } } } } = this.props;
     let title;
     if (isFunction(this.props.title)) {
       if(this.props.who === 'baby') {
@@ -39,13 +48,26 @@ class Card extends Component {
             <View><Text style={styles.cardSubtitle}>{this.props.subtitle}</Text></View>
           </View>
         </View>
-        <View style={{ flex: 1 }}></View>
+        <View style={{ flexDirection: 'row', flex: 1, marginTop: -50 }}>
+          <View style={{ flexDirection: 'column', flex: 1 }}>
+          </View>
+          <View style={{ flexDirection: 'column', flex: 1, alignItems: 'flex-end' }}>
+            <Image
+              style={{ height: 100, width: 90, marginRight: 10, }}
+              source={require('../../assets/images/arrow-right.png')} />
+            <Text style={{ flex: 1, paddingRight: 20, fontWeight: 'bold' }}>
+              <MonoText>
+                Swipe RIGHT to ACCEPT the Action
+              </MonoText>
+            </Text>
+          </View>
+        </View>
       </View>
     )
   }
 }
 
-export default class Tour3 extends Component {
+export default class Tour4 extends Component {
   constructor(props) {
     super(props);
   }
@@ -63,7 +85,13 @@ export default class Tour3 extends Component {
   }
 
   render() {
-    const { meta: { color, name, id }, actionCards } = HouseholdChores;
+    let focusArea;
+    if (has(this.props, 'navigation.state.params.store')) {
+      focusArea = this.props.navigation.state.params.store.focusArea;
+    } else {
+      focusArea = store.focusArea;
+    }
+    const { meta: { color, name, id }, actionCards } = focusAreas.find(area => area.meta.id === focusArea);
     let icon;
     switch (id) {
       case 'BabyHealthAndHygiene':
@@ -87,7 +115,9 @@ export default class Tour3 extends Component {
         <View style={styles.contentContainer}>
           <View style={[ styles.header, { backgroundColor: color } ]}>
             <View>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('Tour2')}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('FocusAreas', {
+                store
+              })}>
                 <Image
                   source={icon}
                   style={styles.headerIcon}/>
@@ -167,13 +197,14 @@ const styles = StyleSheet.create({
     marginLeft: -10,
   },
   cardContainer: {
-    flex: 3,
+    flex: 2,
     flexDirection: 'column',
     alignItems: 'center',
     marginHorizontal: 25,
     borderWidth: 3,
     borderRadius: 10,
     height: 300,
+    backgroundColor: '#fff',
   },
   cardLabel: {
     fontWeight: 'bold',
