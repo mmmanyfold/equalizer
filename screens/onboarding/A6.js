@@ -35,11 +35,11 @@ export default class A6 extends React.Component {
   render() {
       return (
           <View style={styles.container}>
-              <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+              <View style={styles.contentContainer}>
                   <View style={styles.welcomeContainer}>
                       <Image
                           source={
-                              require('../../assets/images/robot-prod.png')
+                              require('../../assets/images/elf.png')
                           }
                           style={styles.welcomeImage}
                       />
@@ -53,7 +53,7 @@ export default class A6 extends React.Component {
 
                       <CeraText style={styles.getStartedText}>{"When was your child born?"}</CeraText>
                       <DatePicker
-                          style={{width: 200, marginTop: 20}}
+                          style={{width: 200, marginTop: 15}}
                           date={this.state.childDOB}
                           mode="date"
                           placeholder="select date"
@@ -82,7 +82,7 @@ export default class A6 extends React.Component {
                           to={'A7'} />
                       </View>
                   </View>
-              </ScrollView>
+              </View>
           </View>
       );
   }
@@ -104,21 +104,14 @@ const styles = StyleSheet.create({
     },
     welcomeImage: {
         width: 100,
-        height: 80,
+        height: 141,
         resizeMode: 'contain',
         marginTop: 3,
-        marginLeft: -10,
-    },
-    getStartedContainer: {
-        alignItems: 'center',
-        marginHorizontal: 50,
     },
     getStartedText: {
         fontSize: 17,
-        color: 'rgba(96,100,109, 1)',
-        lineHeight: 24,
+        color: '#000',
         textAlign: 'center',
-        fontWeight:'bold',
     },
     helpContainer: {
         marginTop: 15,
@@ -126,13 +119,14 @@ const styles = StyleSheet.create({
     },
     inputText: {
         fontSize: 20,
-        color: '#56CCF2',
-        fontWeight: 'bold',
+        color: '#000',
+        fontFamily: 'cera-bold',
         width: 250,
         height: 40,
         borderColor: 'gray',
         borderWidth: 1,
-        marginVertical: 20,
+        marginTop: 15,
+        marginBottom: 25,
         textAlign: 'center'
     },
 });

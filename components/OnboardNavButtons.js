@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-native';
+import { Button } from 'react-native-elements';
 // import UserRecord from '../stores/UserRecord';
 
 export const NextButton = (props) => (
@@ -23,7 +23,10 @@ export const NextButton = (props) => (
             props.navigation.navigate(props.to);
         }}
         title="Next"
-        color="#6FCF97"/>
+        fontFamily={'cera'}
+        buttonStyle={{ paddingBottom: 4, paddingTop: 9 }}
+        color="#fff"
+        backgroundColor="#ff3752"/>
 );
 
 export const BackButton = (props) => (
@@ -31,5 +34,8 @@ export const BackButton = (props) => (
         {...props}
         onPress={() => props.navigation.goBack()}
         title="Back"
-        color="#BDBDBD"/>
+        fontFamily={'cera'}
+        buttonStyle={{ paddingBottom: 4, paddingTop: 9, borderWidth: 1, borderColor: '#204392' }}
+        color="#204392"
+        backgroundColor="#fff"/>
 )

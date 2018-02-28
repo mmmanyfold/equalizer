@@ -47,9 +47,9 @@ export default class OnboardScreen extends React.Component {
             <View style={styles.buttonWrapper}>
               <Button onPress={() => this.props.navigation.navigate('A1')}
                       fontFamily={'cera'}
+                      buttonStyle={{ paddingBottom: 4, paddingTop: 9 }}
                       title="Help my partner help me"
                       disabled={true}
-                      buttonStyle={{ paddingBottom: 4, paddingTop: 9 }}
                       color="#fff">
               </Button>
               <CeraText style={{ color:"lightgray", textAlign: 'center', marginTop: 10 }}>
@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
   },
   buttonWrapper: {
     marginTop: 20,
+    marginBottom: 5,
   },
   tabBarInfoContainer: {
     position: 'absolute',

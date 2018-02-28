@@ -3,10 +3,10 @@ import {
   Image,
   StyleSheet,
   View,
-  Button,
 } from 'react-native';
 import { CeraText } from '../../components/StyledText';
 import { BackButton } from '../../components/OnboardNavButtons';
+import { Button } from 'react-native-elements';
 
 export default class A3 extends React.Component {
   static navigationOptions = {
@@ -29,7 +29,7 @@ export default class A3 extends React.Component {
           <View style={styles.welcomeContainer}>
             <Image
               source={
-                require('../../assets/images/robot-prod.png')
+                require('../../assets/images/elf.png')
               }
               style={styles.welcomeImage}
             />
@@ -37,13 +37,19 @@ export default class A3 extends React.Component {
 
           <View style={styles.helpContainer}>
             <CeraText style={styles.getStartedText}>{`Do you and ${store.momNickname} live together?`}</CeraText>
-            <View style={{flexDirection: 'row', width: 130, justifyContent: 'space-between', marginTop: 20}}>
+            <View style={{ flexDirection: 'row', width: 170, justifyContent: 'space-between', marginTop: 20 }}>
               <Button onPress={() => this.handleSelection(true)}
                       title="Yes"
-                      color="#6FCF97"/>
+                      buttonStyle={{ paddingBottom: 4, paddingTop: 9 }}
+                      fontFamily={'cera'}
+                      color="#fff"
+                      backgroundColor="#ff3752"/>
               <Button onPress={() => this.handleSelection(false)}
                       title="No"
-                      color="#56CCF2"/>
+                      buttonStyle={{ paddingBottom: 4, paddingTop: 9 }}
+                      fontFamily={'cera'}
+                      color="#fff"
+                      backgroundColor="#204392"/>
             </View>
             <View style={{flexDirection: 'row', width: 250, marginTop: 50}}>
               <BackButton navigation={this.props.navigation}/>
@@ -70,21 +76,15 @@ const styles = StyleSheet.create({
   },
   welcomeImage: {
     width: 100,
-    height: 80,
+    height: 141,
     resizeMode: 'contain',
     marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
   },
   getStartedText: {
     fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
+    color: '#000',
     lineHeight: 24,
     textAlign: 'center',
-    fontWeight:'bold',
   },
   helpContainer: {
     marginTop: 15,

@@ -43,7 +43,7 @@ export default class A7 extends React.Component {
                     <View style={styles.welcomeContainer}>
                         <Image
                             source={
-                                require('../../assets/images/robot-prod.png')
+                                require('../../assets/images/elf.png')
                             }
                             style={styles.welcomeImage}
                         />
@@ -130,21 +130,15 @@ const styles = StyleSheet.create({
     },
     welcomeImage: {
         width: 100,
-        height: 80,
+        height: 141,
         resizeMode: 'contain',
         marginTop: 3,
-        marginLeft: -10,
-    },
-    getStartedContainer: {
-        alignItems: 'center',
-        marginHorizontal: 50,
     },
     getStartedText: {
         fontSize: 17,
-        color: 'rgba(96,100,109, 1)',
+        color: '#000',
         lineHeight: 24,
         textAlign: 'center',
-        fontWeight:'bold',
     },
     selectionWrapper: {
       flexDirection: 'row',
@@ -152,9 +146,8 @@ const styles = StyleSheet.create({
       marginBottom: 10,
     },
     selectionText: {
-        fontSize: 17,
-        color: 'rgba(96,100,109, 1)',
-        lineHeight: 24,
+        fontSize: 18,
+        color: '#000',
         marginLeft: 10,
     },
     helpContainer: {

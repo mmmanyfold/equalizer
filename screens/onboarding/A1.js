@@ -42,7 +42,7 @@ export default class A1 extends React.Component {
           <View style={styles.welcomeContainer}>
             <Image
               source={
-                require('../../assets/images/robot-prod.png')
+                require('../../assets/images/elf.png')
               }
               style={styles.welcomeImage}
             />
@@ -87,10 +87,9 @@ const styles = StyleSheet.create({
   },
   welcomeImage: {
     width: 100,
-    height: 80,
+    height: 141,
     resizeMode: 'contain',
     marginTop: 3,
-    marginLeft: -10,
   },
   getStartedContainer: {
     alignItems: 'center',
@@ -98,10 +97,9 @@ const styles = StyleSheet.create({
   },
   getStartedText: {
     fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
+    color: '#000',
     lineHeight: 24,
     textAlign: 'center',
-    fontWeight:'bold',
   },
   helpContainer: {
     marginTop: 15,
@@ -109,8 +107,8 @@ const styles = StyleSheet.create({
   },
   inputText: {
     fontSize: 20,
-    color: '#56CCF2',
-    fontWeight: 'bold',
+    color: '#000',
+    fontFamily: 'cera-bold',
     width: 250,
     height: 40,
     borderColor: 'gray',
