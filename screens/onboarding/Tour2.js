@@ -79,12 +79,12 @@ export default class Tour2 extends Component {
               <Text style={styles.headerTitle}>{name}</Text>
             </View>
           </View>
-          <View style={{ position: 'absolute', top: 130, left: 5, flexDirection: 'row', alignItems: 'flex-end', flex: 1, marginTop: -50 }}>
+          <View style={styles.instructions}>
             <Image
               style={{ height: 80, width: 79 }}
               source={require('../../assets/images/arrow-up.png')} />
             <Text style={{ flex: 1, paddingBottom: 15, fontWeight: 'bold' }}>
-              <MonoText>Tap to change Focus Area</MonoText>
+              <MonoText>Tap to change the Focus Area</MonoText>
             </Text>
           </View>
           <View style={styles.welcomeContainer}>
@@ -151,6 +151,21 @@ const styles = StyleSheet.create({
     height: 80,
     resizeMode: 'contain',
     marginLeft: -10,
+  },
+  instructions: {
+    position: 'absolute',
+    ...Platform.select({
+      ios: {
+        top: 80,
+      },
+      android: {
+        top: 50,
+      },
+    }),
+    left: 5,
+    flexDirection: 'row', 
+    alignItems: 'flex-end',
+    flex: 1,
   },
   cardContainer: {
     flex: 3,
