@@ -9,19 +9,10 @@ import {
   AsyncStorage,
 } from 'react-native';
 
-import { MonoText } from '../components/StyledText';
+import { MonoText } from '../../components/StyledText';
 import SwipeCards from 'react-native-swipe-cards';
-import UserRecord from '../stores/UserRecord';
-import { has, isFunction } from 'lodash';
-
-import { BabyDevelopment } from '../constants/focusAreas/BabyDevelopment';
-import { BabyHealthAndHygiene } from '../constants/focusAreas/BabyHealthAndHygiene';
-import { EmotionalSupport } from '../constants/focusAreas/EmotionalSupport';
-import { HouseholdChores } from '../constants/focusAreas/HouseholdChores';
-import { SchedulesAndCommunication } from '../constants/focusAreas/SchedulesAndCommunication';
-
-const store = new UserRecord();
-const focusAreas = [ BabyDevelopment, BabyHealthAndHygiene, EmotionalSupport, HouseholdChores, SchedulesAndCommunication ]
+import { isFunction } from 'lodash';
+import { HouseholdChores } from '../../constants/focusAreas/HouseholdChores';
 
 class Card extends Component {
   constructor(props) {
@@ -48,17 +39,26 @@ class Card extends Component {
             <View><Text style={styles.cardSubtitle}>{this.props.subtitle}</Text></View>
           </View>
         </View>
-        <View style={{ flex: 1 }}></View>
+        <View style={{ flexDirection: 'row', flex: 1, marginTop: -50 }}>
+          <View style={{ flexDirection: 'column', flex: 1 }}>
+            <Image
+              style={{ height: 100, width: 90 }}
+              source={require('../../assets/images/arrow-left.png')} />
+            <Text style={{ flex: 1, paddingLeft: 20, fontWeight: 'bold' }}>
+              <MonoText>
+                Swipe LEFT to SKIP the Action & leave it for “the elves”
+              </MonoText>
+            </Text>
+          </View>
+          <View style={{ flexDirection: 'column', flex: 1 }}>
+          </View>
+        </View>
       </View>
     )
   }
 }
 
-export default class HomeScreen extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+export default class Tour1 extends Component {
   static navigationOptions = {
     header: null,
   };
@@ -66,47 +66,23 @@ export default class HomeScreen extends Component {
   handleYup(card) {
     console.log(`Yup for ${card.text}`)
   }
-
   handleNope(card) {
-    console.log(`Nope for ${card.text}`)
+    console.log(`Yup for ${card.text}`)
   }
 
   render() {
-    let focusArea;
-    if (has(this.props, 'navigation.state.params.store')) {
-      focusArea = this.props.navigation.state.params.store.focusArea;
-    } else {
-      focusArea = store.focusArea;
-    }
-    const { meta: { color, name, id }, actionCards } = focusAreas.find(area => area.meta.id === focusArea);
-    let icon;
-    switch (id) {
-      case 'BabyHealthAndHygiene':
-        icon = require("../assets/images/fa-icon-yellow.png")
-        break;
-      case 'BabyDevelopment':
-        icon = require("../assets/images/fa-icon-blue.png")
-        break;
-      case 'HouseholdChores':
-        icon = require("../assets/images/fa-icon-green.png")
-        break;
-      case 'SchedulesAndCommunication':
-        icon = require("../assets/images/fa-icon-purple.png")
-        break;
-      case 'EmotionalSupport':
-        icon = require("../assets/images/fa-icon-orange.png")
-        break;
-    }
+    const { navigation : { state : { params: { store } } } } = this.props;
+    const { meta: { color, name, id }, actionCards } = HouseholdChores;
     return (
       <View style={styles.container}>
         <View style={styles.contentContainer}>
           <View style={[ styles.header, { backgroundColor: color } ]}>
             <View>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('FocusAreas', {
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Tour2', {
                 store
               })}>
                 <Image
-                  source={icon}
+                  source={require('../../assets/images/fa-icon-green.png')}
                   style={styles.headerIcon}/>
               </TouchableOpacity>
             </View>
@@ -116,7 +92,7 @@ export default class HomeScreen extends Component {
           </View>
           <View style={styles.welcomeContainer}>
             <Image
-              source={require('../assets/images/robot-prod.png')}
+              source={require('../../assets/images/robot-prod.png')}
               style={styles.welcomeImage}
             />
           </View>
@@ -129,8 +105,8 @@ export default class HomeScreen extends Component {
                                             babyName={store.childNickname}/>}
             nopeStyle={{ borderWidth: 0, flex: 1 }}
             yupStyle={{ borderWidth: 0, flex: 1 }}
-            noView={<View><Text style={{ fontSize: 25, color: 'red' }}><MonoText>{"Leave this for the \"elves\""}</MonoText></Text></View>}
-            yupView={<View><Text style={{ fontSize: 30, color: 'green' }}><MonoText>{"I got this!"}</MonoText></Text></View>}
+            noView={<View></View>}
+            yupView={<View></View>}
             handleYup={this.handleYup}
             handleNope={this.handleNope}
           />
@@ -184,7 +160,7 @@ const styles = StyleSheet.create({
     marginLeft: -10,
   },
   cardContainer: {
-    flex: 3,
+    flex: 2,
     flexDirection: 'column',
     alignItems: 'center',
     marginHorizontal: 25,

@@ -9,7 +9,10 @@ import A5 from '../screens/onboarding/A5';
 import A6 from '../screens/onboarding/A6';
 import A7 from '../screens/onboarding/A7';
 import A8 from '../screens/onboarding/A8';
-import A9 from '../screens/onboarding/A9';
+import Tour1 from '../screens/onboarding/Tour1';
+import Tour2 from '../screens/onboarding/Tour2';
+import Tour3 from '../screens/onboarding/Tour3';
+import Tour4 from '../screens/onboarding/Tour4';
 import MainNavigation from './MainNavigation';
 
 const OnboardStackNavigator = StackNavigator(
@@ -41,8 +44,17 @@ const OnboardStackNavigator = StackNavigator(
     A8: {
       screen: A8,
     },
-    A9: {
-      screen: A9,
+    Tour1: {
+      screen: Tour1,
+    },
+    Tour2: {
+      screen: Tour2,
+    },
+    Tour3: {
+      screen: Tour3,
+    },
+    Tour4: {
+      screen: Tour4,
     },
     'Main App Demo': {
       screen: MainNavigation,

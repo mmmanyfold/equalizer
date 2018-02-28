@@ -24,7 +24,6 @@ export default class A5 extends React.Component {
     });
   }
 
-
     render() {
     const { navigation : { state : { params: { store } } } } = this.props;
     return (

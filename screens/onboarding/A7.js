@@ -106,7 +106,7 @@ export default class A7 extends React.Component {
                           <NextButton
                               navigation={this.props.navigation}
                               saveAction={this.saveAction.bind(this)}
-                              to={"A8"}
+                              to={"Tour1"}
                           />
                         </View>
                     </View>

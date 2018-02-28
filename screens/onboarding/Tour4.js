@@ -9,19 +9,9 @@ import {
   AsyncStorage,
 } from 'react-native';
 
-import { MonoText } from '../components/StyledText';
+import { MonoText } from '../../components/StyledText';
 import SwipeCards from 'react-native-swipe-cards';
-import UserRecord from '../stores/UserRecord';
-import { has, isFunction } from 'lodash';
-
-import { BabyDevelopment } from '../constants/focusAreas/BabyDevelopment';
-import { BabyHealthAndHygiene } from '../constants/focusAreas/BabyHealthAndHygiene';
-import { EmotionalSupport } from '../constants/focusAreas/EmotionalSupport';
-import { HouseholdChores } from '../constants/focusAreas/HouseholdChores';
-import { SchedulesAndCommunication } from '../constants/focusAreas/SchedulesAndCommunication';
-
-const store = new UserRecord();
-const focusAreas = [ BabyDevelopment, BabyHealthAndHygiene, EmotionalSupport, HouseholdChores, SchedulesAndCommunication ]
+import { HouseholdChores } from '../../constants/focusAreas/HouseholdChores';
 
 class Card extends Component {
   constructor(props) {
@@ -29,6 +19,7 @@ class Card extends Component {
   }
 
   render() {
+    const { navigation : { state : { params: { store } } } } = this.props;
     let title;
     if (isFunction(this.props.title)) {
       if(this.props.who === 'baby') {
@@ -54,7 +45,7 @@ class Card extends Component {
   }
 }
 
-export default class HomeScreen extends Component {
+export default class Tour3 extends Component {
   constructor(props) {
     super(props);
   }
@@ -72,29 +63,23 @@ export default class HomeScreen extends Component {
   }
 
   render() {
-    let focusArea;
-    if (has(this.props, 'navigation.state.params.store')) {
-      focusArea = this.props.navigation.state.params.store.focusArea;
-    } else {
-      focusArea = store.focusArea;
-    }
-    const { meta: { color, name, id }, actionCards } = focusAreas.find(area => area.meta.id === focusArea);
+    const { meta: { color, name, id }, actionCards } = HouseholdChores;
     let icon;
     switch (id) {
       case 'BabyHealthAndHygiene':
-        icon = require("../assets/images/fa-icon-yellow.png")
+        icon = require("../../assets/images/fa-icon-yellow.png")
         break;
       case 'BabyDevelopment':
-        icon = require("../assets/images/fa-icon-blue.png")
+        icon = require("../../assets/images/fa-icon-blue.png")
         break;
       case 'HouseholdChores':
-        icon = require("../assets/images/fa-icon-green.png")
+        icon = require("../../assets/images/fa-icon-green.png")
         break;
       case 'SchedulesAndCommunication':
-        icon = require("../assets/images/fa-icon-purple.png")
+        icon = require("../../assets/images/fa-icon-purple.png")
         break;
       case 'EmotionalSupport':
-        icon = require("../assets/images/fa-icon-orange.png")
+        icon = require("../../assets/images/fa-icon-orange.png")
         break;
     }
     return (
@@ -102,9 +87,7 @@ export default class HomeScreen extends Component {
         <View style={styles.contentContainer}>
           <View style={[ styles.header, { backgroundColor: color } ]}>
             <View>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('FocusAreas', {
-                store
-              })}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Tour2')}>
                 <Image
                   source={icon}
                   style={styles.headerIcon}/>
@@ -116,7 +99,7 @@ export default class HomeScreen extends Component {
           </View>
           <View style={styles.welcomeContainer}>
             <Image
-              source={require('../assets/images/robot-prod.png')}
+              source={require('../../assets/images/robot-prod.png')}
               style={styles.welcomeImage}
             />
           </View>
@@ -191,7 +174,6 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 10,
     height: 300,
-    backgroundColor: '#fff',
   },
   cardLabel: {
     fontWeight: 'bold',
