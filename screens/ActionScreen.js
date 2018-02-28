@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { CeraText } from '../components/StyledText';
 
 export default class ActionScreen extends React.Component {
   static navigationOptions = {
@@ -27,7 +28,7 @@ export default class ActionScreen extends React.Component {
               </TouchableOpacity>
             </View>
             <View>
-              <Text style={styles.headerTitle}>{name}</Text>
+              <CeraText style={styles.headerTitle}>{name}</CeraText>
             </View>
           </View>
           <View style={styles.welcomeContainer}>
@@ -38,10 +39,10 @@ export default class ActionScreen extends React.Component {
           </View>
           <View style={{ flex: 1 }}>
             <View style={[styles.cardContainer, { borderColor: this.props.color }]}>
-              <Text style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</Text>
+              <CeraText style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</CeraText>
               <View style={styles.cardContent}>
-                <View><Text style={styles.cardTitle}>{title}</Text></View>
-                <View><Text style={styles.cardSubtitle}>{this.props.subtitle}</Text></View>
+                <View><CeraText style={styles.cardTitle}>{title}</CeraText></View>
+                <View><CeraText style={styles.cardSubtitle}>{this.props.subtitle}</CeraText></View>
               </View>
             </View>
             <View style={{ flex: 1 }}></View>

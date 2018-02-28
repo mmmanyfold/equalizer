@@ -9,7 +9,7 @@ import {
     CheckBox,
     Switch,
 } from 'react-native';
-
+import { CeraText } from '../../components/StyledText';
 import { BackButton, NextButton } from "../../components/OnboardNavButtons";
 
 export default class A7 extends React.Component {
@@ -52,8 +52,8 @@ export default class A7 extends React.Component {
                     </View>
 
                     <View style={styles.helpContainer}>
-                        <Text style={styles.getStartedText}>{`Does anyone help you and ${store.momNickname} with ${store.childNickname}'s care?`}</Text>
-                        <Text style={{marginVertical: 20}}>{"Select all that apply:"}</Text>
+                        <CeraText style={styles.getStartedText}>{`Does anyone help you and ${store.momNickname} with ${store.childNickname}'s care?`}</CeraText>
+                        <CeraText style={{marginVertical: 20}}>{"Select all that apply:"}</CeraText>
                         <View style={{flexDirection: 'column'}}>
                           <View style={styles.selectionWrapper}>
                              { Platform.OS === 'ios' ?
@@ -67,7 +67,7 @@ export default class A7 extends React.Component {
                                 onValueChange={this.handleValueChange.bind(this, 'nanny')}
                               />
                              }
-                             <Text style={styles.selectionText}>Nanny</Text>
+                             <CeraText style={styles.selectionText}>Nanny</CeraText>
                           </View>
 
                           <View style={styles.selectionWrapper}>
@@ -82,7 +82,7 @@ export default class A7 extends React.Component {
                                       onValueChange={this.handleValueChange.bind(this, 'familyMember')}
                                   />
                               }
-                              <Text style={styles.selectionText}>Family member(s)</Text>
+                              <CeraText style={styles.selectionText}>Family member(s)</CeraText>
                           </View>
 
                           <View style={styles.selectionWrapper}>
@@ -97,7 +97,7 @@ export default class A7 extends React.Component {
                                       onValueChange={this.handleValueChange.bind(this, 'friend')}
                                   />
                               }
-                              <Text style={styles.selectionText}>Friend(s)</Text>
+                              <CeraText style={styles.selectionText}>Friend(s)</CeraText>
                           </View>
                         </View>
 

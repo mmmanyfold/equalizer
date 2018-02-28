@@ -8,7 +8,7 @@ import {
   View,
   Button,
 } from 'react-native';
-
+import { CeraText } from '../../components/StyledText';
 import { BackButton } from '../../components/OnboardNavButtons';
 
 export default class A4 extends React.Component {
@@ -38,7 +38,7 @@ export default class A4 extends React.Component {
           </View>
 
           <View style={styles.helpContainer}>
-            <Text style={styles.getStartedText}>{"Do you work from home?"}</Text>
+            <CeraText style={styles.getStartedText}>{"Do you work from home?"}</CeraText>
             <View style={{flexDirection: 'row', width: 130, justifyContent: 'space-between', marginTop: 20}}>
               <Button onPress={() => this.handleSelection(true)}
                       title="Yes"

@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { MonoText } from '../../components/StyledText';
+import { CeraText } from '../../components/StyledText';
 import SwipeCards from 'react-native-swipe-cards';
 import { isFunction } from 'lodash';
 import { HouseholdChores } from '../../constants/focusAreas/HouseholdChores';
@@ -32,10 +32,10 @@ class Card extends Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={[styles.cardContainer, { borderColor: this.props.color }]}>
-          <Text style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</Text>
+          <CeraText style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</CeraText>
           <View style={styles.cardContent}>
-            <View><Text style={styles.cardTitle}>{title}</Text></View>
-            <View><Text style={styles.cardSubtitle}>{this.props.subtitle}</Text></View>
+            <View><CeraText style={styles.cardTitle}>{title}</CeraText></View>
+            <View><CeraText style={styles.cardSubtitle}>{this.props.subtitle}</CeraText></View>
           </View>
         </View>
         <View style={{ flex: 1 }}></View>
@@ -76,16 +76,16 @@ export default class Tour2 extends Component {
               </TouchableOpacity>
             </View>
             <View>
-              <Text style={styles.headerTitle}>{name}</Text>
+              <CeraText style={styles.headerTitle}>{name}</CeraText>
             </View>
           </View>
           <View style={styles.instructions}>
             <Image
               style={{ height: 80, width: 79 }}
               source={require('../../assets/images/arrow-up.png')} />
-            <Text style={{ flex: 1, paddingBottom: 15, fontWeight: 'bold' }}>
-              <MonoText>Tap to change the Focus Area</MonoText>
-            </Text>
+            <CeraText style={{ flex: 1, paddingBottom: 15, fontWeight: 'bold' }}>
+              <CeraText>Tap to change the Focus Area</CeraText>
+            </CeraText>
           </View>
           <View style={styles.welcomeContainer}>
           </View>
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
       },
     }),
     left: 5,
-    flexDirection: 'row', 
+    flexDirection: 'row',
     alignItems: 'flex-end',
     flex: 1,
   },

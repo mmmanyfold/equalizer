@@ -12,7 +12,7 @@ import {
 
 import DatePicker from 'react-native-datepicker'
 import { NextButton, BackButton } from '../../components/OnboardNavButtons';
-import { MonoText } from '../../components/StyledText';
+import { CeraText } from '../../components/StyledText';
 
 export default class A6 extends React.Component {
   static navigationOptions = {
@@ -48,13 +48,13 @@ export default class A6 extends React.Component {
                       />
                   </View>
                   <View style={styles.helpContainer}>
-                      <Text style={styles.getStartedText}>{"What's your child's name (or nickname)?"}</Text>
-                      <TextInput
+                      <CeraText style={styles.getStartedText}>{"What's your child's name (or nickname)?"}</CeraText>
+                      <CeraTextInput
                           style={styles.inputText}
                           onChangeText={this.handleNicknameInput.bind(this)}
                           value={this.state.userFirstName} />
 
-                      <Text style={styles.getStartedText}>{"When was your child born?"}</Text>
+                      <CeraText style={styles.getStartedText}>{"When was your child born?"}</CeraText>
                       <DatePicker
                           style={{width: 200, marginTop: 20}}
                           date={this.state.childDOB}

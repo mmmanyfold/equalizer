@@ -8,7 +8,7 @@ import {
   View,
   TextInput,
 } from 'react-native';
-
+import { CeraText } from '../../components/StyledText';
 import { NextButton, BackButton } from '../../components/OnboardNavButtons';
 
 import UserRecord from '../../stores/UserRecord';
@@ -52,12 +52,12 @@ export default class A1 extends React.Component {
           </View>
 
           <View style={styles.getStartedContainer}>
-            <Text style={styles.getStartedText}>{"First, let's make things personal."}</Text>
+            <CeraText style={styles.getStartedText}>{"First, let's make things personal."}</CeraText>
           </View>
 
           <View style={styles.helpContainer}>
-            <Text style={styles.getStartedText}>{"What's your first name (or nickname)?"}</Text>
-            <TextInput
+            <CeraText style={styles.getStartedText}>{"What's your first name (or nickname)?"}</CeraText>
+            <CeraTextInput
               style={styles.inputText}
               onChangeText={this.handleTextInput.bind(this)}
               value={this.state.userFirstName} />

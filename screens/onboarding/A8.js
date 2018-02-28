@@ -10,11 +10,10 @@ import {
     TextInput,
     TouchableOpacity,
 } from 'react-native';
-
 import DatePicker from 'react-native-datepicker';
 import TimePicker from 'react-native-simple-time-picker';
 import { NextButton, BackButton } from '../../components/OnboardNavButtons';
-import { MonoText } from '../../components/StyledText';
+import { CeraText } from '../../components/StyledText';
 
 export default class A8 extends React.Component {
   state = {
@@ -40,8 +39,8 @@ export default class A8 extends React.Component {
                   </View>
 
                   <View style={styles.getStartedContainer}>
-                      <Text style={styles.getStartedText}>At the same time each day, we’ll send a notification reminding you to take Action.</Text>
-                      <Text style={styles.tabBarInfoText}>Choose a time after work when you are most likely to be at home. You can change this later or turn notifications off/on in Settings.</Text>
+                      <CeraText style={styles.getStartedText}>At the same time each day, we’ll send a notification reminding you to take Action.</CeraText>
+                      <CeraText style={styles.tabBarInfoText}>Choose a time after work when you are most likely to be at home. You can change this later or turn notifications off/on in Settings.</CeraText>
                   </View>
 
                   <View style={{marginTop: 10}}>
@@ -52,7 +51,7 @@ export default class A8 extends React.Component {
                       />
                       <View>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('Main App Demo')}>
-                          <Text style={styles.finishButton}>{"Finish Setup!"}</Text>
+                          <CeraText style={styles.finishButton}>{"Finish Setup!"}</CeraText>
                         </TouchableOpacity>
                       </View>
                       <BackButton navigation={this.props.navigation}/>

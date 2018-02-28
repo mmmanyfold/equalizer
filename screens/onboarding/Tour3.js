@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import { FocusAreaButton } from '../../components/FocusAreaButton';
+import { CeraText } from '../../components/StyledText';
 
 export default class Tour3 extends React.Component {
   static navigationOptions = {
@@ -19,7 +20,7 @@ export default class Tour3 extends React.Component {
         <View style={styles.contentContainer}>
           <View style={styles.header}>
             <View>
-              <Text style={styles.headerTitle}>Choose a Focus Area</Text>
+              <CeraText style={styles.headerTitle}>Choose a Focus Area</CeraText>
             </View>
           </View>
           <View style={styles.welcomeContainer}>
@@ -29,7 +30,7 @@ export default class Tour3 extends React.Component {
             />
           </View>
           <View style={styles.focusAreasContainer}>
-            <Text style={styles.focusAreasText}>{"Each week, you'll be prompted to select a new Focus Area, or continue with the same one - it's completely up to you."}</Text>
+            <CeraText style={styles.focusAreasText}>{"Each week, you'll be prompted to select a new Focus Area, or continue with the same one - it's completely up to you."}</CeraText>
             <View style={styles.focusAreaSelection}>
               <View style={styles.focusAreaButton}>
                 <FocusAreaButton

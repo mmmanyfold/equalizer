@@ -9,7 +9,7 @@ import {
   AsyncStorage,
 } from 'react-native';
 
-import { MonoText } from '../components/StyledText';
+import { CeraText } from '../components/StyledText';
 import SwipeCards from 'react-native-swipe-cards';
 import UserRecord from '../stores/UserRecord';
 import { has, isFunction } from 'lodash';
@@ -42,10 +42,10 @@ class Card extends Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={[styles.cardContainer, { borderColor: this.props.color }]}>
-          <Text style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</Text>
+          <CeraText style={[styles.cardLabel, { color: this.props.color }]}>{"TODAY'S ACTION"}</CeraText>
           <View style={styles.cardContent}>
-            <View><Text style={styles.cardTitle}>{title}</Text></View>
-            <View><Text style={styles.cardSubtitle}>{this.props.subtitle}</Text></View>
+            <View><CeraText style={styles.cardTitle}>{title}</CeraText></View>
+            <View><CeraText style={styles.cardSubtitle}>{this.props.subtitle}</CeraText></View>
           </View>
         </View>
         <View style={{ flex: 1 }}></View>
@@ -111,7 +111,7 @@ export default class HomeScreen extends Component {
               </TouchableOpacity>
             </View>
             <View>
-              <Text style={styles.headerTitle}>{name}</Text>
+              <CeraText style={styles.headerTitle}>{name}</CeraText>
             </View>
           </View>
           <View style={styles.welcomeContainer}>
@@ -129,8 +129,8 @@ export default class HomeScreen extends Component {
                                             babyName={store.childNickname}/>}
             nopeStyle={{ borderWidth: 0, flex: 1 }}
             yupStyle={{ borderWidth: 0, flex: 1 }}
-            noView={<View><Text style={{ fontSize: 25, color: 'red' }}><MonoText>{"Leave this for the \"elves\""}</MonoText></Text></View>}
-            yupView={<View><Text style={{ fontSize: 30, color: 'green' }}><MonoText>{"I got this!"}</MonoText></Text></View>}
+            noView={<View><CeraText style={{ fontSize: 25, color: 'red' }}><CeraText>{"Leave this for the \"elves\""}</CeraText></CeraText></View>}
+            yupView={<View><CeraText style={{ fontSize: 30, color: 'green' }}><CeraText>{"I got this!"}</CeraText></CeraText></View>}
             handleYup={this.handleYup}
             handleNope={this.handleNope}
           />

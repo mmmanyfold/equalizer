@@ -8,7 +8,7 @@ import {
   View,
   TextInput,
 } from 'react-native';
-
+import { CeraText } from '../../components/StyledText';
 import { NextButton, BackButton } from '../../components/OnboardNavButtons';
 
 export default class A2 extends React.Component {
@@ -50,8 +50,8 @@ export default class A2 extends React.Component {
           </View>
 
           <View style={styles.helpContainer}>
-            <Text style={styles.getStartedText}>{"What's the child's mom's first name (or nickname)?"}</Text>
-            <TextInput
+            <CeraText style={styles.getStartedText}>{"What's the child's mom's first name (or nickname)?"}</CeraText>
+            <CeraTextInput
               style={styles.inputText}
               onChangeText={this.handleTextInput.bind(this)}
               value={this.state.momNickname} />

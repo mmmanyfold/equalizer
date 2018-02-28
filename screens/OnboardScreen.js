@@ -9,6 +9,7 @@ import {
   View,
   Button,
 } from 'react-native';
+import { CeraText } from '../components/StyledText';
 
 export default class OnboardScreen extends React.Component {
   static navigationOptions = {
@@ -29,11 +30,11 @@ export default class OnboardScreen extends React.Component {
           </View>
 
           <View style={styles.getStartedContainer}>
-            <Text style={styles.titleText}>Equalizer</Text>
+            <CeraText style={styles.titleText}>Equalizer</CeraText>
           </View>
 
           <View style={styles.helpContainer}>
-            <Text style={styles.getStartedText}>I want to...</Text>
+            <CeraText style={styles.getStartedText}>I want to...</CeraText>
             <View style={styles.buttonWrapper}>
               <Button onPress={() => this.props.navigation.navigate('A1')}
                       title="Learn how to help my partner"
@@ -45,13 +46,13 @@ export default class OnboardScreen extends React.Component {
                       disabled={true}
                       color="lightgray">
               </Button>
-              <Text style={{color:"lightgray",textAlign: 'center'}}>(coming soon)</Text>
+              <CeraText style={{color:"lightgray",textAlign: 'center'}}>(coming soon)</CeraText>
             </View>
           </View>
         </View>
         <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.getStartedText}>{"* Próximamente en español."}</Text>
-          <Text style={styles.getStartedText}>{"(Coming soon in Spanish)"}</Text>
+          <CeraText style={styles.getStartedText}>{"* Próximamente en español."}</CeraText>
+          <CeraText style={styles.getStartedText}>{"(Coming soon in Spanish)"}</CeraText>
         </View>
       </View>
     );
