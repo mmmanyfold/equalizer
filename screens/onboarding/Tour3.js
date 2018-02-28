@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Button,
 } from 'react-native';
 
 export default class Tour3 extends React.Component {

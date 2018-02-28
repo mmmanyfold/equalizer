@@ -6,7 +6,6 @@ import {
   Text,
   View,
   TouchableOpacity,
-  AsyncStorage,
 } from 'react-native';
 
 import { MonoText } from '../../components/StyledText';
@@ -51,16 +50,16 @@ export default class Tour2 extends Component {
   };
 
   handleYup(card) {
-    console.log(`Yup for ${card.text}`)
+    console.log(`Yup for ${card.title}`)
   }
 
   handleNope(card) {
-    console.log(`Nope for ${card.text}`)
+    console.log(`Nope for ${card.title}`)
   }
 
   render() {
     const { navigation : { state : { params: { store } } } } = this.props;
-    const { meta: { color, name, id }, actionCards } = HouseholdChores;
+    const { meta: { color, name }, actionCards } = HouseholdChores;
     return (
       <View style={styles.container}>
         <View style={styles.contentContainer}>

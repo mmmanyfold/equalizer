@@ -64,10 +64,13 @@ export default class Tour1 extends Component {
   };
 
   handleYup(card) {
-    console.log(`Yup for ${card.text}`)
+    console.log(`Yup for ${card.title}`);
   }
-  handleNope(card) {
-    console.log(`Yup for ${card.text}`)
+  handleNope(store, card) {
+    console.log(`Nope for ${card.title}`);
+    this.props.navigation.navigate('Tour2', {
+      store,
+    });
   }
 
   render() {
@@ -107,8 +110,8 @@ export default class Tour1 extends Component {
             yupStyle={{ borderWidth: 0, flex: 1 }}
             noView={<View></View>}
             yupView={<View></View>}
-            handleYup={this.handleYup}
-            handleNope={this.handleNope}
+            handleYup={this.handleYup.bind(this)}
+            handleNope={this.handleNope.bind(this, store)}
           />
         </View>
       </View>
