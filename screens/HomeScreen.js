@@ -111,7 +111,7 @@ export default class HomeScreen extends Component {
           </View>
           <View style={styles.welcomeContainer}>
             <Image
-              source={require('../assets/images/robot-prod.png')}
+              source={require('../assets/images/elf.png')}
               style={styles.welcomeImage}
             />
           </View>
@@ -124,8 +124,8 @@ export default class HomeScreen extends Component {
                                             babyName={store.childNickname}/>}
             nopeStyle={{ borderWidth: 0, flex: 1 }}
             yupStyle={{ borderWidth: 0, flex: 1 }}
-            noView={<View><CeraText style={{ fontSize: 25, color: 'red' }}><CeraText>{"Leave this for the \"elves\""}</CeraText></CeraText></View>}
-            yupView={<View><CeraText style={{ fontSize: 30, color: 'green' }}><CeraText>{"I got this!"}</CeraText></CeraText></View>}
+            noView={<View><CeraText style={{ fontSize: 40, color: '#54489d' }}><CeraText>{"Leave this for \"the elves\""}</CeraText></CeraText></View>}
+            yupView={<View><CeraText style={{ fontSize: 45, color: '#54489d' }}><CeraText>{"I got this!"}</CeraText></CeraText></View>}
             handleYup={this.handleYup.bind(this, store)}
             handleNope={this.handleNope.bind(this, store)}
           />
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     }),
   },
   welcomeContainer: {
-    alignItems: 'center',
+    alignItems: 'flex-end',
   },
   header: {
     flexDirection: 'row',
@@ -173,10 +173,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   welcomeImage: {
-    width: 100,
+    width: 57,
     height: 80,
     resizeMode: 'contain',
-    marginLeft: -10,
+    marginRight: 65,
   },
   cardContainer: {
     flex: 3,

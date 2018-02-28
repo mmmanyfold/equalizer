@@ -10,11 +10,11 @@ import OnboardNavigation from '../navigation/OnboardNavigation';
 
 export default TabNavigator(
   {
-    "Onboarding Demo": {
-      screen: OnboardNavigation,
-    },
     "Main App Demo": {
       screen: MainNavigation,
+    },
+    "Onboarding Demo": {
+      screen: OnboardNavigation,
     },
   },
   {

@@ -2,7 +2,7 @@ export const SchedulesAndCommunication = {
   meta: {
     id: "SchedulesAndCommunication",
     name: "Schedules & Communication",
-    color: "#BB6BD9",
+    color: "#3cbb8b",
     description: "",
   },
   actionCards: [{

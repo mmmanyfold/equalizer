@@ -96,7 +96,7 @@ export default class Tour1 extends Component {
           </View>
           <View style={styles.welcomeContainer}>
             <Image
-              source={require('../../assets/images/robot-prod.png')}
+              source={require('../../assets/images/elf.png')}
               style={styles.welcomeImage}
             />
           </View>
@@ -158,10 +158,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   welcomeImage: {
-    width: 100,
+    width: 57,
     height: 80,
     resizeMode: 'contain',
-    marginLeft: -10,
   },
   cardContainer: {
     flex: 2,

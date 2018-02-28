@@ -53,7 +53,7 @@ export default class A4 extends React.Component {
                       color="#fff"
                       backgroundColor="#204392"/>
             </View>
-            <View style={{flexDirection: 'row', width: 250, marginTop: 50}}>
+            <View style={{flexDirection: 'row', width: 280, marginTop: 50}}>
               <BackButton navigation={this.props.navigation}/>
             </View>
           </View>
@@ -83,9 +83,8 @@ const styles = StyleSheet.create({
     marginTop: 3,
   },
   getStartedText: {
-    fontSize: 17,
+    fontSize: 18,
     color: '#000',
-    lineHeight: 24,
     textAlign: 'center',
   },
   helpContainer: {

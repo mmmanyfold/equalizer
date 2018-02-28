@@ -2,7 +2,7 @@ export const EmotionalSupport = {
   meta: {
     id: "EmotionalSupport",
     name: "Emotional Support",
-    color: "#F2994A",
+    color: "#bc9fca",
     description: "",
   },
   actionCards: [{

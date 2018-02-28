@@ -99,7 +99,7 @@ export default class A7 extends React.Component {
                           </View>
                         </View>
 
-                        <View style={{flexDirection: 'row', width: 250, justifyContent: 'space-between', marginTop: 30}}>
+                        <View style={{flexDirection: 'row', width: 280, justifyContent: 'space-between', marginTop: 30}}>
                           <BackButton navigation={this.props.navigation}/>
                           <NextButton
                               navigation={this.props.navigation}
@@ -135,9 +135,8 @@ const styles = StyleSheet.create({
         marginTop: 3,
     },
     getStartedText: {
-        fontSize: 17,
+        fontSize: 18,
         color: '#000',
-        lineHeight: 24,
         textAlign: 'center',
     },
     selectionWrapper: {

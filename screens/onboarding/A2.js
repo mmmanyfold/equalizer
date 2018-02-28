@@ -53,7 +53,7 @@ export default class A2 extends React.Component {
               style={styles.inputText}
               onChangeText={this.handleTextInput.bind(this)}
               value={this.state.momNickname} />
-            <View style={{flexDirection: 'row', width: 250, justifyContent: 'space-between', marginTop: 20}}>
+            <View style={{flexDirection: 'row', width: 280, justifyContent: 'space-between', marginTop: 20}}>
               <BackButton navigation={this.props.navigation}/>
               <NextButton
                 saveAction={this.saveAction.bind(this)}
@@ -93,9 +93,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 50,
   },
   getStartedText: {
-    fontSize: 17,
+    fontSize: 18,
     color: '#000',
-    lineHeight: 24,
     textAlign: 'center',
   },
   helpContainer: {

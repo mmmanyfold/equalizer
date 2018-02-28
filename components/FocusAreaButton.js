@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-native';
+import { Button } from 'react-native-elements';
 
 export const FocusAreaButton = (props) => (
   <Button
@@ -12,5 +12,9 @@ export const FocusAreaButton = (props) => (
       });
     }}
     {...props}
+    buttonStyle={{ paddingBottom: 4, paddingTop: 9 }}
+    textStyle={{ textAlign: 'center' }}
+    fontFamily={'cera'}
+    fontSize={15}
   />
 );

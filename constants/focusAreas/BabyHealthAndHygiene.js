@@ -2,7 +2,7 @@ export const BabyHealthAndHygiene = {
   meta: {
     id: "BabyHealthAndHygiene",
     name: "Baby Health & Hygiene",
-    color: "#F2C94C",
+    color: "#ff3752",
     description: "",
   },
   actionCards: [{

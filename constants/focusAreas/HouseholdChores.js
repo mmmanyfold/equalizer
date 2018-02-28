@@ -2,7 +2,7 @@ export const HouseholdChores = {
   meta: {
     id: "HouseholdChores",
     name: "Household Chores",
-    color: "#27AE60",
+    color: "#f68a4f",
     description: "",
   },
   actionCards: [{
