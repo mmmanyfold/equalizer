@@ -7,6 +7,7 @@ import Colors from '../constants/Colors';
 
 import MainNavigation from '../navigation/MainNavigation';
 import OnboardNavigation from '../navigation/OnboardNavigation';
+import StatsScreen from '../screens/StatsScreen'
 
 export default TabNavigator(
   {
@@ -15,6 +16,9 @@ export default TabNavigator(
     },
     "Onboarding Demo": {
       screen: OnboardNavigation,
+    },
+    "Stats Demo": {
+      screen: StatsScreen,
     },
   },
   {
@@ -33,7 +37,7 @@ export default TabNavigator(
           case 'Onboarding Demo':
             iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
             break;
-          case 'Settings':
+          case 'Stats Demo':
             iconName =
               Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options';
         }

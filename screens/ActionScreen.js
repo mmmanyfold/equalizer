@@ -88,7 +88,9 @@ export default class ActionScreen extends Component {
                  containerStyle={{backgroundColor: '#54489d'}}
                  childrenWrapperStyle={{backgroundColor: '#54489d'}}
                  animationDuration={200}>
-          <CeraText style={{ color: "#fff", fontSize: 60 }}>Way to go!</CeraText>
+          <Image source={require("../assets/images/logo-balance-white.gif")}
+                 style={styles.logo} />
+          <CeraText style={{ color: "#fff", fontSize: 50 }}>Way to go!</CeraText>
         </Overlay>
         <View style={styles.contentContainer}>
           <View style={[ styles.header, { backgroundColor: color } ]}>
@@ -149,6 +151,7 @@ const options = {
   },
   text: {
     fontSize: 40,
+    fontFamily: 'cera',
     color: '#54489d',
     marginHorizontal: 7,
   }
@@ -196,6 +199,11 @@ const styles = StyleSheet.create({
     height: 80,
     resizeMode: 'contain',
     marginRight: 65,
+  },
+  logo: {
+    width: 150,
+    height: 150,
+    marginBottom: 20,
   },
   cardContainer: {
     flex: 3,
