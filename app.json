@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "share-the-care",
+    "name": "equalizer",
     "description": "An app that helps new fathers understand and achieve equally shared parenting.",
-    "slug": "share-the-care",
+    "slug": "equalizer",
     "privacy": "public",
     "sdkVersion": "25.0.0",
     "platforms": ["ios", "android"],

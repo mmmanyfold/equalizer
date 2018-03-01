@@ -12,9 +12,10 @@ export const FocusAreaButton = (props) => (
       });
     }}
     {...props}
-    buttonStyle={{ paddingBottom: 10, paddingTop: 15 }}
+    buttonStyle={{ ...Platform.select({ ios: { paddingBottom: 10, paddingTop: 15 } }) }}
     textStyle={{ textAlign: 'center' }}
     fontFamily={'cera'}
     fontSize={18}
   />
 );
+  

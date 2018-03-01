@@ -84,7 +84,6 @@ export default class ActionScreen extends Component {
         <Overlay visible={this.state.showOverlay}
                  animationType={"bounceIn"}
                  onClose={this.onOverlayClose.bind(this, store)}
-                 closeOnTouchOutside animationType="zoomIn"
                  containerStyle={{backgroundColor: '#54489d'}}
                  childrenWrapperStyle={{backgroundColor: '#54489d'}}
                  animationDuration={200}>
@@ -107,7 +106,7 @@ export default class ActionScreen extends Component {
               <CeraText style={styles.headerTitle}>{name}</CeraText>
             </View>
           </View>
-          <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, alignItems: 'center' }}>
             <View style={[styles.cardContainer, { borderColor: color }]}>
               <CeraTextBold style={[styles.cardLabel, { color: color }]}>{"IN PROGRESS"}</CeraTextBold>
               <View style={styles.cardContent}>
@@ -170,9 +169,6 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  welcomeContainer: {
-    alignItems: 'flex-end',
-  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -193,12 +189,6 @@ const styles = StyleSheet.create({
     fontSize: 21,
     color: '#fff',
     marginHorizontal: 10,
-  },
-  welcomeImage: {
-    width: 57,
-    height: 80,
-    resizeMode: 'contain',
-    marginRight: 65,
   },
   logo: {
     width: 150,

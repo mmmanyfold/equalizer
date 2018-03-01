@@ -24,7 +24,7 @@ export default class StatsScreen extends React.Component {
           </View>
           <View style={styles.welcomeContainer}>
             <Image
-              source={require('../assets/images/stats.png')}
+              source={require('../assets/images/stats-preview.png')}
               style={styles.welcomeImage}
             />
           </View>
@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2F2F2',
   },
   contentContainer: {
-    flex: 1,
     ...Platform.select({
       ios: {
         paddingTop: 30,
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
       },
     }),
-    backgroundColor: '#204392',
+    backgroundColor: '#54489d',
   },
   headerTitle: {
     fontSize: 21,
@@ -65,13 +64,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   welcomeContainer: {
-    flex: 1,
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   welcomeImage: {
-    width: 400,
-    height: 785,
-    resizeMode: 'contain',
+    width: 450,
+    height: 535,
   },
   focusAreasContainer: {
     flexDirection: 'column',
