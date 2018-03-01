@@ -173,8 +173,7 @@ const styles = StyleSheet.create({
     width: 325,
   },
   cardLabel: {
-    marginTop: 35,
-    fontSize: 15,
+    fontSize: 20,
   },
   cardContent: {
     flex: 1,

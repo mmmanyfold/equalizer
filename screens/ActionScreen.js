@@ -4,15 +4,36 @@ import {
   Platform,
   StyleSheet,
   TouchableOpacity,
+  TouchableHighlight,
   View,
 } from 'react-native';
-import { CeraText } from '../components/StyledText';
+
+import { Stopwatch } from 'react-native-stopwatch-timer';
+import { CeraText, CeraTextBold, CeraTextItalic } from '../components/StyledText';
 import { default as focusAreas } from "../constants/focusAreas";
 import { isFunction } from 'lodash';
 
 export default class ActionScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      stopwatchStart: true,
+      stopwatchReset: false,
+    };
+    this.toggleStopwatch = this.toggleStopwatch.bind(this);
+  }
+
   static navigationOptions = {
     header: null,
+  };
+
+  toggleStopwatch(store) {
+    this.setState({stopwatchStart: !this.state.stopwatchStart, stopwatchReset: false});
+    this.props.navigation.navigate('DoneScreen', {store});
+  }
+
+  getFormattedTime(time) {
+      this.currentTime = time;
   };
 
   render() {
@@ -65,21 +86,37 @@ export default class ActionScreen extends React.Component {
               <CeraText style={styles.headerTitle}>{name}</CeraText>
             </View>
           </View>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={require('../assets/images/robot-prod.png')}
-              style={styles.welcomeImage}
-            />
-          </View>
           <View style={{ flex: 1 }}>
-            <View style={[styles.cardContainer, { borderColor: this.props.color }]}>
-              <CeraText style={[styles.cardLabel, { color: this.props.color }]}>{"IN PROGRESS"}</CeraText>
+            <View style={[styles.cardContainer, { borderColor: color }]}>
+              <CeraTextBold style={[styles.cardLabel, { color: color }]}>{"IN PROGRESS"}</CeraTextBold>
               <View style={styles.cardContent}>
-                <View><CeraText style={styles.cardTitle}>{ cardTitle }</CeraText></View>
-                <View><CeraText style={styles.cardSubtitle}>{subtitle}</CeraText></View>
+                <CeraText style={styles.cardTitle}>{ cardTitle }</CeraText>
+                <CeraText style={styles.cardSubtitle}>{subtitle}</CeraText>
+                <CeraTextItalic style={{ textAlign: 'center' }}>
+                  Tap this card for helpful tips
+                </CeraTextItalic>
               </View>
             </View>
-            <View style={{ flex: 1 }}></View>
+            <View style={{ flex: 1, alignItems:'center', marginTop: 50 }}>
+              <Stopwatch laps msecs start={this.state.stopwatchStart}
+                reset={this.state.stopwatchReset}
+                msecs={false}
+                options={options}
+                getTime={this.getFormattedTime} />
+              <TouchableHighlight onPress={this.toggleStopwatch} style={{marginTop: 40}}>
+                <View style={{ backgroundColor: color, borderRadius: 5, paddingHorizontal: 13, paddingTop: 4 }}>
+                  <CeraText style={{ fontSize: 35, color: '#fff' }}>
+                    {!this.state.stopwatchStart ? "Start" : "DONE"}
+                  </CeraText>
+                </View>
+              </TouchableHighlight>
+              <TouchableHighlight onPress={this.toggleStopwatch.bind(this, store)} style={{marginTop: 45}}>
+                <CeraText style={{ color: color, fontSize: 25 }}>
+                  {"Didn't get to it"}
+                </CeraText>
+              </TouchableHighlight>
+            </View>
+            <View style={{ flex: 2 }}></View>
           </View>
         </View>
       </View>
@@ -87,10 +124,21 @@ export default class ActionScreen extends React.Component {
   }
 }
 
+const options = {
+  container: {
+    borderRadius: 5,
+  },
+  text: {
+    fontSize: 40,
+    color: '#54489d',
+    marginHorizontal: 7,
+  }
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F2F2F2',
   },
   contentContainer: {
     flex: 1,
@@ -101,7 +149,7 @@ const styles = StyleSheet.create({
     }),
   },
   welcomeContainer: {
-    alignItems: 'center',
+    alignItems: 'flex-end',
   },
   header: {
     flexDirection: 'row',
@@ -125,23 +173,24 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   welcomeImage: {
-    width: 100,
+    width: 57,
     height: 80,
     resizeMode: 'contain',
-    marginLeft: -10,
+    marginRight: 65,
   },
   cardContainer: {
     flex: 3,
     flexDirection: 'column',
     alignItems: 'center',
     marginHorizontal: 25,
+    marginTop: 5,
     borderWidth: 3,
     borderRadius: 10,
-    height: 300,
+    backgroundColor: '#fff',
+    width: 325,
   },
   cardLabel: {
-    fontWeight: 'bold',
-    marginTop: 10,
+    fontSize: 20,
   },
   cardContent: {
     flex: 1,
@@ -151,10 +200,10 @@ const styles = StyleSheet.create({
   cardTitle: {
     ...Platform.select({
       ios: {
-        fontSize: 40,
+        fontSize: 30,
       },
       android: {
-        fontSize: 30,
+        fontSize: 20,
       },
     }),
     textAlign: 'center',
@@ -163,13 +212,14 @@ const styles = StyleSheet.create({
   cardSubtitle: {
     ...Platform.select({
       ios: {
-        fontSize: 25,
+        fontSize: 20,
       },
       android: {
-        fontSize: 20,
+        fontSize: 17,
       },
     }),
     textAlign: 'center',
     margin: 13,
+    marginHorizontal: 13,
   },
 });

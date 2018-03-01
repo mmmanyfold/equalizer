@@ -55,10 +55,11 @@ export default class HomeScreen extends Component {
     header: null,
   };
 
-  handleYup(store, card) {
-    const update = store.set('cardSelected', card);
+  handleYup(store, focusArea, card) {
+    const updateCard = store.set('cardSelected', card);
+    const updateStore = updateCard.set('focusArea', focusArea);
     this.props.navigation.navigate('Action', {
-      store: update,
+      store: updateStore,
     });
   }
 
@@ -126,7 +127,7 @@ export default class HomeScreen extends Component {
             yupStyle={{ borderWidth: 0, flex: 1 }}
             noView={<View><CeraText style={{ fontSize: 40, color: '#54489d' }}><CeraText>{"Leave this for \"the elves\""}</CeraText></CeraText></View>}
             yupView={<View><CeraText style={{ fontSize: 45, color: '#54489d' }}><CeraText>{"I got this!"}</CeraText></CeraText></View>}
-            handleYup={this.handleYup.bind(this, store)}
+            handleYup={this.handleYup.bind(this, store, focusArea)}
             handleNope={this.handleNope.bind(this, store)}
           />
         </View>
@@ -190,8 +191,7 @@ const styles = StyleSheet.create({
     width: 325,
   },
   cardLabel: {
-    marginTop: 35,
-    fontSize: 15,
+    fontSize: 20,
   },
   cardContent: {
     flex: 1,
