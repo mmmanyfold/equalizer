@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   headerTitle: {
-    fontSize: 20,
+    fontSize: 21,
     color: '#fff',
     marginHorizontal: 10,
   },

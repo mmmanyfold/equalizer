@@ -28,8 +28,9 @@ export default class ActionScreen extends React.Component {
   };
 
   toggleStopwatch(store) {
+    console.log('got here')
     this.setState({stopwatchStart: !this.state.stopwatchStart, stopwatchReset: false});
-    this.props.navigation.navigate('DoneScreen', {store});
+    this.props.navigation.navigate('Main', {store});
   }
 
   getFormattedTime(time) {
@@ -103,14 +104,14 @@ export default class ActionScreen extends React.Component {
                 msecs={false}
                 options={options}
                 getTime={this.getFormattedTime} />
-              <TouchableHighlight onPress={this.toggleStopwatch} style={{marginTop: 40}}>
+              <TouchableHighlight onPress={() => this.toggleStopwatch(store)} style={{marginTop: 40}}>
                 <View style={{ backgroundColor: color, borderRadius: 5, paddingHorizontal: 13, paddingTop: 4 }}>
                   <CeraText style={{ fontSize: 35, color: '#fff' }}>
                     {!this.state.stopwatchStart ? "Start" : "DONE"}
                   </CeraText>
                 </View>
               </TouchableHighlight>
-              <TouchableHighlight onPress={this.toggleStopwatch.bind(this, store)} style={{marginTop: 45}}>
+              <TouchableHighlight onPress={() => this.toggleStopwatch(store)} style={{marginTop: 45}}>
                 <CeraText style={{ color: color, fontSize: 25 }}>
                   {"Didn't get to it"}
                 </CeraText>
@@ -168,7 +169,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   headerTitle: {
-    fontSize: 20,
+    fontSize: 21,
     color: '#fff',
     marginHorizontal: 10,
   },

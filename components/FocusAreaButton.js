@@ -12,9 +12,9 @@ export const FocusAreaButton = (props) => (
       });
     }}
     {...props}
-    buttonStyle={{ paddingBottom: 4, paddingTop: 9 }}
+    buttonStyle={{ paddingBottom: 10, paddingTop: 15 }}
     textStyle={{ textAlign: 'center' }}
     fontFamily={'cera'}
-    fontSize={15}
+    fontSize={18}
   />
 );

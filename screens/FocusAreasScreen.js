@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
   },
   headerTitle: {
-    fontSize: 20,
+    fontSize: 21,
     color: '#fff',
     marginHorizontal: 10,
   },
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   focusAreaButton: {
-    width: '50%',
-    marginBottom: 27,
+    width: '100%',
+    marginBottom: 25,
   },
 });
