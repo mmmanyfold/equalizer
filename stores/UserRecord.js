@@ -4,11 +4,11 @@ import { AsyncStorage } from "react-native";
 export default class UserRecord extends Record(
   {
     userNickname: 'Rob',
-    momNickname: 'Rox',
+    momNickname: 'Lana',
     liveTogether: true,
     userWorksFromHome: false,
     momWorksFromHome: true,
-    childNickname: 'Frances',
+    childNickname: 'Olivia',
     childDOB: '2017-02-25',
     otherCaregivers: {
       nanny: true,

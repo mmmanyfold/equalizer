@@ -75,7 +75,7 @@ export default class A1 extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F2F2F2',
   },
   contentContainer: {
     flex: 1,
@@ -107,10 +107,11 @@ const styles = StyleSheet.create({
   inputText: {
     fontSize: 20,
     color: '#000',
-    fontFamily: 'cera-bold',
+    backgroundColor: '#fff',
+    fontFamily: 'cera',
     width: 250,
     height: 40,
-    borderColor: 'gray',
+    borderColor: '#4F4F4F',
     borderWidth: 1,
     marginTop: 20,
     textAlign: 'center'

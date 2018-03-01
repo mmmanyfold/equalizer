@@ -61,7 +61,7 @@ export default class A8 extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#F2F2F2',
     },
     contentContainer: {
         flex: 1,

@@ -80,7 +80,7 @@ export default class OnboardScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F2F2F2',
   },
   contentContainer: {
     flex: 1,
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: 10,
+    marginBottom: 20,
   },
   welcomeImage: {
     width: 180,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 38,
-    color: '#ff3752',
+    color: '#204392',
     letterSpacing: 1.2,
   },
   getStartedText: {

@@ -146,7 +146,7 @@ export default class Tour4 extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F2F2F2',
   },
   contentContainer: {
     flex: 1,

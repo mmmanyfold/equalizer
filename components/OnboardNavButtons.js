@@ -35,7 +35,7 @@ export const BackButton = (props) => (
         onPress={() => props.navigation.goBack()}
         title="Back"
         fontFamily={'cera'}
-        buttonStyle={{ paddingBottom: 4, paddingTop: 9, borderWidth: 1, borderColor: '#204392' }}
+        buttonStyle={{ paddingBottom: 4, paddingTop: 9, borderWidth: 2, borderColor: '#204392' }}
         color="#204392"
-        backgroundColor="#fff"/>
+        backgroundColor="#F2F2F2"/>
 )

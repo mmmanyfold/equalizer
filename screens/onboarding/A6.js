@@ -68,7 +68,11 @@ export default class A6 extends React.Component {
                                   marginLeft: 0
                               },
                               dateInput: {
-                                  marginLeft: 36
+                                  marginLeft: 36,
+                                  borderWidth: 1,
+                                  borderColor: '#4F4F4F',
+                                  backgroundColor: '#fff',
+                                  fontFamily: 'cera',
                               },
                           }}
                           onDateChange={(childDOB) => this.setState({ childDOB })}
@@ -91,7 +95,7 @@ export default class A6 extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#F2F2F2',
     },
     contentContainer: {
         flex: 1,
@@ -120,10 +124,11 @@ const styles = StyleSheet.create({
     inputText: {
         fontSize: 20,
         color: '#000',
-        fontFamily: 'cera-bold',
+        backgroundColor: '#fff',
+        fontFamily: 'cera',
         width: 250,
         height: 40,
-        borderColor: 'gray',
+        borderColor: '#4F4F4F',
         borderWidth: 1,
         marginTop: 15,
         marginBottom: 25,
