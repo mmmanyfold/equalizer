@@ -13,6 +13,7 @@ import Tour1 from '../screens/onboarding/Tour1';
 import Tour2 from '../screens/onboarding/Tour2';
 import Tour3 from '../screens/onboarding/Tour3';
 import Tour4 from '../screens/onboarding/Tour4';
+import Tour5 from '../screens/onboarding/Tour5';
 import MainNavigation from './MainNavigation';
 
 const OnboardStackNavigator = StackNavigator(
@@ -55,6 +56,9 @@ const OnboardStackNavigator = StackNavigator(
     },
     Tour4: {
       screen: Tour4,
+    },
+    Tour5: {
+      screen: Tour5,
     },
     'Main App Demo': {
       screen: MainNavigation,

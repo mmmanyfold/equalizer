@@ -49,10 +49,7 @@ export default class Tour2 extends Component {
   };
 
   handleYup(store, card) {
-    const update = store.set('cardSelected', card);
-    this.props.navigation.navigate('Action', {
-      store: update,
-    });
+    console.log(`Nope for ${card.title}`)
   }
 
   handleNope(card) {

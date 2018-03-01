@@ -72,7 +72,6 @@ export default class A6 extends React.Component {
                                   borderWidth: 1,
                                   borderColor: '#4F4F4F',
                                   backgroundColor: '#fff',
-                                  fontFamily: 'cera',
                               },
                           }}
                           onDateChange={(childDOB) => this.setState({ childDOB })}
