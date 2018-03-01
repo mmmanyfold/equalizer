@@ -3,9 +3,10 @@ import {
   Image,
   Platform,
   StyleSheet,
+  TouchableWithoutFeedback,
   TouchableOpacity,
-  TouchableHighlight,
   View,
+  Modal,
 } from 'react-native';
 
 import Overlay from 'react-native-modal-overlay';
@@ -20,29 +21,29 @@ export default class ActionScreen extends Component {
     currentTime: 0,
     stopwatchStart: true,
     stopwatchReset: false,
-    showOverlay: false,
+    modalVisible: false,
   };
 
   static navigationOptions = {
     header: null,
   };
 
+  closeModal(store) {
+    this.setState({
+      stopwatchStart: false,
+      stopwatchReset: true,
+      modalVisible: false,
+    });
+    this.props.navigation.navigate('Main', {
+      store,
+    });
+  }
+
   toggleStopwatch() {
     this.setState({
       stopwatchStart: !this.state.stopwatchStart,
       stopwatchReset: false,
-      showOverlay: true,
-    });
-  }
-
-  onOverlayClose(store) {
-    this.setState({
-      stopwatchStart: false,
-      stopwatchReset: true,
-      showOverlay: false,
-    });
-    this.props.navigation.navigate('Main', {
-      store,
+      modalVisible: true,
     });
   }
 
@@ -81,16 +82,18 @@ export default class ActionScreen extends Component {
     }
     return (
       <View style={styles.container}>
-        <Overlay visible={this.state.showOverlay}
-                 animationType={"bounceIn"}
-                 onClose={this.onOverlayClose.bind(this, store)}
-                 containerStyle={{backgroundColor: '#54489d'}}
-                 childrenWrapperStyle={{backgroundColor: '#54489d'}}
-                 animationDuration={200}>
-          <Image source={require("../assets/images/logo-balance-white.gif")}
-                 style={styles.logo} />
-          <CeraText style={{ color: "#fff", fontSize: 50 }}>Way to go!</CeraText>
-        </Overlay>
+        <Modal
+            animationType="slide"
+            transparent={false}
+            visible={this.state.modalVisible}>
+            <TouchableWithoutFeedback onPress={() => this.closeModal(store)}>
+              <View style={{ backgroundColor: '#54489d', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Image source={require("../assets/images/logo-wiggle-white.gif")}
+                       style={styles.logo} />
+                <CeraText style={{ color: "#fff", fontSize: 50 }}>Way to go!</CeraText>
+              </View>
+            </TouchableWithoutFeedback>
+        </Modal>
         <View style={styles.contentContainer}>
           <View style={[ styles.header, { backgroundColor: color } ]}>
             <View>
@@ -122,19 +125,20 @@ export default class ActionScreen extends Component {
                 msecs={false}
                 options={options}
               />
-              <TouchableHighlight
+              <TouchableOpacity
                 onPress={() => this.toggleStopwatch(store)}
                 style={{ backgroundColor: color, borderRadius: 5, paddingHorizontal: 13, paddingTop: 4 }}>
                 <CeraText
                   style={{ fontSize: 35, color: '#fff' }}>
                   {!this.state.stopwatchStart ? "START" : "DONE"}
                 </CeraText>
-              </TouchableHighlight>
-              <TouchableHighlight onPress={this.toggleStopwatch.bind(this, store)} style={{ marginTop: 45 }}>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => this.closeModal(store)}
+                                  style={{ marginTop: 45 }}>
                 <CeraText style={{ color: color, fontSize: 25 }}>
                   {"Didn't get to it"}
                 </CeraText>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
             <View style={{ flex: 2 }}></View>
           </View>

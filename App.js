@@ -54,7 +54,7 @@ export default class App extends React.Component {
         require('./assets/images/logo-circle-blue-white.png'),
         require('./assets/images/logo-circle-red.png'),
         require('./assets/images/logo-circle-black.png'),
-        require('./assets/images/logo-balance-white.gif'),
+        require('./assets/images/logo-wiggle-white.gif'),
         require('./assets/images/stats-preview.png'),
       ]),
       Font.loadAsync({

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-native-elements';
+import { Platform } from 'react-native';
 
 export const FocusAreaButton = (props) => (
   <Button
@@ -18,4 +19,3 @@ export const FocusAreaButton = (props) => (
     fontSize={18}
   />
 );
-  
