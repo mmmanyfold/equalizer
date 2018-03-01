@@ -36,7 +36,6 @@ export default class ActionScreen extends Component {
   }
 
   onOverlayClose(store) {
-    console.log('got here');
     this.setState({
       stopwatchStart: false,
       stopwatchReset: true,
