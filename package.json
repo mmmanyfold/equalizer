@@ -16,6 +16,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
     "react-native-datepicker": "^1.6.0",
     "react-native-elements": "^0.19.0",
+    "react-native-modal-overlay": "^1.2.3",
     "react-native-simple-time-picker": "^0.2.0",
     "react-native-stopwatch-timer": "0.0.20",
     "react-native-swipe-cards": "^0.1.1",

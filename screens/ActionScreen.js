@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   Image,
   Platform,
@@ -8,34 +8,44 @@ import {
   View,
 } from 'react-native';
 
+import Overlay from 'react-native-modal-overlay';
 import { Stopwatch } from 'react-native-stopwatch-timer';
 import { CeraText, CeraTextBold, CeraTextItalic } from '../components/StyledText';
 import { default as focusAreas } from "../constants/focusAreas";
 import { isFunction } from 'lodash';
 
-export default class ActionScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      stopwatchStart: true,
-      stopwatchReset: false,
-    };
-    this.toggleStopwatch = this.toggleStopwatch.bind(this);
-  }
+export default class ActionScreen extends Component {
+
+  state = {
+    currentTime: 0,
+    stopwatchStart: true,
+    stopwatchReset: false,
+    showOverlay: false,
+  };
 
   static navigationOptions = {
     header: null,
   };
 
-  toggleStopwatch(store) {
-    console.log('got here')
-    this.setState({stopwatchStart: !this.state.stopwatchStart, stopwatchReset: false});
-    this.props.navigation.navigate('Main', {store});
+  toggleStopwatch() {
+    this.setState({
+      stopwatchStart: !this.state.stopwatchStart,
+      stopwatchReset: false,
+      showOverlay: true,
+    });
   }
 
-  getFormattedTime(time) {
-      this.currentTime = time;
-  };
+  onOverlayClose(store) {
+    console.log('got here');
+    this.setState({
+      stopwatchStart: false,
+      stopwatchReset: true,
+      showOverlay: false,
+    });
+    this.props.navigation.navigate('Main', {
+      store,
+    });
+  }
 
   render() {
     const store = this.props.navigation.state.params.store;
@@ -72,6 +82,15 @@ export default class ActionScreen extends React.Component {
     }
     return (
       <View style={styles.container}>
+        <Overlay visible={this.state.showOverlay}
+                 animationType={"bounceIn"}
+                 onClose={this.onOverlayClose.bind(this, store)}
+                 closeOnTouchOutside animationType="zoomIn"
+                 containerStyle={{backgroundColor: '#54489d'}}
+                 childrenWrapperStyle={{backgroundColor: '#54489d'}}
+                 animationDuration={200}>
+          <CeraText style={{ color: "#fff", fontSize: 60 }}>Way to go!</CeraText>
+        </Overlay>
         <View style={styles.contentContainer}>
           <View style={[ styles.header, { backgroundColor: color } ]}>
             <View>
@@ -100,18 +119,18 @@ export default class ActionScreen extends React.Component {
             </View>
             <View style={{ flex: 1, alignItems:'center', marginTop: 50 }}>
               <Stopwatch laps msecs start={this.state.stopwatchStart}
-                reset={this.state.stopwatchReset}
                 msecs={false}
                 options={options}
-                getTime={this.getFormattedTime} />
-              <TouchableHighlight onPress={() => this.toggleStopwatch(store)} style={{marginTop: 40}}>
-                <View style={{ backgroundColor: color, borderRadius: 5, paddingHorizontal: 13, paddingTop: 4 }}>
-                  <CeraText style={{ fontSize: 35, color: '#fff' }}>
-                    {!this.state.stopwatchStart ? "Start" : "DONE"}
-                  </CeraText>
-                </View>
+              />
+              <TouchableHighlight
+                onPress={() => this.toggleStopwatch(store)}
+                style={{ backgroundColor: color, borderRadius: 5, paddingHorizontal: 13, paddingTop: 4 }}>
+                <CeraText
+                  style={{ fontSize: 35, color: '#fff' }}>
+                  {!this.state.stopwatchStart ? "START" : "DONE"}
+                </CeraText>
               </TouchableHighlight>
-              <TouchableHighlight onPress={() => this.toggleStopwatch(store)} style={{marginTop: 45}}>
+              <TouchableHighlight onPress={this.toggleStopwatch.bind(this, store)} style={{ marginTop: 45 }}>
                 <CeraText style={{ color: color, fontSize: 25 }}>
                   {"Didn't get to it"}
                 </CeraText>

@@ -28,7 +28,6 @@ export default class ActionScreen extends React.Component {
   };
 
   toggleStopwatch(store) {
-    console.log('got here')
     this.setState({stopwatchStart: !this.state.stopwatchStart, stopwatchReset: false});
     this.props.navigation.navigate('Main', {store});
   }
