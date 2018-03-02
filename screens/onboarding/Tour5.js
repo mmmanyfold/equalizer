@@ -152,6 +152,7 @@ const options = {
   },
   text: {
     fontSize: 40,
+    fontFamily: 'cera',
     color: '#54489d',
     marginHorizontal: 7,
   }
