@@ -9,7 +9,6 @@ import {
   Modal,
 } from 'react-native';
 
-import Overlay from 'react-native-modal-overlay';
 import { Stopwatch } from 'react-native-stopwatch-timer';
 import { CeraText, CeraTextBold, CeraTextItalic } from '../components/StyledText';
 import { default as focusAreas } from "../constants/focusAreas";

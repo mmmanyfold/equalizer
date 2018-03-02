@@ -3,9 +3,10 @@ import {
   Image,
   Platform,
   StyleSheet,
+  TouchableWithoutFeedback,
   TouchableOpacity,
-  TouchableHighlight,
   View,
+  Modal,
 } from 'react-native';
 
 import { Stopwatch } from 'react-native-stopwatch-timer';
@@ -13,28 +14,36 @@ import { CeraText, CeraTextBold, CeraTextItalic } from '../../components/StyledT
 import { default as focusAreas } from "../../constants/focusAreas";
 import { isFunction } from 'lodash';
 
-export default class ActionScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      stopwatchStart: true,
-      stopwatchReset: false,
-    };
-    this.toggleStopwatch = this.toggleStopwatch.bind(this);
-  }
+export default class Tour5 extends React.Component {
+  state = {
+    currentTime: 0,
+    stopwatchStart: true,
+    stopwatchReset: false,
+    modalVisible: false,
+  };
 
   static navigationOptions = {
     header: null,
   };
 
-  toggleStopwatch(store) {
-    this.setState({stopwatchStart: !this.state.stopwatchStart, stopwatchReset: false});
-    this.props.navigation.navigate('Main', {store});
+  closeModal(store) {
+    this.setState({
+      stopwatchStart: false,
+      stopwatchReset: true,
+      modalVisible: false,
+    });
+    this.props.navigation.navigate('A8', {
+      store,
+    });
   }
 
-  getFormattedTime(time) {
-      this.currentTime = time;
-  };
+  toggleStopwatch() {
+    this.setState({
+      stopwatchStart: !this.state.stopwatchStart,
+      stopwatchReset: false,
+      modalVisible: true,
+    });
+  }
 
   render() {
     const store = this.props.navigation.state.params.store;
@@ -71,6 +80,18 @@ export default class ActionScreen extends React.Component {
     }
     return (
       <View style={styles.container}>
+        <Modal
+            animationType="slide"
+            transparent={false}
+            visible={this.state.modalVisible}>
+            <TouchableWithoutFeedback onPress={() => this.closeModal(store)}>
+              <View style={{ backgroundColor: '#54489d', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Image source={require("../../assets/images/logo-wiggle-white.gif")}
+                       style={styles.logo} />
+                <CeraText style={{ color: "#fff", fontSize: 50 }}>Way to go!</CeraText>
+              </View>
+            </TouchableWithoutFeedback>
+        </Modal>
         <View style={styles.contentContainer}>
           <View style={[ styles.header, { backgroundColor: color } ]}>
             <View>
@@ -86,7 +107,7 @@ export default class ActionScreen extends React.Component {
               <CeraText style={styles.headerTitle}>{name}</CeraText>
             </View>
           </View>
-          <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, alignItems: 'center' }}>
             <View style={[styles.cardContainer, { borderColor: color }]}>
               <CeraTextBold style={[styles.cardLabel, { color: color }]}>{"IN PROGRESS"}</CeraTextBold>
               <View style={styles.cardContent}>
@@ -99,22 +120,23 @@ export default class ActionScreen extends React.Component {
             </View>
             <View style={{ flex: 1, alignItems:'center', marginTop: 50 }}>
               <Stopwatch laps msecs start={this.state.stopwatchStart}
-                reset={this.state.stopwatchReset}
                 msecs={false}
                 options={options}
-                getTime={this.getFormattedTime} />
-              <TouchableHighlight onPress={() => this.toggleStopwatch(store)} style={{marginTop: 40}}>
-                <View style={{ backgroundColor: color, borderRadius: 5, paddingHorizontal: 13, paddingTop: 4 }}>
-                  <CeraText style={{ fontSize: 35, color: '#fff' }}>
-                    {!this.state.stopwatchStart ? "Start" : "DONE"}
-                  </CeraText>
-                </View>
-              </TouchableHighlight>
-              <TouchableHighlight onPress={() => this.toggleStopwatch(store)} style={{marginTop: 45}}>
+              />
+              <TouchableOpacity
+                onPress={() => this.toggleStopwatch(store)}
+                style={{ backgroundColor: color, borderRadius: 5, paddingHorizontal: 13, paddingTop: 4 }}>
+                <CeraText
+                  style={{ fontSize: 35, color: '#fff' }}>
+                  {!this.state.stopwatchStart ? "START" : "DONE"}
+                </CeraText>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => this.closeModal(store)}
+                                  style={{ marginTop: 45 }}>
                 <CeraText style={{ color: color, fontSize: 25 }}>
                   {"Didn't get to it"}
                 </CeraText>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
             <View style={{ flex: 2 }}></View>
           </View>
@@ -148,9 +170,6 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  welcomeContainer: {
-    alignItems: 'flex-end',
-  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -172,11 +191,10 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginHorizontal: 10,
   },
-  welcomeImage: {
-    width: 57,
-    height: 80,
-    resizeMode: 'contain',
-    marginRight: 65,
+  logo: {
+    width: 150,
+    height: 150,
+    marginBottom: 20,
   },
   cardContainer: {
     flex: 3,

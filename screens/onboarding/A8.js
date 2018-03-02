@@ -28,7 +28,7 @@ export default class A8 extends React.Component {
                   <View style={styles.welcomeContainer}>
                       <Image
                           source={
-                              require('../../assets/images/robot-prod.png')
+                              require('../../assets/images/elf.png')
                           }
                           style={styles.welcomeImage}
                       />
@@ -46,11 +46,12 @@ export default class A8 extends React.Component {
                         onChange={(hours, minutes) => this.setState({ selectedHours: hours, selectedMinutes: minutes })}
                       />
                       <View>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Main App Demo')}>
+                        <TouchableOpacity
+                          style={{ marginTop: 30 }}
+                          onPress={() => this.props.navigation.navigate('Main App Demo')}>
                           <CeraText style={styles.finishButton}>{"Finish Setup!"}</CeraText>
                         </TouchableOpacity>
                       </View>
-                      <BackButton navigation={this.props.navigation}/>
                   </View>
               </ScrollView>
           </View>
@@ -73,31 +74,27 @@ const styles = StyleSheet.create({
     },
     welcomeImage: {
         width: 100,
-        height: 80,
+        height: 141,
         resizeMode: 'contain',
         marginTop: 3,
-        marginLeft: -10,
     },
     getStartedContainer: {
         alignItems: 'center',
         marginHorizontal: 30,
     },
     getStartedText: {
-        fontSize: 17,
-        color: 'rgba(96,100,109, 1)',
-        lineHeight: 24,
+        fontSize: 19,
+        color: '#000',
         textAlign: 'center',
-        fontWeight:'bold',
     },
     finishButton: {
-        color: '#6FCF97',
-        fontSize: 25,
+        color: '#54489d',
+        fontSize: 35,
         textAlign: 'center',
-        marginVertical: 25,
     },
     tabBarInfoText: {
         fontSize: 15,
-        color: 'rgba(96,100,109, 1)',
+        color: '#000',
         textAlign: 'center',
         marginVertical: 10,
     },
