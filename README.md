@@ -10,7 +10,7 @@
 1. Download the **EXPO** app to your iOS or Android device
 2. Open the **EXPO** app and choose "Scan QR code"
 
-![](https://s3.amazonaws.com/stufff/equalizer-expo.png)
+![](https://s3.amazonaws.com/stufff/equalizer-code.png)
 
 ## There are 3 demo modes:
 
