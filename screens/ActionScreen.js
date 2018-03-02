@@ -84,6 +84,7 @@ export default class ActionScreen extends Component {
         <Modal
             animationType="slide"
             transparent={false}
+            onRequestClose={() => { alert('Modal has been closed.') }}
             visible={this.state.modalVisible}>
             <TouchableWithoutFeedback onPress={() => this.closeModal(store)}>
               <View style={{ backgroundColor: '#54489d', flex: 1, justifyContent: 'center', alignItems: 'center' }}>

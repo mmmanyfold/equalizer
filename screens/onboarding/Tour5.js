@@ -83,7 +83,8 @@ export default class Tour5 extends React.Component {
         <Modal
             animationType="slide"
             transparent={false}
-            visible={this.state.modalVisible}>
+            visible={this.state.modalVisible}
+            onRequestClose={() => { alert('Modal has been closed.') }}>
             <TouchableWithoutFeedback onPress={() => this.closeModal(store)}>
               <View style={{ backgroundColor: '#54489d', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Image source={require("../../assets/images/logo-wiggle-white.gif")}
